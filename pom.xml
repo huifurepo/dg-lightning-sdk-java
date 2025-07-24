@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.12.13</version>
+            <version>4.9.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -47,6 +47,14 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.18.2</version>
         </dependency>
+
+        <!-- util -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
+
     </dependencies>
     <!-- 构建配置 -->
     <build>
