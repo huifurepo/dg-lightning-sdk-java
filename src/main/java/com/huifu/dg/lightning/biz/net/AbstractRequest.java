@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public abstract class AbstractRequest {
 
-    public static final String SDK_VERSION = "3.0.28";
+    public static final String SDK_VERSION = "1.0.1-SNAPSHOT";
 
     protected static enum RequestMethod {
         GET, POST, DELETE, PUT;
@@ -189,7 +189,7 @@ public abstract class AbstractRequest {
         }
         boolean checkSign;
         try {
-            String sortedData = JsonUtils.sort4JsonString(data.asText(), 5);
+            String sortedData = JsonUtils.sort4JsonString(mapper.writeValueAsString(data), 5);
             checkSign = RsaUtils.verify(sortedData, publicKey, sign);
         } catch (Exception e) {
             if (BasePay.debug) {
