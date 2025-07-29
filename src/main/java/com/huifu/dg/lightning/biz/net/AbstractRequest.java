@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.huifu.dg.lightning.biz.config.MerConfig;
 import com.huifu.dg.lightning.biz.exception.BasePayException;
 import com.huifu.dg.lightning.biz.exception.FailureCode;
@@ -124,7 +123,7 @@ public abstract class AbstractRequest {
             request.put("data", objectMapper.readValue(reqData, new TypeReference<Object>() {
             }));
             request.put("sign", requestSign);
-            request.put("product_id", config.getProcutId());
+            request.put("product_id", config.getProductId());
 
             //   String requestBody = JSON.toJSONString(request);
             requestBody = objectMapper.writeValueAsString(request);
@@ -138,16 +137,16 @@ public abstract class AbstractRequest {
         if ((RequestMethod.POST == method) && (file == null) && "v2/supplementary/picture".equals(uri)) {
          //   back = HttpClientUtils.httpPostNoFile(requestUrl.toString(), headers, request, null, fileParam);
             //TODO
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProcutId());
+            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId());
         } else if ((RequestMethod.POST == method) && (file == null)) {
             headers.put("Content-type", "application/json");
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProcutId());
+            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId());
 //            back = HttpClientUtils.httpPostJson(requestUrl.toString(), headers, requestBody);
         } else if ((RequestMethod.POST == method) && (file != null)) {
-            back = OkHttpClientTools.httpPostFile(requestUrl.toString(), requestBody, config.getProcutId(), file);
+            back = OkHttpClientTools.httpPostFile(requestUrl.toString(), requestBody, config.getProductId(), file);
 //            back = HttpClientUtils.httpPostFile(requestUrl.toString(), headers, request, file, fileParam);
         } else if (RequestMethod.GET == method) {
-            back = OkHttpClientTools.httpGet(requestUrl.toString(), requestBody, config.getProcutId());
+            back = OkHttpClientTools.httpGet(requestUrl.toString(), requestBody, config.getProductId());
 //            back = HttpClientUtils.httpGet(requestUrl.toString(), headers, params);
         }
         if (BasePay.debug) {
