@@ -35,9 +35,13 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common().create(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" +toJsonString(response) );
 
+    }
+
+    private static String toJsonString( Map<String, Object> response) throws Exception{
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+       return  objectMapper.writeValueAsString(response);
     }
 
 
