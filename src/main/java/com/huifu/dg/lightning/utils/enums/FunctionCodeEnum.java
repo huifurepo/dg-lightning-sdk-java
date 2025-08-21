@@ -192,7 +192,7 @@ public enum FunctionCodeEnum {
     /**
      * 应用场景
      */
-    V3_TRADE_PAYMENT_JSPAY("v3.trade.payment.jspay", "应用场景"),
+    V3_TRADE_PAYMENT_JSPAY("v3.trade.payment.jspay", "聚合正扫"),
     /**
      * 聚合反扫
      */

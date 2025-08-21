@@ -28,6 +28,11 @@ public class PaymentRequest extends BaseRequest {
     @JsonProperty("huifu_id")
     private String huifuId;
     /**
+     * 账户号
+     */
+    @JsonProperty("acct_id")
+    private String acctId;
+    /**
      * 商品描述
      */
     @JsonProperty("goods_desc")
@@ -71,7 +76,7 @@ public class PaymentRequest extends BaseRequest {
      * 分账对象
      */
     @JsonProperty("acct_split_bunch")
-    private String acctSplitBunch;
+    private AcctSplitBunch acctSplitBunch;
     /**
      * 禁用信用卡标记
      */
@@ -117,6 +122,23 @@ public class PaymentRequest extends BaseRequest {
      */
     @JsonProperty("fq_mer_discount_flag")
     private String fqMerDiscountFlag;
+    /**
+     * 手续费补贴信息
+     */
+    @JsonProperty("trans_fee_allowance_info")
+    private TransFeeAllowanceInfo transFeeAllowanceInfo;
+    /**
+     * 补贴支付手续费承担方信息
+     */
+    @JsonProperty("combinedpay_data_fee_info")
+    private CombinedpayDataFeeInfo combinedpayDataFeeInfo;
+    /**
+     * 补贴支付信息
+     */
+    @JsonProperty("combinedpay_data")
+    private CombinedpayData combinedpayData;
+
+
 
     public String getReqDate() {
         return reqDate;
@@ -198,12 +220,44 @@ public class PaymentRequest extends BaseRequest {
         this.feeFlag = feeFlag;
     }
 
-    public String getAcctSplitBunch() {
+    public String getAcctId() {
+        return acctId;
+    }
+
+    public void setAcctId(String acctId) {
+        this.acctId = acctId;
+    }
+
+    public AcctSplitBunch getAcctSplitBunch() {
         return acctSplitBunch;
     }
 
-    public void setAcctSplitBunch(String acctSplitBunch) {
+    public void setAcctSplitBunch(AcctSplitBunch acctSplitBunch) {
         this.acctSplitBunch = acctSplitBunch;
+    }
+
+    public TransFeeAllowanceInfo getTransFeeAllowanceInfo() {
+        return transFeeAllowanceInfo;
+    }
+
+    public void setTransFeeAllowanceInfo(TransFeeAllowanceInfo transFeeAllowanceInfo) {
+        this.transFeeAllowanceInfo = transFeeAllowanceInfo;
+    }
+
+    public CombinedpayDataFeeInfo getCombinedpayDataFeeInfo() {
+        return combinedpayDataFeeInfo;
+    }
+
+    public void setCombinedpayDataFeeInfo(CombinedpayDataFeeInfo combinedpayDataFeeInfo) {
+        this.combinedpayDataFeeInfo = combinedpayDataFeeInfo;
+    }
+
+    public CombinedpayData getCombinedpayData() {
+        return combinedpayData;
+    }
+
+    public void setCombinedpayData(CombinedpayData combinedpayData) {
+        this.combinedpayData = combinedpayData;
     }
 
     public String getLimitPayType() {
@@ -288,6 +342,6 @@ public class PaymentRequest extends BaseRequest {
 
     @Override
     public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V2_TRADE_PAYMENT_MICROPAY;
+        return FunctionCodeEnum.V3_TRADE_PAYMENT_JSPAY;
     }
 }
