@@ -1,22 +1,15 @@
 package com.huifu.dg.lightning.models;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
-/***
- * @Description: 聚合下单
+import java.io.Serializable;
+
+/**
+ * @description:
  * @author: wang.hu_c
- * @date:2025年8月20日下午5:41:09
- * @version V1.0
- * 注意：本内容仅限于公司内部传阅，禁止外泄以及用于其他的商业目的
+ * @date: 2025年08月20日
  */
-public class PaymentRequest extends BaseRequest {
-    /**
-     * 请求日期
-     */
-    @JsonProperty("req_date")
-    private String reqDate;
+public class PaymentObject implements Serializable {
     /**
      * 请求流水号
      */
@@ -28,11 +21,6 @@ public class PaymentRequest extends BaseRequest {
     @JsonProperty("huifu_id")
     private String huifuId;
     /**
-     * 商品描述
-     */
-    @JsonProperty("goods_desc")
-    private String goodsDesc;
-    /**
      * 交易类型
      */
     @JsonProperty("trade_type")
@@ -41,12 +29,17 @@ public class PaymentRequest extends BaseRequest {
      * 交易类型扩展参数
      */
     @JsonProperty("method_expand")
-    private MethodExpand methodExpand;
+    private String methodExpand;
     /**
      * 交易金额
      */
     @JsonProperty("trans_amt")
     private String transAmt;
+    /**
+     * 商品描述
+     */
+    @JsonProperty("goods_desc")
+    private String goodsDesc;
     /**
      * 备注
      */
@@ -62,11 +55,6 @@ public class PaymentRequest extends BaseRequest {
      */
     @JsonProperty("delay_acct_flag")
     private String delayAcctFlag;
-    /**
-     * 手续费扣款标识
-     */
-    @JsonProperty("fee_flag")
-    private String feeFlag;
     /**
      * 分账对象
      */
@@ -88,11 +76,6 @@ public class PaymentRequest extends BaseRequest {
     @JsonProperty("pay_scene")
     private String payScene;
     /**
-     * 安全信息
-     */
-    @JsonProperty("risk_check_data")
-    private RiskCheckData riskCheckData;
-    /**
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
@@ -103,28 +86,15 @@ public class PaymentRequest extends BaseRequest {
     @JsonProperty("notify_url")
     private String notifyUrl;
     /**
+     * 交易状态
+     */
+    @JsonProperty("trans_stat")
+    private String transStat;
+    /**
      * 扩展参数集合
      */
     @JsonProperty("tx_metadata")
-    private TxMetadata txMetadata;
-    /**
-     * 传入分账遇到优惠的处理规则
-     */
-    @JsonProperty("term_div_coupon_type")
-    private Integer termDivCouponType;
-    /**
-     * 商户贴息标记
-     */
-    @JsonProperty("fq_mer_discount_flag")
-    private String fqMerDiscountFlag;
-
-    public String getReqDate() {
-        return reqDate;
-    }
-
-    public void setReqDate(String reqDate) {
-        this.reqDate = reqDate;
-    }
+    private String txMetadata;
 
     public String getReqSeqId() {
         return reqSeqId;
@@ -142,14 +112,6 @@ public class PaymentRequest extends BaseRequest {
         this.huifuId = huifuId;
     }
 
-    public String getGoodsDesc() {
-        return goodsDesc;
-    }
-
-    public void setGoodsDesc(String goodsDesc) {
-        this.goodsDesc = goodsDesc;
-    }
-
     public String getTradeType() {
         return tradeType;
     }
@@ -158,12 +120,28 @@ public class PaymentRequest extends BaseRequest {
         this.tradeType = tradeType;
     }
 
+    public String getMethodExpand() {
+        return methodExpand;
+    }
+
+    public void setMethodExpand(String methodExpand) {
+        this.methodExpand = methodExpand;
+    }
+
     public String getTransAmt() {
         return transAmt;
     }
 
     public void setTransAmt(String transAmt) {
         this.transAmt = transAmt;
+    }
+
+    public String getGoodsDesc() {
+        return goodsDesc;
+    }
+
+    public void setGoodsDesc(String goodsDesc) {
+        this.goodsDesc = goodsDesc;
     }
 
     public String getRemark() {
@@ -188,14 +166,6 @@ public class PaymentRequest extends BaseRequest {
 
     public void setDelayAcctFlag(String delayAcctFlag) {
         this.delayAcctFlag = delayAcctFlag;
-    }
-
-    public String getFeeFlag() {
-        return feeFlag;
-    }
-
-    public void setFeeFlag(String feeFlag) {
-        this.feeFlag = feeFlag;
     }
 
     public String getAcctSplitBunch() {
@@ -246,48 +216,19 @@ public class PaymentRequest extends BaseRequest {
         this.notifyUrl = notifyUrl;
     }
 
-    public Integer getTermDivCouponType() {
-        return termDivCouponType;
+    public String getTransStat() {
+        return transStat;
     }
 
-    public void setTermDivCouponType(Integer termDivCouponType) {
-        this.termDivCouponType = termDivCouponType;
+    public void setTransStat(String transStat) {
+        this.transStat = transStat;
     }
 
-    public String getFqMerDiscountFlag() {
-        return fqMerDiscountFlag;
-    }
-
-    public void setFqMerDiscountFlag(String fqMerDiscountFlag) {
-        this.fqMerDiscountFlag = fqMerDiscountFlag;
-    }
-
-    public MethodExpand getMethodExpand() {
-        return methodExpand;
-    }
-
-    public void setMethodExpand(MethodExpand methodExpand) {
-        this.methodExpand = methodExpand;
-    }
-
-    public RiskCheckData getRiskCheckData() {
-        return riskCheckData;
-    }
-
-    public void setRiskCheckData(RiskCheckData riskCheckData) {
-        this.riskCheckData = riskCheckData;
-    }
-
-    public TxMetadata getTxMetadata() {
+    public String getTxMetadata() {
         return txMetadata;
     }
 
-    public void setTxMetadata(TxMetadata txMetadata) {
+    public void setTxMetadata(String txMetadata) {
         this.txMetadata = txMetadata;
-    }
-
-    @Override
-    public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V2_TRADE_PAYMENT_MICROPAY;
     }
 }
