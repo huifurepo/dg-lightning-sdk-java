@@ -50,15 +50,26 @@ public class PaymentRefundRequest extends BaseRequest{
     @JsonProperty("org_req_seq_id")
     private String orgReqSeqId;
     /**
+     * 安全信息
+     */
+    @JsonProperty("risk_check_data")
+    private RiskCheckData riskCheckData;
+    /**
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
-    private String terminalDeviceData;
+    private TerminalDeviceData terminalDeviceData;
     /**
      * 异步通知地址
      */
     @JsonProperty("notify_url")
     private String notifyUrl;
+
+    /**
+     * 交易类型扩展参数
+     */
+    @JsonProperty("method_expand")
+    private MethodExpand methodExpand;
 
     public String getReqDate() {
         return reqDate;
@@ -124,20 +135,36 @@ public class PaymentRefundRequest extends BaseRequest{
         this.orgReqSeqId = orgReqSeqId;
     }
 
-    public String getTerminalDeviceData() {
-        return terminalDeviceData;
-    }
-
-    public void setTerminalDeviceData(String terminalDeviceData) {
-        this.terminalDeviceData = terminalDeviceData;
-    }
-
     public String getNotifyUrl() {
         return notifyUrl;
     }
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
+    }
+
+    public RiskCheckData getRiskCheckData() {
+        return riskCheckData;
+    }
+
+    public void setRiskCheckData(RiskCheckData riskCheckData) {
+        this.riskCheckData = riskCheckData;
+    }
+
+    public TerminalDeviceData getTerminalDeviceData() {
+        return terminalDeviceData;
+    }
+
+    public void setTerminalDeviceData(TerminalDeviceData terminalDeviceData) {
+        this.terminalDeviceData = terminalDeviceData;
+    }
+
+    public MethodExpand getMethodExpand() {
+        return methodExpand;
+    }
+
+    public void setMethodExpand(MethodExpand methodExpand) {
+        this.methodExpand = methodExpand;
     }
 
     @Override

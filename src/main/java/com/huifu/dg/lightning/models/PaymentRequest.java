@@ -101,7 +101,7 @@ public class PaymentRequest extends BaseRequest {
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
-    private String terminalDeviceData;
+    private TerminalDeviceData terminalDeviceData;
     /**
      * 异步通知地址
      */
@@ -284,11 +284,11 @@ public class PaymentRequest extends BaseRequest {
         this.payScene = payScene;
     }
 
-    public String getTerminalDeviceData() {
+    public TerminalDeviceData getTerminalDeviceData() {
         return terminalDeviceData;
     }
 
-    public void setTerminalDeviceData(String terminalDeviceData) {
+    public void setTerminalDeviceData(TerminalDeviceData terminalDeviceData) {
         this.terminalDeviceData = terminalDeviceData;
     }
 
