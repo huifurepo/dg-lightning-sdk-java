@@ -4,10 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AggregateTransRequest;
+import com.huifu.dg.lightning.models.AlipayData;
+import com.huifu.dg.lightning.models.UnionpayData;
+import com.huifu.dg.lightning.models.WxData;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
 import com.huifu.dg.lightning.utils.JacksonUtils;
 import com.huifu.dg.lightning.utils.SequenceTools;
+import com.huifu.dg.lightning.utils.enums.PaymentTypeEnum;
 
 import java.util.Map;
 
@@ -19,7 +23,7 @@ import java.util.Map;
 public class DemoTest2 {
 
 
-    public static void test() throws Exception{
+    public static void test() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
         AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
@@ -35,18 +39,17 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common().create(request);
-        System.out.println("返回数据:" +toJsonString(response) );
+        System.out.println("返回数据:" + toJsonString(response));
 
     }
 
-    private static String toJsonString( Map<String, Object> response) throws Exception{
+    private static String toJsonString(Map<String, Object> response) throws Exception {
         ObjectMapper objectMapper = JacksonUtils.getInstance();
-       return  objectMapper.writeValueAsString(response);
+        return objectMapper.writeValueAsString(response);
     }
 
 
-
-    public static void test2() throws Exception{
+    public static void test2() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
         AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
@@ -62,14 +65,14 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("method_expand",getWxData()).create(request);
+                .optional("method_expand", getMethodExpand(request.getTradeType())).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
     }
 
 
-    public static void test3() throws Exception{
+    public static void test3() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
         AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
@@ -85,15 +88,15 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("seller","lisi")
-                .optional("method_expand",getWxData()).create(request);
+                .optional("seller", "lisi")
+                .optional("method_expand", getWxData()).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
     }
 
 
-    public static void test4() throws Exception{
+    public static void test4() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
         AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
@@ -109,10 +112,10 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("seller","zhangsan")
-                .optional("method_expand",getWxData()).create(request);
+                .optional("seller", "zhangsan")
+                .optional("method_expand", getWxData()).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
     }
 
@@ -126,13 +129,39 @@ public class DemoTest2 {
         return objectMapper.writeValueAsString(objectNode);
     }
 
+    private static String getMethodExpand(String tradeType) throws Exception{
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        if (PaymentTypeEnum.T_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.T_MINIAPP.getTypeCode().equals(tradeType)
+                || PaymentTypeEnum.T_APP.getTypeCode().equals(tradeType) || PaymentTypeEnum.T_MICROPAY.getTypeCode().equals(tradeType)) {
+            WxData wxData = new WxData();
+            wxData.setSubOpenid("o8jhotzittQSetZ-N0Yj4Hz91Rqc");
+            wxData.setSubAppid("wx4f4f5a5f5a5f5a5f");
+            return objectMapper.writeValueAsString(wxData);
+        }
+        if (PaymentTypeEnum.A_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.A_NATIVE.getTypeCode().equals(tradeType)
+                || PaymentTypeEnum.A_MICROPAY.getTypeCode().equals(tradeType)) {
+            AlipayData alipayData = new AlipayData();
+            alipayData.setAlipayStoreId("ali-542323asdas12351a51");
+            alipayData.setBuyerId("ali4f4f5a5f5a5f5a5f");
+            return objectMapper.writeValueAsString(alipayData);
+        }
+        if (PaymentTypeEnum.U_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.U_NATIVE.getTypeCode().equals(tradeType)
+                || PaymentTypeEnum.U_MICROPAY.getTypeCode().equals(tradeType)) {
+            UnionpayData unionpayData = new UnionpayData();
+            unionpayData.setQrCode("union-542323asdas12351a51");
+            unionpayData.setUserId("union4f4f5a5f5a5f5a5f");
+            return objectMapper.writeValueAsString(unionpayData);
+        }
+        return null;
+    }
 
-    public static void main(String[] args) throws Exception{
 
-        //test();
+    public static void main(String[] args) throws Exception {
+
+        test();
         test2();
-        /*test3();
-        test4();*/
+        test3();
+        test4();
     }
 
 }

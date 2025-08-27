@@ -15,7 +15,7 @@ public class ScanpayQueryResponse implements Serializable {
      * 结算金额
      */
     @JsonProperty("settlement_amt")
-    String settlementAmt;
+    private String settlementAmt;
 
     /**
      * 业务响应码
@@ -67,7 +67,7 @@ public class ScanpayQueryResponse implements Serializable {
      * 分账对象
      */
     @JsonProperty("acct_split_bunch")
-    private AcctSplitBunch acctSplitBunch;
+    private String acctSplitBunch;
     /**
      * 延时标记
      */
@@ -153,12 +153,12 @@ public class ScanpayQueryResponse implements Serializable {
      * 交易扩展参数
      */
     @JsonProperty("method_expand")
-    private MethodExpand methodExpand;
+    private String methodExpand;
     /**
      * 手续费对象
      */
     @JsonProperty("payment_fee")
-    private PaymentFee paymentFee;
+    private String paymentFee;
     /**
      * 资金冻结状态
      */
@@ -168,17 +168,17 @@ public class ScanpayQueryResponse implements Serializable {
      * 冻结金额
      */
     @JsonProperty("unfreeze_amt")
-    String unfreezeAmt;
+    private String unfreezeAmt;
     /**
      * 冻结时间
      */
     @JsonProperty("freeze_time")
-    String freezeTime;
+    private String freezeTime;
     /**
      * 解冻时间
      */
     @JsonProperty("unfreeze_time")
-    String unfreezeTime;
+    private String unfreezeTime;
 
     public String getSettlementAmt() {
         return settlementAmt;
@@ -260,11 +260,11 @@ public class ScanpayQueryResponse implements Serializable {
         this.transAmt = transAmt;
     }
 
-    public AcctSplitBunch getAcctSplitBunch() {
+    public String getAcctSplitBunch() {
         return acctSplitBunch;
     }
 
-    public void setAcctSplitBunch(AcctSplitBunch acctSplitBunch) {
+    public void setAcctSplitBunch(String acctSplitBunch) {
         this.acctSplitBunch = acctSplitBunch;
     }
 
@@ -396,19 +396,19 @@ public class ScanpayQueryResponse implements Serializable {
         this.atuSubMerId = atuSubMerId;
     }
 
-    public MethodExpand getMethodExpand() {
+    public String getMethodExpand() {
         return methodExpand;
     }
 
-    public void setMethodExpand(MethodExpand methodExpand) {
+    public void setMethodExpand(String methodExpand) {
         this.methodExpand = methodExpand;
     }
 
-    public PaymentFee getPaymentFee() {
+    public String getPaymentFee() {
         return paymentFee;
     }
 
-    public void setPaymentFee(PaymentFee paymentFee) {
+    public void setPaymentFee(String paymentFee) {
         this.paymentFee = paymentFee;
     }
 

@@ -53,12 +53,12 @@ public class PaymentRefundRequest extends BaseRequest{
      * 安全信息
      */
     @JsonProperty("risk_check_data")
-    private RiskCheckData riskCheckData;
+    private String riskCheckData;
     /**
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
-    private TerminalDeviceData terminalDeviceData;
+    private String terminalDeviceData;
     /**
      * 异步通知地址
      */
@@ -69,7 +69,7 @@ public class PaymentRefundRequest extends BaseRequest{
      * 交易类型扩展参数
      */
     @JsonProperty("method_expand")
-    private MethodExpand methodExpand;
+    private String methodExpand;
 
     public String getReqDate() {
         return reqDate;
@@ -135,6 +135,22 @@ public class PaymentRefundRequest extends BaseRequest{
         this.orgReqSeqId = orgReqSeqId;
     }
 
+    public String getRiskCheckData() {
+        return riskCheckData;
+    }
+
+    public void setRiskCheckData(String riskCheckData) {
+        this.riskCheckData = riskCheckData;
+    }
+
+    public String getTerminalDeviceData() {
+        return terminalDeviceData;
+    }
+
+    public void setTerminalDeviceData(String terminalDeviceData) {
+        this.terminalDeviceData = terminalDeviceData;
+    }
+
     public String getNotifyUrl() {
         return notifyUrl;
     }
@@ -143,27 +159,11 @@ public class PaymentRefundRequest extends BaseRequest{
         this.notifyUrl = notifyUrl;
     }
 
-    public RiskCheckData getRiskCheckData() {
-        return riskCheckData;
-    }
-
-    public void setRiskCheckData(RiskCheckData riskCheckData) {
-        this.riskCheckData = riskCheckData;
-    }
-
-    public TerminalDeviceData getTerminalDeviceData() {
-        return terminalDeviceData;
-    }
-
-    public void setTerminalDeviceData(TerminalDeviceData terminalDeviceData) {
-        this.terminalDeviceData = terminalDeviceData;
-    }
-
-    public MethodExpand getMethodExpand() {
+    public String getMethodExpand() {
         return methodExpand;
     }
 
-    public void setMethodExpand(MethodExpand methodExpand) {
+    public void setMethodExpand(String methodExpand) {
         this.methodExpand = methodExpand;
     }
 
