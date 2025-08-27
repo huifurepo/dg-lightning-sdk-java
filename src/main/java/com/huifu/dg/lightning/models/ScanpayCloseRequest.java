@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
 /**
- * @description: 交易关单请求实体
+ * @description: 扫码交易关单
  * @author: wang.hu_c
  * @date: 2025年08月20日
  */
