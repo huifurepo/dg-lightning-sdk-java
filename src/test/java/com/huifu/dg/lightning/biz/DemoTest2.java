@@ -2,6 +2,8 @@ package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.huifu.dg.lightning.biz.exception.BasePayException;
+import com.huifu.dg.lightning.biz.exception.FailureCode;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AggregateTransRequest;
 import com.huifu.dg.lightning.models.AlipayData;
@@ -12,6 +14,7 @@ import com.huifu.dg.lightning.utils.DateTools;
 import com.huifu.dg.lightning.utils.JacksonUtils;
 import com.huifu.dg.lightning.utils.SequenceTools;
 import com.huifu.dg.lightning.utils.enums.PaymentTypeEnum;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
@@ -130,6 +133,9 @@ public class DemoTest2 {
     }
 
     private static String getMethodExpand(String tradeType) throws Exception{
+        if (StringUtils.isBlank(tradeType)) {
+            throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR);
+        }
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         if (PaymentTypeEnum.T_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.T_MINIAPP.getTypeCode().equals(tradeType)
                 || PaymentTypeEnum.T_APP.getTypeCode().equals(tradeType) || PaymentTypeEnum.T_MICROPAY.getTypeCode().equals(tradeType)) {
