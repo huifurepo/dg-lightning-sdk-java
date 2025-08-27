@@ -62,7 +62,7 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("wx_data",getWxData()).create(request);
+                .optional("method_expand",getWxData()).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
 
@@ -86,7 +86,7 @@ public class DemoTest2 {
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("seller","lisi")
-                .optional("wx_data",getWxData()).create(request);
+                .optional("method_expand",getWxData()).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
 
@@ -110,7 +110,7 @@ public class DemoTest2 {
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("seller","zhangsan")
-                .optional("wx_data",getWxData()).create(request);
+                .optional("method_expand",getWxData()).create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
 
@@ -129,10 +129,10 @@ public class DemoTest2 {
 
     public static void main(String[] args) throws Exception{
 
-        test();
+        //test();
         test2();
-        test3();
-        test4();
+        /*test3();
+        test4();*/
     }
 
 }

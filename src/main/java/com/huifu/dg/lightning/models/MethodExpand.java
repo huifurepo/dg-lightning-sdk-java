@@ -29,7 +29,7 @@ public class MethodExpand implements Serializable {
      * 微信反扫支付参数
      */
     @JsonProperty("T_MICROPAY")
-    private WxScanData tMicropay;
+    private WxData tMicropay;
     /**
      * 支付宝JS支付参数
      */
@@ -85,11 +85,11 @@ public class MethodExpand implements Serializable {
         this.tApp = tApp;
     }
 
-    public WxScanData gettMicropay() {
+    public WxData gettMicropay() {
         return tMicropay;
     }
 
-    public void settMicropay(WxScanData tMicropay) {
+    public void settMicropay(WxData tMicropay) {
         this.tMicropay = tMicropay;
     }
 
