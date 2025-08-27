@@ -34,11 +34,6 @@ public class ScanpayQueryRequest extends BaseRequest {
      */
     @JsonProperty("orig_req_seq_id")
     private String origReqSeqId;
-    /**
-     * 原请求日期
-     */
-    @JsonProperty("orig_req_date")
-    private String origReqDate;
 
     public String getReqDate() {
         return reqDate;
@@ -78,14 +73,6 @@ public class ScanpayQueryRequest extends BaseRequest {
 
     public void setOrigReqSeqId(String origReqSeqId) {
         this.origReqSeqId = origReqSeqId;
-    }
-
-    public String getOrigReqDate() {
-        return origReqDate;
-    }
-
-    public void setOrigReqDate(String origReqDate) {
-        this.origReqDate = origReqDate;
     }
 
     @Override
