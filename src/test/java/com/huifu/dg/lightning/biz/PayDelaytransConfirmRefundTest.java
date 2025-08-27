@@ -1,0 +1,68 @@
+package com.huifu.dg.lightning.biz;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.models.AcctInfo;
+import com.huifu.dg.lightning.models.AcctSplitBunch;
+import com.huifu.dg.lightning.models.DelayTransConfirmRequest;
+import com.huifu.dg.lightning.utils.BasePay;
+import com.huifu.dg.lightning.utils.DateTools;
+import com.huifu.dg.lightning.utils.JacksonUtils;
+import com.huifu.dg.lightning.utils.SequenceTools;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @description:
+ * @author: wang.hu_c
+ * @date: 2025年08月27日
+ */
+public class PayDelaytransConfirmRefundTest {
+    public static void payConfirmRefund() throws Exception {
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        // 2. 组装交易确认退款参数
+        DelayTransConfirmRequest request =new DelayTransConfirmRequest();
+        //请求时间
+        request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
+        //请求流水号
+        request.setReqSeqId(SequenceTools.getReqSeqId32());
+        //商户号
+        request.setHuifuId("6666000003100615");
+        //原交易请求日期
+        request.setOrgReqDate("20210915");
+        //原交易请求流水号
+        request.setOrgReqSeqId("9452943574111883");
+        //分账对象
+        request.setAcctSplitBunch(getAcctSplitBunch());
+        //是否垫资退款
+        Map<String, Object> response = BasePayClient.request(request);
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+
+    }
+
+    private static String getAcctSplitBunch() throws Exception{
+        List<AcctInfo> acctInfos = new ArrayList<>();
+        //分账串1
+        AcctInfo acctInfo1 = new AcctInfo();
+        acctInfo1.setDivAmt("0.08");
+        acctInfo1.setHuifuId("6666000111546360");
+        acctInfos.add(acctInfo1);
+        //分账串2
+        AcctInfo acctInfo2 = new AcctInfo();
+        acctInfo2.setDivAmt("0.02");
+        acctInfo2.setHuifuId("6666000113808937");
+        acctInfos.add(acctInfo2);
+
+        AcctSplitBunch acctSplitBunch = new AcctSplitBunch();
+        acctSplitBunch.setAcctInfos(acctInfos);
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        return objectMapper.writeValueAsString(acctSplitBunch);
+    }
+
+    public static void main(String[] args) throws Exception {
+        payConfirmRefund();
+    }
+}

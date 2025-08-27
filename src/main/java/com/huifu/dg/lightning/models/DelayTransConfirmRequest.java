@@ -1,15 +1,10 @@
 package com.huifu.dg.lightning.models;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
-/**
- * @description: 延时交易确认
- * @author: wang.hu_c
- * @date: 2025年08月22日
- */
-public class DelaytransConfirmRequest extends BaseRequest{
-
+public class DelayTransConfirmRequest extends BaseRequest {
     @JsonProperty("req_seq_id")
     private String reqSeqId;
 
@@ -39,6 +34,12 @@ public class DelaytransConfirmRequest extends BaseRequest{
 
     @JsonProperty("remark")
     private String remark;
+
+    @Override
+    public FunctionCodeEnum getFunctionCode() {
+        return FunctionCodeEnum.V2_TRADE_PAYMENT_DELAYTRANS_CONFIRM;
+    }
+
 
     public String getReqSeqId() {
         return reqSeqId;
@@ -118,10 +119,5 @@ public class DelaytransConfirmRequest extends BaseRequest{
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    @Override
-    public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V2_TRADE_PAYMENT_DELAYTRANS_CONFIRM;
     }
 }
