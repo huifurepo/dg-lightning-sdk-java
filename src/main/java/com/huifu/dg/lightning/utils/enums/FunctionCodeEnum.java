@@ -198,6 +198,10 @@ public enum FunctionCodeEnum {
      */
     V3_TRADE_PAYMENT_MICROPAY("v3.trade.payment.micropay", "聚合反扫"),
     /**
+     * 聚合支付
+     */
+    LIGHTNING_TRADE_PAYMENT_PAY("lightning.trade.payment.pay", "聚合支付"),
+    /**
      * 防断链子商户号列表查询
      */
     V2_MERCHANT_ATPREVENT_QUERYSUBMERLIST("v2.merchant.atPrevent.querySubMerList", "防断链子商户号列表查询"),

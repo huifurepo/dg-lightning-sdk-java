@@ -342,6 +342,6 @@ public class PaymentRequest extends BaseRequest {
 
     @Override
     public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V3_TRADE_PAYMENT_JSPAY;
+        return FunctionCodeEnum.LIGHTNING_TRADE_PAYMENT_PAY;
     }
 }
