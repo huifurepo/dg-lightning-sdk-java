@@ -8,7 +8,7 @@ import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
  * @author: wang.hu_c
  * @date: 2025年08月25日
  */
-public class ConfirmRefundRequest extends BaseRequest{
+public class PayConfirmRefundRequest extends BaseRequest{
     /**
      * 请求日期
      */
@@ -38,7 +38,7 @@ public class ConfirmRefundRequest extends BaseRequest{
      * 分账对象
      */
     @JsonProperty("acct_split_bunch")
-    private AcctSplitBunch acctSplitBunch;
+    private String acctSplitBunch;
     /**
      * 是否垫资退款
      */
@@ -100,11 +100,11 @@ public class ConfirmRefundRequest extends BaseRequest{
         this.orgReqSeqId = orgReqSeqId;
     }
 
-    public AcctSplitBunch getAcctSplitBunch() {
+    public String getAcctSplitBunch() {
         return acctSplitBunch;
     }
 
-    public void setAcctSplitBunch(AcctSplitBunch acctSplitBunch) {
+    public void setAcctSplitBunch(String acctSplitBunch) {
         this.acctSplitBunch = acctSplitBunch;
     }
 
