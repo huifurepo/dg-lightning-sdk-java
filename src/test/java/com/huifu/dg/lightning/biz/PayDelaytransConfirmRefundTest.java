@@ -31,7 +31,7 @@ public class PayDelaytransConfirmRefundTest {
         //商户号
         request.setHuifuId("6666000003100615");
         //原交易请求日期
-        request.setOrgReqDate("20210915");
+        request.setOrgReqDate("20250815");
         //原交易请求流水号
         request.setOrgReqSeqId("9452943574111883");
         //分账对象
