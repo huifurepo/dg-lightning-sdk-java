@@ -13,11 +13,6 @@ public class TerminalDeviceData implements Serializable {
 
     private static final long serialVersionUID = 2089045354814539809L;
     /**
-     * 设备类型。
-     */
-    @JsonProperty("device_type")
-    String deviceType;
-    /**
      * 交易设备IP。
      */
     @JsonProperty("device_ip")
@@ -113,19 +108,6 @@ public class TerminalDeviceData implements Serializable {
      */
     @JsonProperty("terminal_location")
     String terminalLocation;
-
-
-	public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public String getDeviceType() {
-        return deviceType;
-    }
-
-    public void setDeviceType(String deviceType) {
-        this.deviceType = deviceType;
-    }
 
     public String getDeviceIp() {
         return deviceIp;

@@ -11,12 +11,6 @@ import java.util.List;
  * @date: 2025年08月21日
  */
 public class TransFeeAllowanceInfo implements Serializable {
-    /*allowance_fee_amt	补贴手续费金额
-    receivable_fee_amt	商户应收手续费
-    actual_fee_amt	商户实收手续费
-    allowance_type	补贴类型
-    no_allowance_desc	不补贴原因
-    cur_allowance_config_infos	活动详情*/
     /**
      * 补贴手续费金额
      */
