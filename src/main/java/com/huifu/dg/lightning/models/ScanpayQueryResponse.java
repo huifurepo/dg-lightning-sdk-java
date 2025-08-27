@@ -11,224 +11,172 @@ import java.io.Serializable;
  */
 public class ScanpayQueryResponse implements Serializable {
     /**
-     * 请求流水号
+     * /**
+     * 结算金额
      */
-    @JsonProperty("req_seq_id")
-    private String reqSeqId;
+    @JsonProperty("settlement_amt")
+    String settlementAmt;
+
+    /**
+     * 业务响应码
+     */
+    @JsonProperty("resp_code")
+    private String respCode;
+    /**
+     * 业务响应信息
+     */
+
+    @JsonProperty("resp_desc")
+    private String respDesc;
     /**
      * 商户号
      */
     @JsonProperty("huifu_id")
     private String huifuId;
     /**
+     * 商户号
+     */
+    @JsonProperty("acct_id")
+    private String acctId;
+    /**
+     * 机构请求流水号
+     */
+    @JsonProperty("req_date")
+    private String reqDate;
+    /**
+     *原机构请求流水号
+     */
+    @JsonProperty("req_seq_id")
+    private String reqSeqId;
+    /**
+     *交易返回的全局流水号
+     */
+    @JsonProperty("hf_seq_id")
+    private String hfSeqId;
+    /**
      * 交易类型
      */
     @JsonProperty("trade_type")
     private String tradeType;
-    /**
-     * 交易类型扩展参数
-     */
-    @JsonProperty("method_expand")
-    private String methodExpand;
     /**
      * 交易金额
      */
     @JsonProperty("trans_amt")
     private String transAmt;
     /**
-     * 商品描述
+     * 分账对象
      */
-    @JsonProperty("goods_desc")
-    private String goodsDesc;
+    @JsonProperty("acct_split_bunch")
+    private AcctSplitBunch acctSplitBunch;
     /**
-     * 备注
-     */
-    @JsonProperty("remark")
-    private String remark;
-    /**
-     * 交易有效期
-     */
-    @JsonProperty("time_expire")
-    private String timeExpire;
-    /**
-     * 延迟标识
+     * 延时标记
      */
     @JsonProperty("delay_acct_flag")
     private String delayAcctFlag;
     /**
-     * 分账对象
+     * 备注/商户私有域
      */
-    @JsonProperty("acct_split_bunch")
-    private String acctSplitBunch;
+    @JsonProperty("remark")
+    private String remark;
     /**
-     * 禁用信用卡标记
+     * 外部通道返回码
      */
-    @JsonProperty("limit_pay_type")
-    private String limitPayType;
+    @JsonProperty("bank_code")
+    private String bankCode;
     /**
-     * 渠道号
+     * 外部通道返回描述
      */
-    @JsonProperty("channel_no")
-    private String channelNo;
-    /**
-     * 场景类型
-     */
-    @JsonProperty("pay_scene")
-    private String payScene;
-    /**
-     * 设备信息
-     */
-    @JsonProperty("terminal_device_data")
-    private String terminalDeviceData;
-    /**
-     * 异步通知地址
-     */
-    @JsonProperty("notify_url")
-    private String notifyUrl;
+    @JsonProperty("bank_message")
+    private String bankMessage;
+
     /**
      * 交易状态
      */
     @JsonProperty("trans_stat")
     private String transStat;
     /**
-     * 扩展参数集合
+     * 账务状态 I：初始、P：处理中、S：成功、F：失败
      */
-    @JsonProperty("tx_metadata")
-    private String txMetadata;
-
-    public String getReqSeqId() {
-        return reqSeqId;
-    }
-
-    public void setReqSeqId(String reqSeqId) {
-        this.reqSeqId = reqSeqId;
-    }
-
-    public String getHuifuId() {
-        return huifuId;
-    }
-
-    public void setHuifuId(String huifuId) {
-        this.huifuId = huifuId;
-    }
-
-    public String getTradeType() {
-        return tradeType;
-    }
-
-    public void setTradeType(String tradeType) {
-        this.tradeType = tradeType;
-    }
-
-    public String getMethodExpand() {
-        return methodExpand;
-    }
-
-    public void setMethodExpand(String methodExpand) {
-        this.methodExpand = methodExpand;
-    }
-
-    public String getTransAmt() {
-        return transAmt;
-    }
-
-    public void setTransAmt(String transAmt) {
-        this.transAmt = transAmt;
-    }
-
-    public String getGoodsDesc() {
-        return goodsDesc;
-    }
-
-    public void setGoodsDesc(String goodsDesc) {
-        this.goodsDesc = goodsDesc;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getTimeExpire() {
-        return timeExpire;
-    }
-
-    public void setTimeExpire(String timeExpire) {
-        this.timeExpire = timeExpire;
-    }
-
-    public String getDelayAcctFlag() {
-        return delayAcctFlag;
-    }
-
-    public void setDelayAcctFlag(String delayAcctFlag) {
-        this.delayAcctFlag = delayAcctFlag;
-    }
-
-    public String getAcctSplitBunch() {
-        return acctSplitBunch;
-    }
-
-    public void setAcctSplitBunch(String acctSplitBunch) {
-        this.acctSplitBunch = acctSplitBunch;
-    }
-
-    public String getLimitPayType() {
-        return limitPayType;
-    }
-
-    public void setLimitPayType(String limitPayType) {
-        this.limitPayType = limitPayType;
-    }
-
-    public String getChannelNo() {
-        return channelNo;
-    }
-
-    public void setChannelNo(String channelNo) {
-        this.channelNo = channelNo;
-    }
-
-    public String getPayScene() {
-        return payScene;
-    }
-
-    public void setPayScene(String payScene) {
-        this.payScene = payScene;
-    }
-
-    public String getTerminalDeviceData() {
-        return terminalDeviceData;
-    }
-
-    public void setTerminalDeviceData(String terminalDeviceData) {
-        this.terminalDeviceData = terminalDeviceData;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl(String notifyUrl) {
-        this.notifyUrl = notifyUrl;
-    }
-
-    public String getTransStat() {
-        return transStat;
-    }
-
-    public void setTransStat(String transStat) {
-        this.transStat = transStat;
-    }
-
-    public String getTxMetadata() {
-        return txMetadata;
-    }
-
-    public void setTxMetadata(String txMetadata) {
-        this.txMetadata = txMetadata;
-    }
+    @JsonProperty("acct_stat")
+    private String acctStat;
+    /**
+     * 微信支付宝订单号
+     */
+    @JsonProperty("out_trans_id")
+    private String outTransId;
+    /**
+     * 支付凭证号
+     */
+    @JsonProperty("party_order_id")
+    private String partyOrderId;
+    /**
+     * 支付完成实际
+     */
+    @JsonProperty("end_time")
+    private String endTime;
+    /**
+     * 借贷记标识 D-借记卡，C-信用卡,Z-借贷合一卡
+     */
+    @JsonProperty("debit_type")
+    private String debitType;
+    /**
+     * 是否分账交易
+     */
+    @JsonProperty("div_flag")
+    private String divFlag;
+    /**
+     * 账务日期
+     */
+    @JsonProperty("acct_date")
+    private String acctDate;
+    /**
+     * 微信用户唯一标识码
+     */
+    @JsonProperty("wx_user_id")
+    private String wxUserId;
+    /**
+     * 待确认金额
+     */
+    @JsonProperty("unconfirm_amt")
+    private String unconfirmAmt;
+    /**
+     * 终端类型
+     */
+    @JsonProperty("device_type")
+    private String deviceType;
+    /**
+     * 手续费商户号
+     */
+    @JsonProperty("atu_sub_mer_id")
+    private String atuSubMerId;
+    /**
+     * 交易扩展参数
+     */
+    @JsonProperty("method_expand")
+    private MethodExpand methodExpand;
+    /**
+     * 手续费对象
+     */
+    @JsonProperty("payment_fee")
+    private PaymentFee paymentFee;
+    /**
+     * 资金冻结状态
+     */
+    @JsonProperty("fund_freeze_stat")
+    private String fundFreezeStat;
+    /**
+     * 冻结金额
+     */
+    @JsonProperty("unfreeze_amt")
+    String unfreezeAmt;
+    /**
+     * 冻结时间
+     */
+    @JsonProperty("freeze_time")
+    String freezeTime;
+    /**
+     * 解冻时间
+     */
+    @JsonProperty("unfreeze_time")
+    String unfreezeTime;
 }

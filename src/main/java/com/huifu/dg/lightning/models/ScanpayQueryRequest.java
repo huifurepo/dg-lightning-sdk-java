@@ -8,7 +8,7 @@ import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
  * @author: wang.hu_c
  * @date: 2025年08月20日
  */
-public class PaymentQueryRequest extends BaseRequest {
+public class ScanpayQueryRequest extends BaseRequest {
     /**
      * 请求日期
      */
@@ -90,6 +90,6 @@ public class PaymentQueryRequest extends BaseRequest {
 
     @Override
     public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V3_TRADE_PAYMENT_SCANPAY_QUERY;
+        return FunctionCodeEnum.LIGHTNING_TRADE_PAYMENT_SCANPAY_QUERY;
     }
 }

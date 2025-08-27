@@ -190,6 +190,10 @@ public enum FunctionCodeEnum {
      */
     V3_TRADE_PAYMENT_SCANPAY_QUERY("v3.trade.payment.scanpay.query", "扫码交易查询"),
     /**
+     * 扫码交易查询
+     */
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_QUERY("lightning.trade.payment.scanpay.query", "扫码交易查询"),
+    /**
      * 应用场景
      */
     V3_TRADE_PAYMENT_JSPAY("v3.trade.payment.jspay", "聚合正扫"),
