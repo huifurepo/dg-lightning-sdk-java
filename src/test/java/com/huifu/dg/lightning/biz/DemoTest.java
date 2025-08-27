@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.huifu.dg.lightning.biz.client.CommonPayClient;
-import com.huifu.dg.lightning.models.PaymentRequest;
+import com.huifu.dg.lightning.models.AggregateTransRequest;
 
 import java.util.Map;
 
@@ -14,12 +14,12 @@ public class DemoTest {
 
     public void test() throws Exception{
 
-        PaymentRequest paymentRequest = new PaymentRequest();
-        paymentRequest.setReqSeqId("12");
-        paymentRequest.setHuifuId("6660343453");
-        paymentRequest.setTradeType("scan");
-        paymentRequest.optional("seller","zhangsan");
-        Map<String, Object> map = CommonPayClient.create(paymentRequest);
+        AggregateTransRequest aggregateTransRequest = new AggregateTransRequest();
+        aggregateTransRequest.setReqSeqId("12");
+        aggregateTransRequest.setHuifuId("6660343453");
+        aggregateTransRequest.setTradeType("scan");
+        aggregateTransRequest.optional("seller","zhangsan");
+        Map<String, Object> map = CommonPayClient.create(aggregateTransRequest);
     }
 
 }

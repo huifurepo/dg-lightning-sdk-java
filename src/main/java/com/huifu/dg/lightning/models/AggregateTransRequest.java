@@ -11,7 +11,7 @@ import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
  * @version V1.0
  * 注意：本内容仅限于公司内部传阅，禁止外泄以及用于其他的商业目的
  */
-public class PaymentRequest extends BaseRequest {
+public class AggregateTransRequest extends BaseRequest {
     /**
      * 请求日期
      */
@@ -107,11 +107,6 @@ public class PaymentRequest extends BaseRequest {
      */
     @JsonProperty("notify_url")
     private String notifyUrl;
-    /**
-     * 扩展参数集合
-     */
-    @JsonProperty("tx_metadata")
-    private TxMetadata txMetadata;
     /**
      * 传入分账遇到优惠的处理规则
      */
@@ -330,14 +325,6 @@ public class PaymentRequest extends BaseRequest {
 
     public void setRiskCheckData(RiskCheckData riskCheckData) {
         this.riskCheckData = riskCheckData;
-    }
-
-    public TxMetadata getTxMetadata() {
-        return txMetadata;
-    }
-
-    public void setTxMetadata(TxMetadata txMetadata) {
-        this.txMetadata = txMetadata;
     }
 
     @Override

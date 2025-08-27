@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.biz.client;
 
-import com.huifu.dg.lightning.models.PaymentRequest;
+import com.huifu.dg.lightning.models.AggregateTransRequest;
 
 import java.util.Map;
 
@@ -15,8 +15,8 @@ public class CommonPayClient2 extends BasePayClient {
     public CommonPayClient2() {
     }
 
-    public   Map<String, Object> create(PaymentRequest paymentRequest)throws Exception {
-        return this.request(paymentRequest,"test");
+    public   Map<String, Object> create(AggregateTransRequest aggregateTransRequest)throws Exception {
+        return this.request(aggregateTransRequest,"test");
     }
 
     public CommonPayClient2 optional(String key, Object value){

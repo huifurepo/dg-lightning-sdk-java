@@ -3,7 +3,7 @@ package com.huifu.dg.lightning.biz;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.huifu.dg.lightning.factory.Factory;
-import com.huifu.dg.lightning.models.PaymentRequest;
+import com.huifu.dg.lightning.models.AggregateTransRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
 import com.huifu.dg.lightning.utils.JacksonUtils;
@@ -21,7 +21,7 @@ public class DemoTest2 {
 
     public static void test() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        PaymentRequest request = new PaymentRequest();
+        AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
         // 请求流水号
@@ -48,7 +48,7 @@ public class DemoTest2 {
 
     public static void test2() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        PaymentRequest request = new PaymentRequest();
+        AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
         // 请求流水号
@@ -71,7 +71,7 @@ public class DemoTest2 {
 
     public static void test3() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        PaymentRequest request = new PaymentRequest();
+        AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
         // 请求流水号
@@ -95,7 +95,7 @@ public class DemoTest2 {
 
     public static void test4() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        PaymentRequest request = new PaymentRequest();
+        AggregateTransRequest request = new AggregateTransRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
         // 请求流水号
