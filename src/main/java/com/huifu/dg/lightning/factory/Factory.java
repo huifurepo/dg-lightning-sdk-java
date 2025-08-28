@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.factory;
 
-import com.huifu.dg.lightning.biz.client.CommonPayClient2;
+import com.huifu.dg.lightning.biz.client.CommonPayClient;
 
 /**
  * @author bo.dong
@@ -14,8 +14,8 @@ public class Factory {
         public Payment() {
         }
 
-        public static CommonPayClient2 Common() throws Exception {
-            return new CommonPayClient2();
+        public static CommonPayClient Common() throws Exception {
+            return new CommonPayClient();
         }
     }
 }

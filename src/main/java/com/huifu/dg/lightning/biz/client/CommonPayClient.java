@@ -14,10 +14,10 @@ import java.util.Map;
  * @date 2025/7/24 14:24
  * @description
  */
-public class CommonPayClient2 extends BasePayClient {
+public class CommonPayClient extends BasePayClient {
 
 
-    public CommonPayClient2() {
+    public CommonPayClient() {
     }
 
     public   Map<String, Object> create(AggregateTransRequest aggregateTransRequest)throws Exception {
@@ -44,7 +44,7 @@ public class CommonPayClient2 extends BasePayClient {
     }
 
 
-    public CommonPayClient2 optional(String key, Object value){
+    public CommonPayClient optional(String key, Object value){
         this.injectBizParam(key, value);
         return this;
     }
