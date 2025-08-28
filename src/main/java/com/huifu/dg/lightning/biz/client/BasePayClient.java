@@ -41,13 +41,9 @@ public class BasePayClient {
         return this;
     }
 
-    public  Map<String, Object> request(BaseRequest request, String optional) throws BasePayException, IllegalAccessException {
+
+    public  Map<String, Object> request(BaseRequest request) throws BasePayException, IllegalAccessException {
         request.addOptionalInfo(optionalBizParams);
-
-        return request(request, request.getFunctionCode().getCode(), false);
-    }
-
-    public static Map<String, Object> request(BaseRequest request) throws BasePayException, IllegalAccessException {
         return request(request, request.getFunctionCode().getCode(), false);
     }
 

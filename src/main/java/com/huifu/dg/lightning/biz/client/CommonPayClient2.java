@@ -16,7 +16,7 @@ public class CommonPayClient2 extends BasePayClient {
     }
 
     public   Map<String, Object> create(AggregateTransRequest aggregateTransRequest)throws Exception {
-        return this.request(aggregateTransRequest,"test");
+        return request(aggregateTransRequest);
     }
 
     public CommonPayClient2 optional(String key, Object value){
