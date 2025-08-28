@@ -16,7 +16,7 @@ import java.util.Map;
 public class PayDelaytransConfirmQueryTest {
     public static void payConfirmQuery() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        // 2. 组装交易确认退款参数
+        // 2. 组装交易确认查询参数
         ConfirmQueryRequest request =new ConfirmQueryRequest();
         //商户号
         request.setHuifuId("6666000003100615");

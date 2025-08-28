@@ -16,7 +16,7 @@ import java.util.Map;
 public class ConfirmRefundQueryTest {
     public static void confirmRefundQuery() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        // 2. 组装交易确认退款参数
+        // 2. 组装交易确认退款查询参数
         ConfirmRefundQueryRequest request =new ConfirmRefundQueryRequest();
         //商户号
         request.setHuifuId("6666000103423237");
