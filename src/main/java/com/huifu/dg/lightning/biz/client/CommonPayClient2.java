@@ -1,8 +1,11 @@
 package com.huifu.dg.lightning.biz.client;
 
 import com.huifu.dg.lightning.models.AggregateTransRequest;
+import com.huifu.dg.lightning.models.ScanpayCloseQueryRequest;
 import com.huifu.dg.lightning.models.ScanpayCloseRequest;
 import com.huifu.dg.lightning.models.ScanpayQueryRequest;
+import com.huifu.dg.lightning.models.ScanpayRefundQueryRequest;
+import com.huifu.dg.lightning.models.ScanpayRefundRequest;
 
 import java.util.Map;
 
@@ -28,6 +31,18 @@ public class CommonPayClient2 extends BasePayClient {
     public   Map<String, Object> close(ScanpayCloseRequest scanpayCloseRequest)throws Exception {
         return request(scanpayCloseRequest);
     }
+
+    public   Map<String, Object> closeQuery(ScanpayCloseQueryRequest scanpayCloseQueryRequest)throws Exception {
+        return request(scanpayCloseQueryRequest);
+    }
+
+    public   Map<String, Object> refund(ScanpayRefundRequest scanpayRefundRequest)throws Exception {
+        return request(scanpayRefundRequest);
+    }
+    public   Map<String, Object> refundQuery(ScanpayRefundQueryRequest scanpayRefundQueryRequest)throws Exception {
+        return request(scanpayRefundQueryRequest);
+    }
+
 
     public CommonPayClient2 optional(String key, Object value){
         this.injectBizParam(key, value);
