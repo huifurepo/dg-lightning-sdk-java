@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.ScanpayQueryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
@@ -26,7 +26,7 @@ public class ScanpayQueryTest {
         // 商户号
         request.setHuifuId("6666000103334211");
         request.setHfSeqId("0029000topA250825185419P162c0a8410f00000");
-        Map<String, Object> response = BasePayClient.request(request);
+        Map<String, Object> response = Factory.Payment.Common().query(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
     }

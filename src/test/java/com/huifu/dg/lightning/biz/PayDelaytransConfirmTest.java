@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AcctInfo;
 import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.DelayTransConfirmRequest;
@@ -37,7 +37,7 @@ public class PayDelaytransConfirmTest {
         //分账对象
         request.setAcctSplitBunch(getAcctSplitBunch());
         //是否垫资退款
-        Map<String, Object> response = BasePayClient.request(request);
+        Map<String, Object> response = Factory.Solution.DelayTrans().confirm(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 

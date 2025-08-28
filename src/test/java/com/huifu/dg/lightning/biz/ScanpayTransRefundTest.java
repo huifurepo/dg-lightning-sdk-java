@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.ScanpayRefundRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
@@ -27,7 +27,7 @@ public class ScanpayTransRefundTest {
         request.setHuifuId("6666000103334211");
         request.setOrgReqDate("20250826");
         request.setOrgReqSeqId("2025082610443155900102");
-        Map<String, Object> response = BasePayClient.request(request);
+        Map<String, Object> response = Factory.Payment.Common().refund(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
     }

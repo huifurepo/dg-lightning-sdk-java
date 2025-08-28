@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.ConfirmQueryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.JacksonUtils;
@@ -25,7 +25,7 @@ public class PayDelaytransConfirmQueryTest {
         //原交易请求流水号
         request.setOrgReqSeqId("9452943574111883");
         //是否垫资退款
-        Map<String, Object> response = BasePayClient.request(request);
+        Map<String, Object> response = Factory.Solution.DelayTrans().confirmQuery(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 

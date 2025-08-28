@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.TransSplitQueryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.JacksonUtils;
@@ -26,7 +26,7 @@ public class TransSplitQueryTest {
         //原交易请求流水号
         request.setOrdType("refund");
         //是否垫资退款
-        Map<String, Object> response = BasePayClient.request(request);
+        Map<String, Object> response = Factory.Solution.DelayTrans().splitQuery(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
