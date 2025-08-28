@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author: wang.hu_c
  * @date: 2025年08月22日
  */
-public class PaymentRefundResponse implements Serializable {
+public class ScanpayRefundResponse implements Serializable {
     /**
      * 商户号
      */

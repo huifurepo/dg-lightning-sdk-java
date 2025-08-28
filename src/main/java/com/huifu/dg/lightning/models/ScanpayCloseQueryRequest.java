@@ -1,15 +1,25 @@
 package com.huifu.dg.lightning.models;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
 /**
- * @description: 延时交易确认查询
+ * @description: 扫码交易关单查询
  * @author: wang.hu_c
- * @date: 2025年08月25日
+ * @date: 2025年08月20日
  */
-public class ConfirmQueryRequest extends BaseRequest{
-
+public class ScanpayCloseQueryRequest extends BaseRequest {
+    /**
+     * 请求流水号
+     */
+    @JsonProperty("req_seq_id")
+    private String reqSeqId;
+    /**
+     * 请求日期
+     */
+    @JsonProperty("req_date")
+    private String reqDate;
     /**
      * 商户号
      */
@@ -21,10 +31,31 @@ public class ConfirmQueryRequest extends BaseRequest{
     @JsonProperty("org_req_date")
     private String orgReqDate;
     /**
+     * 原交易返回的全局流水号
+     */
+    @JsonProperty("org_hf_seq_id")
+    private String orgHfSeqId;
+    /**
      * 原交易请求流水号
      */
     @JsonProperty("org_req_seq_id")
     private String orgReqSeqId;
+
+    public String getReqSeqId() {
+        return reqSeqId;
+    }
+
+    public void setReqSeqId(String reqSeqId) {
+        this.reqSeqId = reqSeqId;
+    }
+
+    public String getReqDate() {
+        return reqDate;
+    }
+
+    public void setReqDate(String reqDate) {
+        this.reqDate = reqDate;
+    }
 
     public String getHuifuId() {
         return huifuId;
@@ -42,6 +73,14 @@ public class ConfirmQueryRequest extends BaseRequest{
         this.orgReqDate = orgReqDate;
     }
 
+    public String getOrgHfSeqId() {
+        return orgHfSeqId;
+    }
+
+    public void setOrgHfSeqId(String orgHfSeqId) {
+        this.orgHfSeqId = orgHfSeqId;
+    }
+
     public String getOrgReqSeqId() {
         return orgReqSeqId;
     }
@@ -52,6 +91,6 @@ public class ConfirmQueryRequest extends BaseRequest{
 
     @Override
     public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V3_TRADE_PAYMENT_DELAYTRANS_CONFIRMQUERY;
+        return FunctionCodeEnum.V2_TRADE_PAYMENT_SCANPAY_CLOSEQUERY;
     }
 }

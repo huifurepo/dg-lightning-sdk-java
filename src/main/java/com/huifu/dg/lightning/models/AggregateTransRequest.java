@@ -46,7 +46,7 @@ public class AggregateTransRequest extends BaseRequest {
      * 交易类型扩展参数
      */
     @JsonProperty("method_expand")
-    private MethodExpand methodExpand;
+    private String methodExpand;
     /**
      * 交易金额
      */
@@ -76,7 +76,7 @@ public class AggregateTransRequest extends BaseRequest {
      * 分账对象
      */
     @JsonProperty("acct_split_bunch")
-    private AcctSplitBunch acctSplitBunch;
+    private String acctSplitBunch;
     /**
      * 禁用信用卡标记
      */
@@ -96,12 +96,12 @@ public class AggregateTransRequest extends BaseRequest {
      * 安全信息
      */
     @JsonProperty("risk_check_data")
-    private RiskCheckData riskCheckData;
+    private String riskCheckData;
     /**
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
-    private TerminalDeviceData terminalDeviceData;
+    private String terminalDeviceData;
     /**
      * 异步通知地址
      */
@@ -121,19 +121,17 @@ public class AggregateTransRequest extends BaseRequest {
      * 手续费补贴信息
      */
     @JsonProperty("trans_fee_allowance_info")
-    private TransFeeAllowanceInfo transFeeAllowanceInfo;
+    private String transFeeAllowanceInfo;
     /**
      * 补贴支付手续费承担方信息
      */
     @JsonProperty("combinedpay_data_fee_info")
-    private CombinedpayDataFeeInfo combinedpayDataFeeInfo;
+    private String combinedpayDataFeeInfo;
     /**
      * 补贴支付信息
      */
     @JsonProperty("combinedpay_data")
-    private CombinedpayData combinedpayData;
-
-
+    private String combinedpayData;
 
     public String getReqDate() {
         return reqDate;
@@ -159,6 +157,14 @@ public class AggregateTransRequest extends BaseRequest {
         this.huifuId = huifuId;
     }
 
+    public String getAcctId() {
+        return acctId;
+    }
+
+    public void setAcctId(String acctId) {
+        this.acctId = acctId;
+    }
+
     public String getGoodsDesc() {
         return goodsDesc;
     }
@@ -173,6 +179,14 @@ public class AggregateTransRequest extends BaseRequest {
 
     public void setTradeType(String tradeType) {
         this.tradeType = tradeType;
+    }
+
+    public String getMethodExpand() {
+        return methodExpand;
+    }
+
+    public void setMethodExpand(String methodExpand) {
+        this.methodExpand = methodExpand;
     }
 
     public String getTransAmt() {
@@ -215,44 +229,12 @@ public class AggregateTransRequest extends BaseRequest {
         this.feeFlag = feeFlag;
     }
 
-    public String getAcctId() {
-        return acctId;
-    }
-
-    public void setAcctId(String acctId) {
-        this.acctId = acctId;
-    }
-
-    public AcctSplitBunch getAcctSplitBunch() {
+    public String getAcctSplitBunch() {
         return acctSplitBunch;
     }
 
-    public void setAcctSplitBunch(AcctSplitBunch acctSplitBunch) {
+    public void setAcctSplitBunch(String acctSplitBunch) {
         this.acctSplitBunch = acctSplitBunch;
-    }
-
-    public TransFeeAllowanceInfo getTransFeeAllowanceInfo() {
-        return transFeeAllowanceInfo;
-    }
-
-    public void setTransFeeAllowanceInfo(TransFeeAllowanceInfo transFeeAllowanceInfo) {
-        this.transFeeAllowanceInfo = transFeeAllowanceInfo;
-    }
-
-    public CombinedpayDataFeeInfo getCombinedpayDataFeeInfo() {
-        return combinedpayDataFeeInfo;
-    }
-
-    public void setCombinedpayDataFeeInfo(CombinedpayDataFeeInfo combinedpayDataFeeInfo) {
-        this.combinedpayDataFeeInfo = combinedpayDataFeeInfo;
-    }
-
-    public CombinedpayData getCombinedpayData() {
-        return combinedpayData;
-    }
-
-    public void setCombinedpayData(CombinedpayData combinedpayData) {
-        this.combinedpayData = combinedpayData;
     }
 
     public String getLimitPayType() {
@@ -279,11 +261,19 @@ public class AggregateTransRequest extends BaseRequest {
         this.payScene = payScene;
     }
 
-    public TerminalDeviceData getTerminalDeviceData() {
+    public String getRiskCheckData() {
+        return riskCheckData;
+    }
+
+    public void setRiskCheckData(String riskCheckData) {
+        this.riskCheckData = riskCheckData;
+    }
+
+    public String getTerminalDeviceData() {
         return terminalDeviceData;
     }
 
-    public void setTerminalDeviceData(TerminalDeviceData terminalDeviceData) {
+    public void setTerminalDeviceData(String terminalDeviceData) {
         this.terminalDeviceData = terminalDeviceData;
     }
 
@@ -311,20 +301,28 @@ public class AggregateTransRequest extends BaseRequest {
         this.fqMerDiscountFlag = fqMerDiscountFlag;
     }
 
-    public MethodExpand getMethodExpand() {
-        return methodExpand;
+    public String getTransFeeAllowanceInfo() {
+        return transFeeAllowanceInfo;
     }
 
-    public void setMethodExpand(MethodExpand methodExpand) {
-        this.methodExpand = methodExpand;
+    public void setTransFeeAllowanceInfo(String transFeeAllowanceInfo) {
+        this.transFeeAllowanceInfo = transFeeAllowanceInfo;
     }
 
-    public RiskCheckData getRiskCheckData() {
-        return riskCheckData;
+    public String getCombinedpayDataFeeInfo() {
+        return combinedpayDataFeeInfo;
     }
 
-    public void setRiskCheckData(RiskCheckData riskCheckData) {
-        this.riskCheckData = riskCheckData;
+    public void setCombinedpayDataFeeInfo(String combinedpayDataFeeInfo) {
+        this.combinedpayDataFeeInfo = combinedpayDataFeeInfo;
+    }
+
+    public String getCombinedpayData() {
+        return combinedpayData;
+    }
+
+    public void setCombinedpayData(String combinedpayData) {
+        this.combinedpayData = combinedpayData;
     }
 
     @Override
