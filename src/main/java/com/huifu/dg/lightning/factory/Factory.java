@@ -1,6 +1,7 @@
 package com.huifu.dg.lightning.factory;
 
 import com.huifu.dg.lightning.biz.client.CommonPayClient;
+import com.huifu.dg.lightning.biz.client.DelayTransClient;
 
 /**
  * @author bo.dong
@@ -16,6 +17,14 @@ public class Factory {
 
         public static CommonPayClient Common() throws Exception {
             return new CommonPayClient();
+        }
+    }
+    public static class Solution {
+        public Solution() {
+        }
+
+        public static DelayTransClient DelayTrans() throws Exception {
+            return new DelayTransClient();
         }
     }
 }
