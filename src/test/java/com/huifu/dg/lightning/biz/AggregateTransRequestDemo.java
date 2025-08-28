@@ -64,7 +64,6 @@ public class AggregateTransRequestDemo {
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", getMethodExpand(request.getTradeType())).create(request);
-
         System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
@@ -88,10 +87,6 @@ public class AggregateTransRequestDemo {
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("seller", "lisi")
                 .optional("method_expand", getWxData()).create(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
-                .optional("seller","lisi")
-                .optional("wx_data",getWxData()).create(request);
         System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
