@@ -182,9 +182,17 @@ public enum FunctionCodeEnum {
      */
     V3_TRADE_PAYMENT_SCANPAY_REFUND("v3.trade.payment.scanpay.refund", "扫码交易退款"),
     /**
+     * lightning扫码交易退款
+     */
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUND("lightning.trade.payment.scanpay.refund", "扫码交易退款"),
+    /**
      * 扫码交易退款查询
      */
     V3_TRADE_PAYMENT_SCANPAY_REFUNDQUERY("v3.trade.payment.scanpay.refundquery", "扫码交易退款查询"),
+    /**
+     * lightning扫码交易退款查询
+     */
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUNDQUERY("lightning.trade.payment.scanpay.refundquery", "扫码交易退款查询"),
     /**
      * 扫码交易查询
      */

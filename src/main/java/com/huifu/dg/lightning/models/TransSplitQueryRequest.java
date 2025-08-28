@@ -12,22 +12,10 @@ import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 public class TransSplitQueryRequest extends BaseRequest {
 
     /**
-     * 请求系统号
-     */
-    @JsonProperty("sys_id" )
-    private String sysId;
-
-    /**
      * 汇付分配的商户号
      */
     @JsonProperty("huifu_id")
     private String huifuId;
-
-    /**
-     * 产品号
-     */
-    @JsonProperty("product_id")
-    private String productId;
 
     /**
      * 分账交易汇付全局流水号
@@ -41,19 +29,27 @@ public class TransSplitQueryRequest extends BaseRequest {
     @JsonProperty("ord_type")
     private String ordType;
 
-    @Override
-    public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.V2_TRADE_TRANS_SPLIT_QUERY;
-    }
+    /**
+     * 交易起始时间
+     */
+    @JsonProperty("begin_date")
+    private String beginDate;
 
-
-    public String getSysId() {
-        return sysId;
-    }
-
-    public void setSysId(String sysId) {
-        this.sysId = sysId;
-    }
+    /**
+     * 交易结束时间
+     */
+    @JsonProperty("end_date")
+    private String endDate;
+    /**
+     * 页码
+     */
+    @JsonProperty("page_no")
+    private String pageNo;
+    /**
+     * 页大小
+     */
+    @JsonProperty("page_size")
+    private String pageSize;
 
     public String getHuifuId() {
         return huifuId;
@@ -61,14 +57,6 @@ public class TransSplitQueryRequest extends BaseRequest {
 
     public void setHuifuId(String huifuId) {
         this.huifuId = huifuId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public String getHfSeqId() {
@@ -86,4 +74,44 @@ public class TransSplitQueryRequest extends BaseRequest {
     public void setOrdType(String ordType) {
         this.ordType = ordType;
     }
+
+    public String getBeginDate() {
+        return beginDate;
+    }
+
+    public void setBeginDate(String beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(String pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public String getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(String pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    @Override
+    public FunctionCodeEnum getFunctionCode() {
+        return FunctionCodeEnum.V2_TRADE_TRANS_SPLIT_QUERY;
+    }
+
+
+
 }

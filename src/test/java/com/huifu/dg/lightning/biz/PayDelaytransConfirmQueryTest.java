@@ -1,0 +1,37 @@
+package com.huifu.dg.lightning.biz;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huifu.dg.lightning.biz.client.BasePayClient;
+import com.huifu.dg.lightning.models.ConfirmQueryRequest;
+import com.huifu.dg.lightning.utils.BasePay;
+import com.huifu.dg.lightning.utils.JacksonUtils;
+
+import java.util.Map;
+
+/**
+ * @description: 交易确认查询
+ * @author: wang.hu_c
+ * @date: 2025年08月27日
+ */
+public class PayDelaytransConfirmQueryTest {
+    public static void payConfirmQuery() throws Exception {
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        // 2. 组装交易确认退款参数
+        ConfirmQueryRequest request =new ConfirmQueryRequest();
+        //商户号
+        request.setHuifuId("6666000003100615");
+        //原交易请求日期
+        request.setOrgReqDate("20250815");
+        //原交易请求流水号
+        request.setOrgReqSeqId("9452943574111883");
+        //是否垫资退款
+        Map<String, Object> response = BasePayClient.request(request);
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        payConfirmQuery();
+    }
+}
