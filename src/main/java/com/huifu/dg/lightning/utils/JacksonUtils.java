@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import java.util.Map;
+
 /**
  * @author bo.dong
  * @date 2025/7/23 10:33
@@ -21,4 +23,13 @@ public class JacksonUtils {
     public static ObjectMapper getInstance() {
         return objectMapper;
     }
+
+    public static <T> T convert2Object(Map<String, Object> map, Class<T> clazz) throws Exception {
+        return objectMapper.convertValue(map, clazz);
+    }
+
+    public static String convert2JsonString(Object obj) throws Exception {
+        return objectMapper.writeValueAsString(obj);
+    }
+
 }

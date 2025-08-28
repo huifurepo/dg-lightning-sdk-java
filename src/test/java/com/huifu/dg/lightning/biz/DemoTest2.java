@@ -35,15 +35,9 @@ public class DemoTest2 {
         // 交易金额
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common().create(request);
-        System.out.println("返回数据:" +toJsonString(response) );
+        System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
-
-    private static String toJsonString( Map<String, Object> response) throws Exception{
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-       return  objectMapper.writeValueAsString(response);
-    }
-
 
 
     public static void test2() throws Exception{
@@ -63,8 +57,7 @@ public class DemoTest2 {
         request.setTransAmt("0.10");
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("wx_data",getWxData()).create(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
 
@@ -87,8 +80,7 @@ public class DemoTest2 {
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("seller","lisi")
                 .optional("wx_data",getWxData()).create(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
 
@@ -111,8 +103,7 @@ public class DemoTest2 {
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("seller","zhangsan")
                 .optional("wx_data",getWxData()).create(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        System.out.println("返回数据:" +objectMapper.writeValueAsString(response) );
+        System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
 
     }
 
@@ -123,7 +114,7 @@ public class DemoTest2 {
         objectNode.put("sub_appid", "wxdfe9a5d141f96685");
         // 子商户用户标识
         objectNode.put("sub_openid", "o8jhotzittQSetZ-N0Yj4Hz91Rqc");
-        return objectMapper.writeValueAsString(objectNode);
+        return JacksonUtils.convert2JsonString(objectNode);
     }
 
 
