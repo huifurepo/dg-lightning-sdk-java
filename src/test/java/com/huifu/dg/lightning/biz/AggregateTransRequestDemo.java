@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2025/7/24 15:31
  * @description
  */
-public class DemoTest2 {
+public class AggregateTransRequestDemo {
 
 
     public static void test() throws Exception{
