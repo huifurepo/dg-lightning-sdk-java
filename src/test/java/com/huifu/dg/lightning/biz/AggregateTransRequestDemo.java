@@ -157,9 +157,7 @@ public class AggregateTransRequestDemo {
     public static void main(String[] args) throws Exception{
 
         test();
-        test2();
-        test3();
-        test4();
+
     }
 
 }
