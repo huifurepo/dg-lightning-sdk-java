@@ -6,6 +6,7 @@ import com.huifu.dg.lightning.biz.exception.FailureCode;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AggregateTransRequest;
 import com.huifu.dg.lightning.models.AlipayData;
+import com.huifu.dg.lightning.models.TerminalDeviceData;
 import com.huifu.dg.lightning.models.UnionpayData;
 import com.huifu.dg.lightning.models.WxData;
 import com.huifu.dg.lightning.utils.BasePay;
@@ -36,15 +37,24 @@ public class AggregateTransTest {
         // 商品描述
         request.setGoodsDesc("支付宝Native");
         // 交易类型
-        request.setTradeType("U_MICROPAY");
+        request.setTradeType("A_NATIVE");
         // 交易金额
-        request.setTransAmt("0.1");
+        request.setTransAmt("0.01");
         request.setDelayAcctFlag("N");
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("method_expand", getMethodExpand(request.getTradeType())).create(request);
+                .optional("method_expand", getMethodExpand(request.getTradeType()))
+                .optional("terminal_device_data", getTerminalDeviceData())
+                .create(request);
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
+    }
+
+    private static Object getTerminalDeviceData() {
+        TerminalDeviceData terminalDeviceData = new TerminalDeviceData();
+        terminalDeviceData.setDeviceIp("172.28.52.52");
+        terminalDeviceData.setDevsId("SPINTP351420900692801");
+        return terminalDeviceData;
     }
 
     private static String getMethodExpand(String tradeType) throws Exception{
@@ -62,8 +72,7 @@ public class AggregateTransTest {
         if (PaymentTypeEnum.A_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.A_NATIVE.getTypeCode().equals(tradeType)
                 || PaymentTypeEnum.A_MICROPAY.getTypeCode().equals(tradeType)) {
             AlipayData alipayData = new AlipayData();
-            alipayData.setAlipayStoreId("ali-542323asdas12351a51");
-            alipayData.setBuyerId("ali4f4f5a5f5a5f5a5f");
+            alipayData.setBuyerId("1088052871378283");
             return objectMapper.writeValueAsString(alipayData);
         }
         if (PaymentTypeEnum.U_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.U_NATIVE.getTypeCode().equals(tradeType)
