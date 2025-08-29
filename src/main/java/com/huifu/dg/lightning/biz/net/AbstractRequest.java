@@ -175,8 +175,23 @@ public abstract class AbstractRequest {
         } catch (JsonProcessingException e) {
             throw new BasePayException(FailureCode.SYSTEM_EXCEPTION.getFailureCode(), "response convert error.");
         }
-        String sign = node.get("sign").asText();
+        JsonNode data = checkSign(config, mapper, node);
+        Map<String, Object> respData =mapper.convertValue(data, new TypeReference<Map<String, Object>>() {
+        });
+        return respData;
+    }
+
+    private static JsonNode checkSign(MerConfig config, ObjectMapper mapper, JsonNode node) throws BasePayException {
+
         JsonNode data = node.get("data");
+        JsonNode signNode = node.get("sign");
+        if(signNode==null){
+            if (BasePay.debug) {
+                System.out.println("签名为空");
+            }
+            return data;
+        }
+        String sign = node.get("sign").asText();
         String publicKey = config.getRsaPublicKey();
         if (StringUtils.isEmpty(publicKey)) {
             publicKey = BasePay.HUIFU_DEFAULT_PUBLIC_KEY;
@@ -202,10 +217,9 @@ public abstract class AbstractRequest {
             }
             throw new BasePayException(FailureCode.SECURITY_EXCEPTION.getFailureCode(), "Response sign check error. Please check your pubkey.");
         }
-        Map<String, Object> respData =mapper.convertValue(data, new TypeReference<Map<String, Object>>() {
-        });
-        return respData;
+        return data;
     }
+
 
     public static String getOriginalStr(Map<String, Object> map) {
         List<String> listKeys = new ArrayList<>(map.keySet());
