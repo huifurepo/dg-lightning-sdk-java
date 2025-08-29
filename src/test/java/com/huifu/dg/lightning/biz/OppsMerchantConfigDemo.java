@@ -29,7 +29,8 @@ public class OppsMerchantConfigDemo {
          * MODE_PROD = "prod"; // 生产环境
          * MODE_TEST = "test"; // 线上联调环境(针对商户联调测试)
          */
-        BasePay.prodMode = BasePay.MODE_PROD;
+       // BasePay.prodMode = BasePay.MODE_PROD;
+        BasePay.prodMode = BasePay.MODE_INNER_TEST;
 
         /**
          * 单商户模式
