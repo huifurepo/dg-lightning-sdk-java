@@ -50,11 +50,12 @@ public class AggregateTransTest {
 
     }
 
-    private static Object getTerminalDeviceData() {
+    private static String getTerminalDeviceData() throws Exception{
         TerminalDeviceData terminalDeviceData = new TerminalDeviceData();
         terminalDeviceData.setDeviceIp("172.28.52.52");
         terminalDeviceData.setDevsId("SPINTP351420900692801");
-        return terminalDeviceData;
+        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        return objectMapper.writeValueAsString(terminalDeviceData);
     }
 
     private static String getMethodExpand(String tradeType) throws Exception{
