@@ -50,6 +50,11 @@ public class TradePaymentScanpayRefundRequest extends BaseRequest {
      */
     @JsonProperty("org_req_seq_id")
     private String orgReqSeqId;
+    /**
+     * 交易类型扩展参数
+     */
+    @JsonProperty("method_expand")
+    private String methodExpand;
 
     public String getReqDate() {
         return reqDate;
@@ -113,6 +118,14 @@ public class TradePaymentScanpayRefundRequest extends BaseRequest {
 
     public void setOrgReqSeqId(String orgReqSeqId) {
         this.orgReqSeqId = orgReqSeqId;
+    }
+
+    public String getMethodExpand() {
+        return methodExpand;
+    }
+
+    public void setMethodExpand(String methodExpand) {
+        this.methodExpand = methodExpand;
     }
 
     @Override
