@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.biz.client;
 
-import com.huifu.dg.lightning.models.payment.TradePaymentPayRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayClosequeryRequest;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayCloseRequest;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayQueryRequest;
@@ -20,7 +20,7 @@ public class CommonPayClient extends BasePayClient {
     public CommonPayClient() {
     }
 
-    public Map<String, Object> create(TradePaymentPayRequest aggregateTransRequest) throws Exception {
+    public Map<String, Object> create(TradePaymentCreateRequest aggregateTransRequest) throws Exception {
         return request(aggregateTransRequest);
     }
 

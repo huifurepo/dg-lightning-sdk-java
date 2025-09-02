@@ -9,7 +9,7 @@ public enum FunctionCodeEnum {
     /**
      * lightning聚合支付
      */
-    LIGHTNING_TRADE_PAYMENT_PAY("lightning.trade.payment.pay", "聚合支付"),
+    LIGHTNING_TRADE_PAYMENT_CREATE("lightning.trade.payment.create", "聚合支付"),
 
     /**
      * lightning扫码交易退款

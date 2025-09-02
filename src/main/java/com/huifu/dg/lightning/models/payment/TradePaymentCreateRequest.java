@@ -12,7 +12,7 @@ import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
  * @version V1.0
  * 注意：本内容仅限于公司内部传阅，禁止外泄以及用于其他的商业目的
  */
-public class TradePaymentPayRequest extends BaseRequest {
+public class TradePaymentCreateRequest extends BaseRequest {
     /**
      * 请求日期
      */
@@ -328,6 +328,6 @@ public class TradePaymentPayRequest extends BaseRequest {
 
     @Override
     public FunctionCodeEnum getFunctionCode() {
-        return FunctionCodeEnum.LIGHTNING_TRADE_PAYMENT_PAY;
+        return FunctionCodeEnum.LIGHTNING_TRADE_PAYMENT_CREATE;
     }
 }

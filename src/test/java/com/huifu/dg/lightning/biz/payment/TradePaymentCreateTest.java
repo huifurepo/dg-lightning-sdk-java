@@ -5,7 +5,7 @@ import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.biz.exception.BasePayException;
 import com.huifu.dg.lightning.biz.exception.FailureCode;
 import com.huifu.dg.lightning.factory.Factory;
-import com.huifu.dg.lightning.models.payment.TradePaymentPayRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.models.AlipayData;
 import com.huifu.dg.lightning.models.TerminalDeviceData;
 import com.huifu.dg.lightning.models.UnionpayData;
@@ -24,11 +24,11 @@ import java.util.Map;
  * @author: wang.hu_c
  * @date: 2025年08月28日
  */
-public class TradePaymentPayTest {
+public class TradePaymentCreateTest {
 
     public static void pay() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
-        TradePaymentPayRequest request = new TradePaymentPayRequest();
+        TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
         // 请求流水号
