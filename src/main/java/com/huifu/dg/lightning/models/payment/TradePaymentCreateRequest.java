@@ -29,11 +29,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
     @JsonProperty("huifu_id")
     private String huifuId;
     /**
-     * 账户号
-     */
-    @JsonProperty("acct_id")
-    private String acctId;
-    /**
      * 商品描述
      */
     @JsonProperty("goods_desc")
@@ -79,25 +74,10 @@ public class TradePaymentCreateRequest extends BaseRequest {
     @JsonProperty("acct_split_bunch")
     private String acctSplitBunch;
     /**
-     * 禁用信用卡标记
+     * 是否分账交易
      */
-    @JsonProperty("limit_pay_type")
-    private String limitPayType;
-    /**
-     * 渠道号
-     */
-    @JsonProperty("channel_no")
-    private String channelNo;
-    /**
-     * 场景类型
-     */
-    @JsonProperty("pay_scene")
-    private String payScene;
-    /**
-     * 安全信息
-     */
-    @JsonProperty("risk_check_data")
-    private String riskCheckData;
+    @JsonProperty("div_flag")
+    private String divFlag;
     /**
      * 设备信息
      */
@@ -108,16 +88,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
      */
     @JsonProperty("notify_url")
     private String notifyUrl;
-    /**
-     * 传入分账遇到优惠的处理规则
-     */
-    @JsonProperty("term_div_coupon_type")
-    private Integer termDivCouponType;
-    /**
-     * 商户贴息标记
-     */
-    @JsonProperty("fq_mer_discount_flag")
-    private String fqMerDiscountFlag;
     /**
      * 手续费补贴信息
      */
@@ -156,14 +126,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
 
     public void setHuifuId(String huifuId) {
         this.huifuId = huifuId;
-    }
-
-    public String getAcctId() {
-        return acctId;
-    }
-
-    public void setAcctId(String acctId) {
-        this.acctId = acctId;
     }
 
     public String getGoodsDesc() {
@@ -238,38 +200,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
         this.acctSplitBunch = acctSplitBunch;
     }
 
-    public String getLimitPayType() {
-        return limitPayType;
-    }
-
-    public void setLimitPayType(String limitPayType) {
-        this.limitPayType = limitPayType;
-    }
-
-    public String getChannelNo() {
-        return channelNo;
-    }
-
-    public void setChannelNo(String channelNo) {
-        this.channelNo = channelNo;
-    }
-
-    public String getPayScene() {
-        return payScene;
-    }
-
-    public void setPayScene(String payScene) {
-        this.payScene = payScene;
-    }
-
-    public String getRiskCheckData() {
-        return riskCheckData;
-    }
-
-    public void setRiskCheckData(String riskCheckData) {
-        this.riskCheckData = riskCheckData;
-    }
-
     public String getTerminalDeviceData() {
         return terminalDeviceData;
     }
@@ -284,22 +214,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
-    }
-
-    public Integer getTermDivCouponType() {
-        return termDivCouponType;
-    }
-
-    public void setTermDivCouponType(Integer termDivCouponType) {
-        this.termDivCouponType = termDivCouponType;
-    }
-
-    public String getFqMerDiscountFlag() {
-        return fqMerDiscountFlag;
-    }
-
-    public void setFqMerDiscountFlag(String fqMerDiscountFlag) {
-        this.fqMerDiscountFlag = fqMerDiscountFlag;
     }
 
     public String getTransFeeAllowanceInfo() {
@@ -324,6 +238,14 @@ public class TradePaymentCreateRequest extends BaseRequest {
 
     public void setCombinedpayData(String combinedpayData) {
         this.combinedpayData = combinedpayData;
+    }
+
+    public String getDivFlag() {
+        return divFlag;
+    }
+
+    public void setDivFlag(String divFlag) {
+        this.divFlag = divFlag;
     }
 
     @Override

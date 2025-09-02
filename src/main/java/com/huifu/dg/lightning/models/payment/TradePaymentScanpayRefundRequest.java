@@ -51,22 +51,6 @@ public class TradePaymentScanpayRefundRequest extends BaseRequest {
     @JsonProperty("org_req_seq_id")
     private String orgReqSeqId;
     /**
-     * 安全信息
-     */
-    @JsonProperty("risk_check_data")
-    private String riskCheckData;
-    /**
-     * 设备信息
-     */
-    @JsonProperty("terminal_device_data")
-    private String terminalDeviceData;
-    /**
-     * 异步通知地址
-     */
-    @JsonProperty("notify_url")
-    private String notifyUrl;
-
-    /**
      * 交易类型扩展参数
      */
     @JsonProperty("method_expand")
@@ -134,30 +118,6 @@ public class TradePaymentScanpayRefundRequest extends BaseRequest {
 
     public void setOrgReqSeqId(String orgReqSeqId) {
         this.orgReqSeqId = orgReqSeqId;
-    }
-
-    public String getRiskCheckData() {
-        return riskCheckData;
-    }
-
-    public void setRiskCheckData(String riskCheckData) {
-        this.riskCheckData = riskCheckData;
-    }
-
-    public String getTerminalDeviceData() {
-        return terminalDeviceData;
-    }
-
-    public void setTerminalDeviceData(String terminalDeviceData) {
-        this.terminalDeviceData = terminalDeviceData;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl(String notifyUrl) {
-        this.notifyUrl = notifyUrl;
     }
 
     public String getMethodExpand() {

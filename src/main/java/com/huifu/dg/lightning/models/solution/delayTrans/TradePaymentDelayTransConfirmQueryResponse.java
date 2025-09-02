@@ -57,21 +57,6 @@ public class TradePaymentDelayTransConfirmQueryResponse implements Serializable 
     @JsonProperty("acct_split_bunch")
     private AcctSplitBunch acctSplitBunch;
     /**
-     * 灵活用工标志
-     */
-    @JsonProperty("hyc_flag")
-    private String hycFlag;
-    /**
-     * 灵活用工平台
-     */
-    @JsonProperty("lg_platform_type")
-    private String lgPlatformType;
-    /**
-     * 灵活用工代发批次号
-     */
-    @JsonProperty("hyc_attach_id")
-    private String hycAttachId;
-    /**
      * 备注
      */
     @JsonProperty("remark")
@@ -147,30 +132,6 @@ public class TradePaymentDelayTransConfirmQueryResponse implements Serializable 
 
     public void setAcctSplitBunch(AcctSplitBunch acctSplitBunch) {
         this.acctSplitBunch = acctSplitBunch;
-    }
-
-    public String getHycFlag() {
-        return hycFlag;
-    }
-
-    public void setHycFlag(String hycFlag) {
-        this.hycFlag = hycFlag;
-    }
-
-    public String getLgPlatformType() {
-        return lgPlatformType;
-    }
-
-    public void setLgPlatformType(String lgPlatformType) {
-        this.lgPlatformType = lgPlatformType;
-    }
-
-    public String getHycAttachId() {
-        return hycAttachId;
-    }
-
-    public void setHycAttachId(String hycAttachId) {
-        this.hycAttachId = hycAttachId;
     }
 
     public String getRemark() {
