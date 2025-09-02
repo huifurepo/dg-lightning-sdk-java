@@ -36,50 +36,10 @@ public class WxData implements Serializable {
     @JsonProperty("detail")
     private Detail detail;
     /**
-     * 设备信息
-     */
-    @JsonProperty("device_info")
-    private String deviceInfo;
-    /**
      * 订单优惠标记
      */
     @JsonProperty("goods_tag")
     private String goodsTag;
-    /**
-     * 实名支付
-     */
-    @JsonProperty("identity")
-    private String identity;
-    /**
-     * 开发票入口开放标识
-     */
-    @JsonProperty("receipt")
-    private String receipt;
-    /**
-     * 场景信息
-     */
-    @JsonProperty("scene_info")
-    private SceneInfo sceneInfo;
-    /**
-     * 终端ip
-     */
-    @JsonProperty("spbill_create_ip")
-    private String spbillCreateIp;
-    /**
-     * 单品优惠标识
-     */
-    @JsonProperty("promotion_flag")
-    private String promotionFlag;
-    /**
-     * 商品ID
-     */
-    @JsonProperty("product_id")
-    private String productId;
-    /**
-     * 指定支付者
-     */
-    @JsonProperty("limit_payer")
-    private String limitPayer;
 
     public String getSubAppid() {
         return subAppid;
@@ -121,75 +81,11 @@ public class WxData implements Serializable {
         this.detail = detail;
     }
 
-    public String getDeviceInfo() {
-        return deviceInfo;
-    }
-
-    public void setDeviceInfo(String deviceInfo) {
-        this.deviceInfo = deviceInfo;
-    }
-
     public String getGoodsTag() {
         return goodsTag;
     }
 
     public void setGoodsTag(String goodsTag) {
         this.goodsTag = goodsTag;
-    }
-
-    public String getIdentity() {
-        return identity;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    public String getReceipt() {
-        return receipt;
-    }
-
-    public void setReceipt(String receipt) {
-        this.receipt = receipt;
-    }
-
-    public SceneInfo getSceneInfo() {
-        return sceneInfo;
-    }
-
-    public void setSceneInfo(SceneInfo sceneInfo) {
-        this.sceneInfo = sceneInfo;
-    }
-
-    public String getSpbillCreateIp() {
-        return spbillCreateIp;
-    }
-
-    public void setSpbillCreateIp(String spbillCreateIp) {
-        this.spbillCreateIp = spbillCreateIp;
-    }
-
-    public String getPromotionFlag() {
-        return promotionFlag;
-    }
-
-    public void setPromotionFlag(String promotionFlag) {
-        this.promotionFlag = promotionFlag;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getLimitPayer() {
-        return limitPayer;
-    }
-
-    public void setLimitPayer(String limitPayer) {
-        this.limitPayer = limitPayer;
     }
 }

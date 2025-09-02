@@ -74,7 +74,7 @@ public class TradePaymentCreateTest {
         if (PaymentTypeEnum.A_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.A_NATIVE.getTypeCode().equals(tradeType)
                 || PaymentTypeEnum.A_MICROPAY.getTypeCode().equals(tradeType)) {
             AlipayData alipayData = new AlipayData();
-            alipayData.setBuyerId("1088052871378283");
+            alipayData.setBuyerId("2088111111111111");
             return objectMapper.writeValueAsString(alipayData);
         }
         if (PaymentTypeEnum.U_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.U_NATIVE.getTypeCode().equals(tradeType)

@@ -21,11 +21,6 @@ public class UnionpayData implements Serializable {
     @JsonProperty("addn_data")
     private String addnData;
     /**
-     * 地区信息
-     */
-    @JsonProperty("area_info")
-    private String areaInfo;
-    /**
      * 持卡人ip
      */
     @JsonProperty("customer_ip")
@@ -51,30 +46,15 @@ public class UnionpayData implements Serializable {
     @JsonProperty("payee_info")
     private PayeeInfo payeeInfo;
     /**
-     * 银联分配的服务商机构标识码
-     */
-    @JsonProperty("pnr_ins_id_cd")
-    private String pnrInsIdCd;
-    /**
      * 请求方自定义域
      */
     @JsonProperty("req_reserved")
     private String reqReserved;
     /**
-     * 终端信息
-     */
-    @JsonProperty("term_info")
-    private String termInfo;
-    /**
      * 银联用户标识
      */
     @JsonProperty("user_id")
     private String userId;
-    /**
-     * 服务商信息
-     */
-    @JsonProperty("pid_info")
-    private PidInfo pidInfo;
 
     public String getQrCode() {
         return qrCode;
@@ -90,14 +70,6 @@ public class UnionpayData implements Serializable {
 
     public void setAddnData(String addnData) {
         this.addnData = addnData;
-    }
-
-    public String getAreaInfo() {
-        return areaInfo;
-    }
-
-    public void setAreaInfo(String areaInfo) {
-        this.areaInfo = areaInfo;
     }
 
     public String getCustomerIp() {
@@ -140,14 +112,6 @@ public class UnionpayData implements Serializable {
         this.payeeInfo = payeeInfo;
     }
 
-    public String getPnrInsIdCd() {
-        return pnrInsIdCd;
-    }
-
-    public void setPnrInsIdCd(String pnrInsIdCd) {
-        this.pnrInsIdCd = pnrInsIdCd;
-    }
-
     public String getReqReserved() {
         return reqReserved;
     }
@@ -156,27 +120,11 @@ public class UnionpayData implements Serializable {
         this.reqReserved = reqReserved;
     }
 
-    public String getTermInfo() {
-        return termInfo;
-    }
-
-    public void setTermInfo(String termInfo) {
-        this.termInfo = termInfo;
-    }
-
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public PidInfo getPidInfo() {
-        return pidInfo;
-    }
-
-    public void setPidInfo(PidInfo pidInfo) {
-        this.pidInfo = pidInfo;
     }
 }
