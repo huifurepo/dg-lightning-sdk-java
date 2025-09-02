@@ -1,4 +1,4 @@
-package com.huifu.dg.lightning.biz.commonPay;
+package com.huifu.dg.lightning.biz.payment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
