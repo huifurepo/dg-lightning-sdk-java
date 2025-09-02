@@ -88,21 +88,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
      */
     @JsonProperty("notify_url")
     private String notifyUrl;
-    /**
-     * 手续费补贴信息
-     */
-    @JsonProperty("trans_fee_allowance_info")
-    private String transFeeAllowanceInfo;
-    /**
-     * 补贴支付手续费承担方信息
-     */
-    @JsonProperty("combinedpay_data_fee_info")
-    private String combinedpayDataFeeInfo;
-    /**
-     * 补贴支付信息
-     */
-    @JsonProperty("combinedpay_data")
-    private String combinedpayData;
 
     public String getReqDate() {
         return reqDate;
@@ -214,30 +199,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
-    }
-
-    public String getTransFeeAllowanceInfo() {
-        return transFeeAllowanceInfo;
-    }
-
-    public void setTransFeeAllowanceInfo(String transFeeAllowanceInfo) {
-        this.transFeeAllowanceInfo = transFeeAllowanceInfo;
-    }
-
-    public String getCombinedpayDataFeeInfo() {
-        return combinedpayDataFeeInfo;
-    }
-
-    public void setCombinedpayDataFeeInfo(String combinedpayDataFeeInfo) {
-        this.combinedpayDataFeeInfo = combinedpayDataFeeInfo;
-    }
-
-    public String getCombinedpayData() {
-        return combinedpayData;
-    }
-
-    public void setCombinedpayData(String combinedpayData) {
-        this.combinedpayData = combinedpayData;
     }
 
     public String getDivFlag() {
