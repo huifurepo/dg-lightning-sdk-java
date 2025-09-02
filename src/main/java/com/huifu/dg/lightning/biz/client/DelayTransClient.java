@@ -1,10 +1,10 @@
 package com.huifu.dg.lightning.biz.client;
 
-import com.huifu.dg.lightning.models.ConfirmQueryRequest;
-import com.huifu.dg.lightning.models.ConfirmRefundQueryRequest;
-import com.huifu.dg.lightning.models.DelayTransConfirmRequest;
-import com.huifu.dg.lightning.models.PayConfirmRefundRequest;
-import com.huifu.dg.lightning.models.TransSplitQueryRequest;
+import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelayTransConfirmQueryRequest;
+import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelaytransConfirmrefundqueryRequest;
+import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelaytransConfirmRequest;
+import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelayTransConfirmRefundRequest;
+import com.huifu.dg.lightning.models.solution.delayTrans.TradeTransSplitQueryRequest;
 
 import java.util.Map;
 
@@ -19,24 +19,24 @@ public class DelayTransClient extends BasePayClient {
     public DelayTransClient() {
     }
 
-    public Map<String, Object> confirm(DelayTransConfirmRequest delayTransConfirmRequest) throws Exception {
+    public Map<String, Object> confirm(TradePaymentDelaytransConfirmRequest delayTransConfirmRequest) throws Exception {
         return request(delayTransConfirmRequest);
     }
 
-    public Map<String, Object> confirmQuery(ConfirmQueryRequest confirmQueryRequest) throws Exception {
+    public Map<String, Object> confirmQuery(TradePaymentDelayTransConfirmQueryRequest confirmQueryRequest) throws Exception {
         return request(confirmQueryRequest);
     }
 
 
-    public Map<String, Object> refund(PayConfirmRefundRequest payConfirmRefundRequest) throws Exception {
+    public Map<String, Object> refund(TradePaymentDelayTransConfirmRefundRequest payConfirmRefundRequest) throws Exception {
         return request(payConfirmRefundRequest);
     }
 
-    public Map<String, Object> refundQuery(ConfirmRefundQueryRequest confirmRefundQueryRequest) throws Exception {
+    public Map<String, Object> refundQuery(TradePaymentDelaytransConfirmrefundqueryRequest confirmRefundQueryRequest) throws Exception {
         return request(confirmRefundQueryRequest);
     }
 
-    public Map<String, Object> splitQuery(TransSplitQueryRequest transSplitQueryRequest) throws Exception {
+    public Map<String, Object> splitQuery(TradeTransSplitQueryRequest transSplitQueryRequest) throws Exception {
         return request(transSplitQueryRequest);
     }
 

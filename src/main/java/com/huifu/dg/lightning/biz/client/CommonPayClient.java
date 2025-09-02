@@ -1,11 +1,11 @@
 package com.huifu.dg.lightning.biz.client;
 
-import com.huifu.dg.lightning.models.AggregateTransRequest;
-import com.huifu.dg.lightning.models.ScanpayCloseQueryRequest;
-import com.huifu.dg.lightning.models.ScanpayCloseRequest;
-import com.huifu.dg.lightning.models.ScanpayQueryRequest;
-import com.huifu.dg.lightning.models.ScanpayRefundQueryRequest;
-import com.huifu.dg.lightning.models.ScanpayRefundRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentPayRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayClosequeryRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayCloseRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayQueryRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayRefundQueryRequest;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayRefundRequest;
 
 import java.util.Map;
 
@@ -20,27 +20,27 @@ public class CommonPayClient extends BasePayClient {
     public CommonPayClient() {
     }
 
-    public Map<String, Object> create(AggregateTransRequest aggregateTransRequest) throws Exception {
+    public Map<String, Object> create(TradePaymentPayRequest aggregateTransRequest) throws Exception {
         return request(aggregateTransRequest);
     }
 
-    public Map<String, Object> query(ScanpayQueryRequest scanpayQueryRequest) throws Exception {
+    public Map<String, Object> query(TradePaymentScanpayQueryRequest scanpayQueryRequest) throws Exception {
         return request(scanpayQueryRequest);
     }
 
-    public Map<String, Object> close(ScanpayCloseRequest scanpayCloseRequest) throws Exception {
+    public Map<String, Object> close(TradePaymentScanpayCloseRequest scanpayCloseRequest) throws Exception {
         return request(scanpayCloseRequest);
     }
 
-    public Map<String, Object> closeQuery(ScanpayCloseQueryRequest scanpayCloseQueryRequest) throws Exception {
+    public Map<String, Object> closeQuery(TradePaymentScanpayClosequeryRequest scanpayCloseQueryRequest) throws Exception {
         return request(scanpayCloseQueryRequest);
     }
 
-    public Map<String, Object> refund(ScanpayRefundRequest scanpayRefundRequest) throws Exception {
+    public Map<String, Object> refund(TradePaymentScanpayRefundRequest scanpayRefundRequest) throws Exception {
         return request(scanpayRefundRequest);
     }
 
-    public Map<String, Object> refundQuery(ScanpayRefundQueryRequest scanpayRefundQueryRequest) throws Exception {
+    public Map<String, Object> refundQuery(TradePaymentScanpayRefundQueryRequest scanpayRefundQueryRequest) throws Exception {
         return request(scanpayRefundQueryRequest);
     }
 
