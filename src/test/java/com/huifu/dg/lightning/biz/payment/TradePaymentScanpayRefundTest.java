@@ -39,8 +39,6 @@ public class TradePaymentScanpayRefundTest {
         TerminalDeviceData terminalDeviceData = new TerminalDeviceData();
         terminalDeviceData.setDeviceIp("172.28.52.52");
         terminalDeviceData.setDevsId("660035730205200164801");
-        terminalDeviceData.setLocation("+37.12/-121.213");
-        terminalDeviceData.setMerDeviceIp("172.28.52.52");
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         return objectMapper.writeValueAsString(terminalDeviceData);
     }

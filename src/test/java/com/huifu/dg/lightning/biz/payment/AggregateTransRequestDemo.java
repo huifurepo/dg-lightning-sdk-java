@@ -140,7 +140,6 @@ public class AggregateTransRequestDemo {
         if (PaymentTypeEnum.A_JSAPI.getTypeCode().equals(tradeType) || PaymentTypeEnum.A_NATIVE.getTypeCode().equals(tradeType)
                 || PaymentTypeEnum.A_MICROPAY.getTypeCode().equals(tradeType)) {
             AlipayData alipayData = new AlipayData();
-            alipayData.setAlipayStoreId("ali-542323asdas12351a51");
             alipayData.setBuyerId("ali4f4f5a5f5a5f5a5f");
             return objectMapper.writeValueAsString(alipayData);
         }
