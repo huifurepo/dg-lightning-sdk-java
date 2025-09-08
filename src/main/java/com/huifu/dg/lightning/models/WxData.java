@@ -41,6 +41,31 @@ public class WxData implements Serializable {
     @JsonProperty("detail")
     private Detail detail;
     /**
+     * 场景信息
+     */
+    @JsonProperty("scene_info")
+    private SceneInfo sceneInfo;
+    /**
+     * 终端ip
+     */
+    @JsonProperty("spbill_create_ip")
+    private String spbillCreateIp;
+    /**
+     * 开发票入口开放标识
+     */
+    @JsonProperty("receipt")
+    private String receipt;
+    /**
+     * 设备信息
+     */
+    @JsonProperty("device_info")
+    private String deviceInfo;
+    /**
+     * 单品优惠标识
+     */
+    @JsonProperty("promotion_flag")
+    private String promotionFlag;
+    /**
      * 订单优惠标记
      */
     @JsonProperty("goods_tag")
@@ -100,5 +125,45 @@ public class WxData implements Serializable {
 
     public void setGoodsTag(String goodsTag) {
         this.goodsTag = goodsTag;
+    }
+
+    public SceneInfo getSceneInfo() {
+        return sceneInfo;
+    }
+
+    public void setSceneInfo(SceneInfo sceneInfo) {
+        this.sceneInfo = sceneInfo;
+    }
+
+    public String getSpbillCreateIp() {
+        return spbillCreateIp;
+    }
+
+    public void setSpbillCreateIp(String spbillCreateIp) {
+        this.spbillCreateIp = spbillCreateIp;
+    }
+
+    public String getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(String receipt) {
+        this.receipt = receipt;
+    }
+
+    public String getDeviceInfo() {
+        return deviceInfo;
+    }
+
+    public void setDeviceInfo(String deviceInfo) {
+        this.deviceInfo = deviceInfo;
+    }
+
+    public String getPromotionFlag() {
+        return promotionFlag;
+    }
+
+    public void setPromotionFlag(String promotionFlag) {
+        this.promotionFlag = promotionFlag;
     }
 }
