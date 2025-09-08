@@ -18,6 +18,9 @@ public class TradePaymentDelaytransConfirmRequest extends BaseRequest {
     @JsonProperty("org_req_seq_id")
     private String orgReqSeqId;
 
+    @JsonProperty("org_mer_ord_id")
+    private String orgMerOrdId;
+
     @JsonProperty("org_req_date")
     private String orgReqDate;
 
@@ -120,5 +123,13 @@ public class TradePaymentDelaytransConfirmRequest extends BaseRequest {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getOrgMerOrdId() {
+        return orgMerOrdId;
+    }
+
+    public void setOrgMerOrdId(String orgMerOrdId) {
+        this.orgMerOrdId = orgMerOrdId;
     }
 }
