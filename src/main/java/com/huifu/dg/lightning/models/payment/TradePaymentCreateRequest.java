@@ -74,11 +74,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
     @JsonProperty("acct_split_bunch")
     private String acctSplitBunch;
     /**
-     * 是否分账交易
-     */
-    @JsonProperty("div_flag")
-    private String divFlag;
-    /**
      * 设备信息
      */
     @JsonProperty("terminal_device_data")
@@ -199,14 +194,6 @@ public class TradePaymentCreateRequest extends BaseRequest {
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
-    }
-
-    public String getDivFlag() {
-        return divFlag;
-    }
-
-    public void setDivFlag(String divFlag) {
-        this.divFlag = divFlag;
     }
 
     @Override

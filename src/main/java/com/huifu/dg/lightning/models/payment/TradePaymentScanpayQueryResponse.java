@@ -120,11 +120,6 @@ public class TradePaymentScanpayQueryResponse implements Serializable {
     @JsonProperty("debit_type")
     private String debitType;
     /**
-     * 是否分账交易
-     */
-    @JsonProperty("div_flag")
-    private String divFlag;
-    /**
      * 账务日期
      */
     @JsonProperty("acct_date")
@@ -346,14 +341,6 @@ public class TradePaymentScanpayQueryResponse implements Serializable {
 
     public void setDebitType(String debitType) {
         this.debitType = debitType;
-    }
-
-    public String getDivFlag() {
-        return divFlag;
-    }
-
-    public void setDivFlag(String divFlag) {
-        this.divFlag = divFlag;
     }
 
     public String getAcctDate() {

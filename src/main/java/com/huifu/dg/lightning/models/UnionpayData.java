@@ -11,6 +11,11 @@ import java.io.Serializable;
  */
 public class UnionpayData implements Serializable {
     /**
+     * 扫码设备读出的条形码或者二维码信息
+     */
+    @JsonProperty("auth_code")
+    private String authCode;
+    /**
      * 二维码
      */
     @JsonProperty("qr_code")
@@ -55,6 +60,14 @@ public class UnionpayData implements Serializable {
      */
     @JsonProperty("user_id")
     private String userId;
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
 
     public String getQrCode() {
         return qrCode;
