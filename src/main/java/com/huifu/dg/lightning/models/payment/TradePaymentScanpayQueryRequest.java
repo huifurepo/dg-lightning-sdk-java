@@ -33,8 +33,8 @@ public class TradePaymentScanpayQueryRequest extends BaseRequest {
     /**
      * 原请求流水号
      */
-    @JsonProperty("orig_req_seq_id")
-    private String origReqSeqId;
+    @JsonProperty("out_ord_id")
+    private String outOrdId;
 
     public String getReqDate() {
         return reqDate;
@@ -68,12 +68,12 @@ public class TradePaymentScanpayQueryRequest extends BaseRequest {
         this.hfSeqId = hfSeqId;
     }
 
-    public String getOrigReqSeqId() {
-        return origReqSeqId;
+    public String getOutOrdId() {
+        return outOrdId;
     }
 
-    public void setOrigReqSeqId(String origReqSeqId) {
-        this.origReqSeqId = origReqSeqId;
+    public void setOutOrdId(String outOrdId) {
+        this.outOrdId = outOrdId;
     }
 
     @Override

@@ -12,6 +12,11 @@ import java.util.List;
  */
 public class AlipayData implements Serializable {
     /**
+     * 扫码设备读出的条形码或者二维码信息
+     */
+    @JsonProperty("auth_code")
+    private String authCode;
+    /**
      * 买家的支付宝唯一用户号
      */
     @JsonProperty("buyer_id")
@@ -88,5 +93,13 @@ public class AlipayData implements Serializable {
 
     public void setAliPromoParams(String aliPromoParams) {
         this.aliPromoParams = aliPromoParams;
+    }
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
     }
 }

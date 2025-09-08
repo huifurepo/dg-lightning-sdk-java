@@ -11,6 +11,11 @@ import java.io.Serializable;
  */
 public class WxData implements Serializable {
     /**
+     * 扫码设备读出的条形码或者二维码信息
+     */
+    @JsonProperty("auth_code")
+    private String authCode;
+    /**
      * 子商户应用ID
      */
     @JsonProperty("sub_appid")
@@ -40,6 +45,14 @@ public class WxData implements Serializable {
      */
     @JsonProperty("goods_tag")
     private String goodsTag;
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
 
     public String getSubAppid() {
         return subAppid;
