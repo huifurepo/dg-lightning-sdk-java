@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.huifu.dg.lightning.sdk</groupId>
     <artifactId>dg-lightning-sdk</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>${project.artifactId} - ${project.version}</name>
     <inceptionYear>2025</inceptionYear>
@@ -12,20 +12,6 @@
     <description>Dougong Lightning SDK for Java allows you to enjoy a minimalist programming experience and quickly
         access the various high-frequency capabilities of the Dougong Platform.
     </description>
-    <!--    <repositories>
-            <repository>
-                <id>mvnrepository</id>
-                <name>mvnrepository</name>
-                <url>http://www.mvnrepository.com/</url>
-                <layout>default</layout>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-            </repository>
-        </repositories>-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -46,7 +32,11 @@
             <organizationUrl>https://www.huifu.com/</organizationUrl>
         </developer>
     </developers>
-
+    <scm>
+        <connection>scm:git:github.com/huifurepo/dg-lightning-sdk-java.git</connection>
+        <developerConnection>scm:git:github.com/huifurepo/dg-lightning-sdk-java.git</developerConnection>
+        <url>github.com/huifurepo/dg-lightning-sdk-java.git</url>
+    </scm>
     <distributionManagement>
         <!--         <repository>
                      <id>oss</id>
@@ -83,17 +73,17 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <!--       <plugin>
-                       <groupId>org.sonatype.central</groupId>
-                       <artifactId>central-publishing-maven-plugin</artifactId>
-                       <version>0.8.0</version>
-                       <extensions>true</extensions>
-                       <configuration>
-                           <publishingServerId>central</publishingServerId>
-                           <autoPublish>true</autoPublish>
-                           <waitUntil>published</waitUntil>
-                       </configuration>
-                   </plugin>-->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <waitUntil>published</waitUntil>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -123,7 +113,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- <plugin>
+            <plugin>
                  <groupId>org.apache.maven.plugins</groupId>
                  <artifactId>maven-gpg-plugin</artifactId>
                  <version>1.5</version>
@@ -136,7 +126,7 @@
                          </goals>
                      </execution>
                  </executions>
-             </plugin>-->
+             </plugin>
         </plugins>
 
         <resources>
