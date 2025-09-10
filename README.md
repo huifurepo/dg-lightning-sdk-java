@@ -1,93 +1,89 @@
 # dg-lightning-sdk-java
+欢迎使用 斗拱lightning SDK for Java 。
 
+斗拱lightning SDK for Java让您不用复杂编程即可访斗拱开放平台开放的各项能力，SDK可以自动帮您满足能力调用过程中所需的证书校验、加签、验签、发送HTTP请求等非功能性要求。
 
+## 环境要求
+1.  斗拱SDK for Java 需要使用`JKD 1.8`或其以上版本。
+2.  SDK接入准备
+- 提交商户材料完成进件及相关业务配置；
+- 登录控台获取/配置密钥，参见[《商户密钥操作说明》](http://paas.huifutest.com/partners/devtools/#/sdk_java_myczsm)；
+3.  准备工作完成后，注意保存如下信息，后续将作为使用SDK的输入。`商户的私钥`、`商户的公钥`、`汇付的公钥`；
 
-## Getting started
+## 安装依赖
+推荐通过Maven来管理项目依赖，您只需在项目的`pom.xml`文件中声明如下依赖
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+        <dependency>
+           <groupId>com.huifu.dg.lightning.sdk</groupId>
+            <artifactId>dg-lightning-sdk</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+          <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.18.2</version>
+        </dependency>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+        <!-- util -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
 
-## Add your files
+## 快速使用
+1. 安装好依赖库保证运行环境没问题，可直接运行SDK test，如调用商户详细信息查询正常返回说明运行环境配置成功；
+2. 改商户配置信息(商户号、私钥)，看下单是否成功，如能成功，说明商户配置成功，否则请检查商户控台配置；
+3. 部署服务端服务：安装并部署服务端服务到您的服务器，前端应用调用SDK；
+4. 前端应用对接：前端应用通过网络请求获取到应用服务端从SDK获取的支付信息。在前端页面或者APP内处理后，发起支付。
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+以下这段代码示例向您展示了使用斗拱lightning SDK  for Java调用一个API的3个主要步骤：
+1. 初始化商户参数，完成Client实例并初始化。系统初始化时只需做一次；
+2. 创建API请求对象并设置Model参数。必填参数用set方法，非必填参数用optional方法设置；
+3. 发起请求并处理响应或异常。
 
+```java
+   public static void main() throws Exception{
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        TradePaymentCreateRequest request = new TradePaymentCreateRequest();
+        // 请求日期
+        request.setReqDate(DateTools.getCurrentDateYYYYMMDD());
+        // 请求流水号
+        request.setReqSeqId(SequenceTools.getReqSeqId32());
+        // 商户号
+        request.setHuifuId("6666000109133323");
+        // 商品描述
+        request.setGoodsDesc("hibs自动化-通用版验证");
+        // 交易类型
+        request.setTradeType("A_NATIVE");
+        // 交易金额
+        request.setTransAmt("0.10");
+        Map<String, Object> response = Factory.Payment.Common()
+        .optional("seller","zhangsan")
+        .optional("wx_data",getWxData()).create(request);
+        System.out.println("返回数据:" +JacksonUtils.convert2JsonString(response) );
+
+        }
 ```
-cd existing_repo
-git remote add origin http://git.chinapnr.com/SSP/dg-lightning-sdk-java.git
-git branch -M master
-git push -uf origin master
-```
 
-## Integrate with your tools
+**异步消息说明**   
+接口如果有异步返回，请参考斗拱API文档[异步消息说明](https://paas.huifu.com/partners/api/#/ybxx/api_ybxx)
 
-- [ ] [Set up project integrations](http://git.chinapnr.com/SSP/dg-lightning-sdk-java/-/settings/integrations)
+## 文档
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+[SDK文档首页](http://paas.huifutest.com/partners/devtools/#/sdk_java)
