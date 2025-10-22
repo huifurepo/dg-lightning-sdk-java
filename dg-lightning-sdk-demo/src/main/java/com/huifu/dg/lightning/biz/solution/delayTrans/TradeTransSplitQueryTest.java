@@ -17,7 +17,7 @@ import java.util.Map;
 public class TradeTransSplitQueryTest {
 
     public static void transSplitQuery() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         // 2. 组装交易分账明细查询参数
         TradeTransSplitQueryRequest request =new TradeTransSplitQueryRequest();
         //商户号

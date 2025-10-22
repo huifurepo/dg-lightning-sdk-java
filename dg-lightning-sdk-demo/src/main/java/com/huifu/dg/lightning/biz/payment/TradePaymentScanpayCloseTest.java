@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class TradePaymentScanpayCloseTest {
     public static void transCloseQuery() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentScanpayCloseRequest request = new TradePaymentScanpayCloseRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());

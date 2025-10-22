@@ -11,12 +11,13 @@ import com.huifu.dg.lightning.utils.SequenceTools;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * @author bo.dong
  * @date 2025/10/13 11:23
  * @description 支付宝正扫支付及支付宝JS支付参考该demo
  */
-public class A_JSAPITest {
+public class A_NATIVETest {
     public static void main(String[] args) throws Exception {
         A_JSAPI_PROD();
     }
@@ -42,15 +43,16 @@ public class A_JSAPITest {
 //以下为支付宝JS支付需要的参数
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         String aliDataString="";
-        AlipayData alipayData = new AlipayData();
-        alipayData.setBuyerId("2088111111111111");
+//        AlipayData alipayData = new AlipayData();
+//        alipayData.setBuyerId("2088111111111111");
 //支付宝相关参数可参考官方文档 https://opendocs.alipay.com/mini/6039ed0c_alipay.trade.create?scene=de4d6a1e0c6e423b9eefa7c3a6dcb7a5&pathHash=779dc517
-        aliDataString = objectMapper.writeValueAsString(alipayData);
-        request.setTradeType("A_JSAPI"); // 交易类型 - 支付宝js
+//        aliDataString = objectMapper.writeValueAsString(alipayData);
+        request.setTradeType("A_NATIVE"); // 交易类型 - 支付宝js
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", objectMapper.writeValueAsString(aliDataString)).create(request);
         System.out.println("A_JSAPI返回数据:" + JacksonUtils.convert2JsonString(response));
     }
+
 
     public static void A_JSAPI_PROD() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_PROD));
@@ -74,17 +76,15 @@ public class A_JSAPITest {
 //以下为支付宝JS支付需要的参数
         ObjectMapper objectMapper = JacksonUtils.getInstance();
         String aliDataString="";
-        AlipayData alipayData = new AlipayData();
-        //需要前端获取buyerId
-        //buyerId与buyerLogonId不能同时为空
-        alipayData.setBuyerId("208800239162621X");//修改这个可以下单，仅做测试哦2088002391626210
+//        AlipayData alipayData = new AlipayData();
+//        alipayData.setBuyerId("2088111111111111");
 //支付宝相关参数可参考官方文档 https://opendocs.alipay.com/mini/6039ed0c_alipay.trade.create?scene=de4d6a1e0c6e423b9eefa7c3a6dcb7a5&pathHash=779dc517
-        aliDataString = objectMapper.writeValueAsString(alipayData);
-        request.setTradeType("A_JSAPI"); // 交易类型 - 支付宝js
+//        aliDataString = objectMapper.writeValueAsString(alipayData);
+        request.setTradeType("A_NATIVE"); // 交易类型 - 支付宝js
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("method_expand", aliDataString).create(request);
+                .optional("method_expand", objectMapper.writeValueAsString(aliDataString)).create(request);
         System.out.println("A_JSAPI返回数据:" + JacksonUtils.convert2JsonString(response));
-        System.out.println("pay_info返回给前端，通过JS拉起支付： " + JacksonUtils.convert2Object(response, HashMap.class).get("pay_info"));
+        System.out.println("请用复制到浏览器显示二维码，然后用支付宝扫描： " + " https://quickchart.io/qr?text= " + JacksonUtils.convert2Object(response, HashMap.class).get("qr_code") + "&size=300");
     }
 
 

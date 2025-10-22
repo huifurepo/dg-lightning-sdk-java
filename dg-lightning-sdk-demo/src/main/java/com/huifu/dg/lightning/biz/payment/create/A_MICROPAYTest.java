@@ -22,7 +22,7 @@ public class A_MICROPAYTest {
     }
     public static void A_MICROPAY() throws Exception{
 
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());// 请求日期
         request.setReqSeqId(SequenceTools.getReqSeqId32()); // 请求流水号

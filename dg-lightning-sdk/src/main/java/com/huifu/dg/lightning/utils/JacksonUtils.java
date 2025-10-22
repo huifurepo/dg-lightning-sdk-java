@@ -1,5 +1,6 @@
 package com.huifu.dg.lightning.utils;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -18,6 +19,8 @@ public class JacksonUtils {
         // 全局配置（仅需设置一次）
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        // 序列化时忽略为 null 的属性
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
     public static ObjectMapper getInstance() {
@@ -29,7 +32,7 @@ public class JacksonUtils {
     }
 
     public static String convert2JsonString(Object obj) throws Exception {
-        return objectMapper.writeValueAsString(obj);
+        return  obj instanceof String ? (String) obj :objectMapper.writeValueAsString(obj);
     }
 
 }

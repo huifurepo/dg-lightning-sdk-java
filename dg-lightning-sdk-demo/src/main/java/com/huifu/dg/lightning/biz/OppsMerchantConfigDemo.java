@@ -19,7 +19,8 @@ import com.huifu.dg.lightning.utils.BasePay;
  * @version v 0.1
  */
 public class OppsMerchantConfigDemo {
-    public static MerConfig getMerchantConfig() {
+
+    public static MerConfig getMerchantConfig(String modeInnerTest) {
         /** debug 模式，开启后有详细的日志
          */
         BasePay.debug = true;
@@ -29,22 +30,33 @@ public class OppsMerchantConfigDemo {
          * MODE_PROD = "prod"; // 生产环境
          * MODE_TEST = "test"; // 线上联调环境(针对商户联调测试)
          */
-       // BasePay.prodMode = BasePay.MODE_PROD;
-        BasePay.prodMode = BasePay.MODE_INNER_TEST;
+        BasePay.prodMode = modeInnerTest;
+//        BasePay.prodMode = BasePay.MODE_INNER_TEST;
 
         /**
          * 单商户模式
          */
         MerConfig merConfig = new MerConfig();
-        merConfig.setProductId(DemoTestConstants.DEMO_PRODUCT_ID);
-        merConfig.setSysId(DemoTestConstants.DEMO_SYS_ID);
-        merConfig.setRsaPrivateKey(DemoTestConstants.DEMO_RSA_PRIVATE_KEY);
-        merConfig.setRsaPublicKey(DemoTestConstants.DEMO_RSA_PUBLIC_KEY);
-        //自定义超时时间
+        if(BasePay.prodMode.equals(BasePay.MODE_INNER_TEST)){
+            merConfig.setProductId(DemoTestConstants.DEMO_PRODUCT_ID);
+            merConfig.setSysId(DemoTestConstants.DEMO_SYS_ID);
+            merConfig.setRsaPrivateKey(DemoTestConstants.DEMO_RSA_PRIVATE_KEY);
+            merConfig.setRsaPublicKey(DemoTestConstants.DEMO_RSA_PUBLIC_KEY);
+            //自定义超时时间
+            merConfig.setCustomConnectTimeout(DemoTestConstants.CUSTOM_CONNECT_TIMEOUT);
+            merConfig.setCustomReadtTimeout(DemoTestConstants.CUSTOM_READ_TIMEOUT);
+            merConfig.setCustomWriteTimeout(DemoTestConstants.CUSTOM_WRITE_TIMEOUT);
+        }else{
+            merConfig.setProductId(DemoProdConstants.DEMO_PRODUCT_ID);
+            merConfig.setSysId(DemoProdConstants.DEMO_SYS_ID);
+            merConfig.setRsaPrivateKey(DemoProdConstants.DEMO_RSA_PRIVATE_KEY);
+            merConfig.setRsaPublicKey(DemoProdConstants.DEMO_RSA_PUBLIC_KEY);
+            //自定义超时时间
+            merConfig.setCustomConnectTimeout(DemoProdConstants.CUSTOM_CONNECT_TIMEOUT);
+            merConfig.setCustomReadtTimeout(DemoProdConstants.CUSTOM_READ_TIMEOUT);
+            merConfig.setCustomWriteTimeout(DemoProdConstants.CUSTOM_WRITE_TIMEOUT);
+        }
 
-        merConfig.setCustomConnectTimeout(DemoTestConstants.CUSTOM_CONNECT_TIMEOUT);
-        merConfig.setCustomReadtTimeout(DemoTestConstants.CUSTOM_READ_TIMEOUT);
-        merConfig.setCustomWriteTimeout(DemoTestConstants.CUSTOM_WRITE_TIMEOUT);
         return merConfig;
     }
 }

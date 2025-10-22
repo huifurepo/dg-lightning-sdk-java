@@ -17,7 +17,7 @@ import java.util.Map;
 public class TradePaymentScanpayRefundQueryTest {
 
     public static void scanpayRefundQuery() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentScanpayRefundQueryRequest request = new TradePaymentScanpayRefundQueryRequest();
         // 商户号
         request.setHuifuId("6666000103334211");

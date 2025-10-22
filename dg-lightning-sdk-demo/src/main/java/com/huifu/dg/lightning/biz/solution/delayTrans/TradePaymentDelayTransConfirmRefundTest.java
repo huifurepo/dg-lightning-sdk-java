@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class TradePaymentDelayTransConfirmRefundTest {
     public static void payConfirmRefund() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         // 2. 组装交易确认退款参数
         TradePaymentDelayTransConfirmRefundRequest request =new TradePaymentDelayTransConfirmRefundRequest();
         //请求时间

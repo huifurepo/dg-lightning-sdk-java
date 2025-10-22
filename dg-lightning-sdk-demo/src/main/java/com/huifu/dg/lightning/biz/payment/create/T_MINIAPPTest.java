@@ -25,7 +25,7 @@ public class T_MINIAPPTest {
     }
 
     public static void T_MINIAPP() throws Exception{
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());// 请求日期
         request.setReqSeqId(SequenceTools.getReqSeqId32()); // 请求流水号
@@ -61,7 +61,7 @@ public class T_MINIAPPTest {
 
 
     public static void T_MINIAPP2() throws Exception{
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
 
 
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();

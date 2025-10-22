@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class TradePaymentDelaytransConfirmrefundqueryTest {
     public static void confirmRefundQuery() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         // 2. 组装交易确认退款查询参数
         TradePaymentDelaytransConfirmrefundqueryRequest request =new TradePaymentDelaytransConfirmrefundqueryRequest();
         //商户号

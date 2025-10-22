@@ -27,7 +27,7 @@ import java.util.Map;
 public class TradePaymentCreateTest {
 
     public static void pay() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         // 请求日期
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());

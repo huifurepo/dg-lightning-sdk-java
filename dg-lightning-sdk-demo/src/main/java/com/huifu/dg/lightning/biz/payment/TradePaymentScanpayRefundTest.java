@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class TradePaymentScanpayRefundTest {
     public static void transRefund() throws Exception {
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentScanpayRefundRequest request = new TradePaymentScanpayRefundRequest();
         // 请求日期
         request.setReqDate("20250828");

@@ -2,7 +2,6 @@ package com.huifu.dg.lightning.biz.payment.create;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
-import com.huifu.dg.lightning.models.AlipayData;
 import com.huifu.dg.lightning.models.UnionpayData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
@@ -23,7 +22,7 @@ public class U_JSAPITest {
     }
     public static void U_JSAPI() throws Exception{
 
-        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig());
+        BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_INNER_TEST));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());// 请求日期
         request.setReqSeqId(SequenceTools.getReqSeqId32()); // 请求流水号

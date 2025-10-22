@@ -13,11 +13,11 @@
         access the various high-frequency capabilities of the Dougong Platform.
     </description>
        <dependencies>
-   <!--     <dependency>
+        <dependency>
             <groupId>com.huifu.bspay.sdk</groupId>
             <artifactId>dg-java-sdk</artifactId>
             <version>3.0.30</version>
-        </dependency>-->
+        </dependency>
 
 
            <dependency>
