@@ -82,8 +82,11 @@ public abstract class AbstractRequest {
         requestUrl.append(uri);
         String back = null;
         Map<String, String> headers = new HashMap<>(4);
-        // 传递SDK版本
+        // 传递SDK版本 再传一个jpt前缀的，以便打印至网关log
         headers.put("sdk_version", "javaSDK_lightning_" + SDK_VERSION);
+        headers.put("jpt-sdk_version", "javaSDK_lightning_" + SDK_VERSION);
+        headers.put("sys_id", config.getSysId());
+        headers.put("jpt-sys_id", config.getSysId());
         ObjectMapper mapper = JacksonUtils.getInstance();
         String reqData = null;
         try {
@@ -130,24 +133,14 @@ public abstract class AbstractRequest {
         } catch (JsonProcessingException e) {
             throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR.getFailureCode(), "param request convert error.");
         }
-        if (BasePay.debug) {
-            System.out.println("request data = " + reqData);
-            System.out.println("requestBody param = " + requestBody);
-        }
         if ((RequestMethod.POST == method) && (file == null) && "v2/supplementary/picture".equals(uri)) {
-         //   back = HttpClientUtils.httpPostNoFile(requestUrl.toString(), headers, request, null, fileParam);
-            //TODO
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId());
+            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId(),headers);
         } else if ((RequestMethod.POST == method) && (file == null)) {
-            headers.put("Content-type", "application/json");
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId());
-//            back = HttpClientUtils.httpPostJson(requestUrl.toString(), headers, requestBody);
+            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId(),headers);
         } else if ((RequestMethod.POST == method) && (file != null)) {
-            back = OkHttpClientTools.httpPostFile(requestUrl.toString(), requestBody, config.getProductId(), file);
-//            back = HttpClientUtils.httpPostFile(requestUrl.toString(), headers, request, file, fileParam);
+            back = OkHttpClientTools.httpPostFile(requestUrl.toString(), requestBody, config.getProductId(), file,headers);
         } else if (RequestMethod.GET == method) {
-            back = OkHttpClientTools.httpGet(requestUrl.toString(), requestBody, config.getProductId());
-//            back = HttpClientUtils.httpGet(requestUrl.toString(), headers, params);
+            back = OkHttpClientTools.httpGet(requestUrl.toString(), requestBody, config.getProductId(),headers);
         }
         if (BasePay.debug) {
             System.out.println("response string=" + back);

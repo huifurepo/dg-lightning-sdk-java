@@ -9,22 +9,22 @@ public enum FunctionCodeEnum {
     /**
      * lightning聚合支付
      */
-    LIGHTNING_TRADE_PAYMENT_CREATE("v4.lightning.trade.payment.create", "聚合支付"),
+    LIGHTNING_TRADE_PAYMENT_CREATE("v4.trade.payment.create", "聚合支付"),
 
     /**
      * lightning扫码交易退款
      */
-    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUND("v4.lightning.trade.payment.scanpay.refund", "扫码交易退款"),
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUND("v4.trade.payment.scanpay.refund", "扫码交易退款"),
 
     /**
      * lightning扫码交易退款查询
      */
-    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUNDQUERY("v4.lightning.trade.payment.scanpay.refundquery", "扫码交易退款查询"),
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_REFUNDQUERY("v4.trade.payment.scanpay.refundquery", "扫码交易退款查询"),
 
     /**
      * 扫码交易查询
      */
-    LIGHTNING_TRADE_PAYMENT_SCANPAY_QUERY("v4.lightning.trade.payment.scanpay.query", "扫码交易查询"),
+    LIGHTNING_TRADE_PAYMENT_SCANPAY_QUERY("v4.trade.payment.scanpay.query", "扫码交易查询"),
     /**
      * 交易确认查询
      */

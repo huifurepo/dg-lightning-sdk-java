@@ -1,6 +1,7 @@
 package com.huifu.dg.lightning.utils;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huifu.dg.lightning.biz.config.MerConfig;
 import com.huifu.dg.lightning.biz.exception.BasePayException;
 import com.huifu.dg.lightning.biz.exception.FailureCode;
@@ -17,10 +18,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static com.huifu.dg.lightning.biz.net.AbstractRequest.SDK_VERSION;
 
 /**
  *
@@ -44,7 +45,7 @@ public class OkHttpClientTools {
      * @return
      * @throws BasePayException
      */
-    public static String httpPost(String url, String jsonData, String productId) throws BasePayException {
+    public static String httpPost(String url, String jsonData, String productId,  Map<String, String> headers) throws BasePayException {
 
         try {
 
@@ -61,13 +62,25 @@ public class OkHttpClientTools {
                     .url(url)
                     .addHeader("format", "JSON")
                     .addHeader("charset", "UTF-8")
-                    .addHeader("sdk_version", "javaSDK_lightning_" + SDK_VERSION)
                     .addHeader("product_id", productId)
                     .addHeader("Accept", "application/json;charset=utf-8")
                     .addHeader("Content-Type", "application/json; charset=utf-8")
                     .post(body);
+            if (headers != null) {
+                for (Map.Entry<String, String> entry : headers.entrySet()) {
+                    builder.addHeader(entry.getKey(), entry.getValue());
+                }
+            }
+            Request request = builder.build();
 
-            Call call = client.newCall(builder.build());
+            if (BasePay.debug) {
+                ObjectMapper objectMapper = JacksonUtils.getInstance();
+                System.out.println("request header = " + objectMapper.writeValueAsString(request.headers()));
+                System.out.println("request url = " + url);
+                System.out.println("request param = " + jsonData);
+            }
+
+            Call call = client.newCall(request);
             try {
 
                 Response response = call.execute();
@@ -126,7 +139,7 @@ public class OkHttpClientTools {
      * @return
      * @throws BasePayException
      */
-    public static String httpPostFile(String url, String jsonData, String productId, File file) throws BasePayException {
+    public static String httpPostFile(String url, String jsonData, String productId, File file,  Map<String, String> headers) throws BasePayException {
 
         try {
 
@@ -153,12 +166,19 @@ public class OkHttpClientTools {
                     .url(url)
                     .addHeader("format", "JSON")
                     .addHeader("charset", "UTF-8")
-                    .addHeader("sdk_version", "javaSDK_lightning_" + SDK_VERSION)
                     .addHeader("product_id", productId)
                     .addHeader("Accept", "application/json;charset=utf-8")
                     .addHeader("Content-Type", "application/json; charset=utf-8")
                     .post(multipartBody);
-
+            if (headers != null) {
+                for (Map.Entry<String, String> entry : headers.entrySet()) {
+                    builder.addHeader(entry.getKey(), entry.getValue());
+                }
+                if (BasePay.debug) {
+                    System.out.println("request url = " + url);
+                    System.out.println("request param = " + jsonData);
+                }
+            }
             Call call = client.newCall(builder.build());
             try {
 
@@ -217,7 +237,7 @@ public class OkHttpClientTools {
      * @return
      * @throws BasePayException
      */
-    public static String httpGet(String url, String jsonData, String productId) throws BasePayException {
+    public static String httpGet(String url, String jsonData, String productId,  Map<String, String> headers) throws BasePayException {
 
         try {
 
@@ -235,11 +255,19 @@ public class OkHttpClientTools {
                     .patch(body)
                     .addHeader("format", "JSON")
                     .addHeader("charset", "UTF-8")
-                    .addHeader("sdk_version", "javaSDK_lightning_" + SDK_VERSION)
                     .addHeader("product_id", productId)
                     .addHeader("Accept", "application/json;charset=utf-8")
                     .addHeader("Content-Type", "application/json; charset=utf-8")
                     .get();
+            if (headers != null) {
+                for (Map.Entry<String, String> entry : headers.entrySet()) {
+                    builder.addHeader(entry.getKey(), entry.getValue());
+                }
+                if (BasePay.debug) {
+                    System.out.println("request url = " + url);
+                    System.out.println("request param = " + jsonData);
+                }
+            }
 
             Call call = client.newCall(builder.build());
             try {
