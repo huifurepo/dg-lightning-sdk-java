@@ -16,7 +16,7 @@
         <dependency>
            <groupId>com.huifu.dg.lightning.sdk</groupId>
             <artifactId>dg-lightning-sdk</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
           <dependency>
             <groupId>com.squareup.okhttp3</groupId>

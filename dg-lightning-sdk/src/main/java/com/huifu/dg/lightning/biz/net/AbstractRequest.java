@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public abstract class AbstractRequest {
 
-    public static final String SDK_VERSION = "1.0.1-SNAPSHOT";
+    public static final String SDK_VERSION = "1.0.2";
 
     protected static enum RequestMethod {
         GET, POST, DELETE, PUT;

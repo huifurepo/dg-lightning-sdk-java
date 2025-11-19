@@ -1,12 +1,13 @@
 package com.huifu.dg.lightning.biz.payment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huifu.dg.lightning.biz.MyJacksonUtils;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayRefundRequest;
 import com.huifu.dg.lightning.models.TerminalDeviceData;
 import com.huifu.dg.lightning.utils.BasePay;
-import com.huifu.dg.lightning.utils.JacksonUtils;
+
 
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class TradePaymentScanpayRefundTest {
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("terminal_device_data", getTerminalDeviceData())
                 .refund(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
     }
 
@@ -39,7 +40,7 @@ public class TradePaymentScanpayRefundTest {
         TerminalDeviceData terminalDeviceData = new TerminalDeviceData();
         terminalDeviceData.setDeviceIp("172.28.52.52");
         terminalDeviceData.setDevsId("660035730205200164801");
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         return objectMapper.writeValueAsString(terminalDeviceData);
     }
 

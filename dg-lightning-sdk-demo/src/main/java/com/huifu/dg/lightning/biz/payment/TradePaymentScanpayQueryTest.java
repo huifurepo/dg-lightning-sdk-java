@@ -1,11 +1,12 @@
 package com.huifu.dg.lightning.biz.payment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huifu.dg.lightning.biz.MyJacksonUtils;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayQueryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
-import com.huifu.dg.lightning.utils.JacksonUtils;
+
 import com.huifu.dg.lightning.utils.SequenceTools;
 
 import java.util.Map;
@@ -25,7 +26,7 @@ public class TradePaymentScanpayQueryTest {
         request.setHuifuId("6666000109133323");
         request.setHfSeqId("002900TOP2A251017152703P414ac139c4a00000");//请求的HF订单序列号
         Map<String, Object> response = Factory.Payment.Common().query(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
     }
 

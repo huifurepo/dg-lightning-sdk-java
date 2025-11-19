@@ -1,11 +1,12 @@
 package com.huifu.dg.lightning.biz.solution.delayTrans;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huifu.dg.lightning.biz.MyJacksonUtils;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelaytransConfirmrefundqueryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
-import com.huifu.dg.lightning.utils.JacksonUtils;
+
 
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class TradePaymentDelaytransConfirmrefundqueryTest {
         request.setOrgReqSeqId("2361874342747312");
         //是否垫资退款
         Map<String, Object> response = Factory.Solution.DelayTrans().refundQuery(request);
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
+        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
 
     }

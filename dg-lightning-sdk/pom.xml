@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.huifu.dg.lightning.sdk</groupId>
     <artifactId>dg-lightning-sdk</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>${project.artifactId} - ${project.version}</name>
     <inceptionYear>2025</inceptionYear>
@@ -74,7 +74,7 @@
                 </configuration>
             </plugin>
 
-    <!--        <plugin>
+            <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
                 <version>0.8.0</version>
@@ -84,7 +84,7 @@
                     <autoPublish>true</autoPublish>
                     <waitUntil>published</waitUntil>
                 </configuration>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -133,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -141,10 +141,10 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <!-- 创建一个带有重命名依赖的 jar -->
-                            <createDependencyReducedPom>true</createDependencyReducedPom>
-                            <!-- 不创建源码 jar -->
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <createSourcesJar>false</createSourcesJar>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>shaded</shadedClassifierName>
                             <!-- 包重命名配置 -->
                             <relocations>
                                 <!-- 重命名 jackson-core -->

@@ -147,8 +147,8 @@ public class OkHttpClientTools {
                 return "文件不能为空";
             }
 
-            RequestBody body = RequestBody.create(jsonData, JSON);
-            RequestBody fileBody = RequestBody.create(file, JSON);
+            MediaType octetStream = MediaType.parse("application/octet-stream");
+            RequestBody fileBody = RequestBody.create(file, octetStream);
             MerConfig merConfig = BasePay.getConfig("default");
 
             OkHttpClient client = new OkHttpClient.Builder()
@@ -157,10 +157,36 @@ public class OkHttpClientTools {
                     .writeTimeout(Optional.ofNullable(merConfig).map(MerConfig::getCustomWriteTimeout).orElse(writeTimeout), TimeUnit.MILLISECONDS)
                     .build();
 
-            RequestBody multipartBody = new MultipartBody.Builder().setType(MultipartBody.ALTERNATIVE)
-                    .addFormDataPart("file", file.getName(), fileBody)
-                    .addPart(body)
-                    .build();
+            MultipartBody.Builder multiBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("file", file.getName(), fileBody);
+
+            if (StringUtils.isNotBlank(jsonData)) {
+                try {
+                    ObjectMapper objectMapper = JacksonUtils.getInstance();
+                    Map<String, Object> payload = objectMapper.readValue(jsonData, new com.fasterxml.jackson.core.type.TypeReference<Map<String, Object>>(){});
+                    for (Map.Entry<String, Object> entry : payload.entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+                        if (value == null) {
+                            continue;
+                        }
+                        if ("data".equals(key)) {
+                            String dataStr = objectMapper.writeValueAsString(value);
+                            multiBuilder.addFormDataPart("data", dataStr);
+                        } else {
+                            multiBuilder.addFormDataPart(key, String.valueOf(value));
+                        }
+                    }
+                } catch (Exception e) {
+                    if (BasePay.debug) {
+                        System.out.println("multipart form build error");
+                        e.printStackTrace();
+                    }
+                    throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR.getFailureCode(), "multipart form build error");
+                }
+            }
+
+            RequestBody multipartBody = multiBuilder.build();
 
             Request.Builder builder = new Request.Builder()
                     .url(url)
@@ -168,13 +194,14 @@ public class OkHttpClientTools {
                     .addHeader("charset", "UTF-8")
                     .addHeader("product_id", productId)
                     .addHeader("Accept", "application/json;charset=utf-8")
-                    .addHeader("Content-Type", "application/json; charset=utf-8")
                     .post(multipartBody);
             if (headers != null) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
                     builder.addHeader(entry.getKey(), entry.getValue());
                 }
                 if (BasePay.debug) {
+                    ObjectMapper instance = JacksonUtils.getInstance();
+                    System.out.println("request headers=" + instance.writeValueAsString(headers));
                     System.out.println("request url = " + url);
                     System.out.println("request param = " + jsonData);
                 }
@@ -225,6 +252,7 @@ public class OkHttpClientTools {
             if (BasePay.debug) {
                 System.out.println("POST请求汇付交易系统失败");
             }
+            e.printStackTrace();
             throw new BasePayException(FailureCode.POST_REQUEST_FALI.getFailureCode(), "post request huifu system fail.");
         }
 
