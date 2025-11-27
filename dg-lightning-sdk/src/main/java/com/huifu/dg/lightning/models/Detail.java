@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,17 +14,17 @@ public class Detail implements Serializable {
     /**
      * 订单原价(元)
      */
-    @JsonProperty("cost_price")
+    @JSONField(name = "cost_price")
     private String costPrice;
     /**
      * 商品小票ID
      */
-    @JsonProperty("receipt_id")
+    @JSONField(name = "receipt_id")
     private String receiptId;
     /**
      * 单品列表
      */
-    @JsonProperty("goods_detail")
+    @JSONField(name = "goods_detail")
     private List<WxGoodsDetail> wxGoodsDetail;
 
     public String getCostPrice() {

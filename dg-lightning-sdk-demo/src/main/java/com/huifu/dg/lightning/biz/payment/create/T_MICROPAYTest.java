@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.WxData;
@@ -40,7 +40,6 @@ public class T_MICROPAYTest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为微信小程序需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String wxDataString="";
 // {"sub_appid":"wxa350b4c0fd003192","sub_openid":"o4n3E6q8MOEQefCsGKVOAh40spNw"}
 // {"openId":"ow-Xw5prGjuQlh6xjeOjY1ne2ks8"}"
@@ -51,11 +50,11 @@ public class T_MICROPAYTest {
 //复杂示例{"authCode":"112345678765432","subAppid":"wx4f4f5a5f5a5f5a53332","subOpenid":"o8jhotzittQSetZ-11111","detail":{"wxGoodsDetail":[{"goodsId":"6948682505111","goodsName":"白公主抽纸8包装","price":"1300","quantity":1},{"goodsId":"6926265321111","goodsName":"上好佳八宝糖","price":"480","quantity":1}]}}
 //微信付款码必传终端信息 TerminalDeviceData 对象
         request.setTerminalDeviceData("{\"deviceIp\":\"172.28.52.52\",\"merDeviceType\":\"11\",\"devsId\":\"SPINTP351420900692801\"}");
-        wxDataString = objectMapper.writeValueAsString(wxData);
+        wxDataString = JSON.toJSONString(wxData);
         request.setTradeType("T_MICROPAY"); // 交易类型
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand",wxDataString).create(request);
-        System.out.println("T_MICROPAY返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("T_MICROPAY返回数据:" + JSON.toJSONString(response));
     }
 
 }

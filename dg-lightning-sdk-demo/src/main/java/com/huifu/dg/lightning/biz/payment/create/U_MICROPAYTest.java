@@ -1,6 +1,5 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.UnionpayData;
@@ -42,7 +41,6 @@ public class U_MICROPAYTest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为微信小程序需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String unionPayDataString="";
         UnionpayData unionpayData = new UnionpayData();
         unionpayData.setQrCode("union-542323asdas12351111");
@@ -50,11 +48,11 @@ public class U_MICROPAYTest {
         unionpayData.setAuthCode("6236171220051893816");
 //付款码必传终端信息 TerminalDeviceData 对象
         request.setTerminalDeviceData("{\"deviceIp\":\"221.11.52.52\",\"merDeviceType\":\"11\",\"devsId\":\"SPINTP35142090061111\"}");
-        unionPayDataString = objectMapper.writeValueAsString(unionpayData);
+        unionPayDataString = JSON.toJSONString(unionpayData);
         request.setTradeType("U_MICROPAY"); // 交易类型
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", unionPayDataString).create(request);
-        System.out.println("U_MICROPAY返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("U_MICROPAY返回数据:" + JSON.toJSONString(response));
     }
 
 

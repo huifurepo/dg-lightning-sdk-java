@@ -6,14 +6,13 @@ package com.huifu.dg.lightning.biz.client;
 
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.exception.BasePayException;
 import com.huifu.dg.lightning.biz.exception.FailureCode;
 import com.huifu.dg.lightning.biz.net.BasePayRequest;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.BasePay;
-import com.huifu.dg.lightning.utils.JacksonUtils;
 import com.huifu.dg.lightning.utils.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -97,14 +96,7 @@ public class BasePayClient {
         if (params.containsKey("risk_check_data")) {
             Object riskCheckInfo = params.get("risk_check_data");
             if (!(riskCheckInfo instanceof String)) {
-                ObjectMapper objectMapper = JacksonUtils.getInstance();
-
-               // params.put("risk_check_data", JSON.toJSONString(riskCheckInfo));
-                try {
-                    params.put("risk_check_data", objectMapper.writeValueAsString(riskCheckInfo));
-                } catch (JsonProcessingException e) {
-                    throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR.getFailureCode(), "risk_check_data convert error");
-                }
+                params.put("risk_check_data", JSON.toJSONString(riskCheckInfo));
             }
         }
 
@@ -128,12 +120,7 @@ public class BasePayClient {
             params.putAll(request.getExtendInfos());
         }
         if (BasePay.debug) {
-            try {
-                ObjectMapper objectMapper = JacksonUtils.getInstance();
-                System.out.println(">>" + objectMapper.writeValueAsString(params));
-            } catch (JsonProcessingException e) {
-                System.out.println(">>" +"params print error");
-            }
+            System.out.println(">>" + JSONObject.toJSONString(params));
         }
         //3.调用接口
         return upload(params, file, request.getFunctionCode().getCode(), null);

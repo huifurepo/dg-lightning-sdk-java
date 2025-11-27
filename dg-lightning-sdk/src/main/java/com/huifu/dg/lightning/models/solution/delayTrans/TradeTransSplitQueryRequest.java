@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.models.solution.delayTrans;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -15,41 +15,41 @@ public class TradeTransSplitQueryRequest extends BaseRequest {
     /**
      * 汇付分配的商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
 
     /**
      * 分账交易汇付全局流水号
      */
-    @JsonProperty("hf_seq_id")
+    @JSONField(name = "hf_seq_id")
     private String hfSeqId;
 
     /**
      * 交易类型
      */
-    @JsonProperty("ord_type")
+    @JSONField(name = "ord_type")
     private String ordType;
 
     /**
      * 交易起始时间
      */
-    @JsonProperty("begin_date")
+    @JSONField(name = "begin_date")
     private String beginDate;
 
     /**
      * 交易结束时间
      */
-    @JsonProperty("end_date")
+    @JSONField(name = "end_date")
     private String endDate;
     /**
      * 页码
      */
-    @JsonProperty("page_no")
+    @JSONField(name = "page_no")
     private String pageNo;
     /**
      * 页大小
      */
-    @JsonProperty("page_size")
+    @JSONField(name = "page_size")
     private String pageSize;
 
     public String getHuifuId() {

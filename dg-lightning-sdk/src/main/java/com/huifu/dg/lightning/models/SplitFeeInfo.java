@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,19 +11,19 @@ import java.util.List;
  */
 public class SplitFeeInfo implements Serializable {
 
-    @JsonProperty("total_split_fee_amt")
+    @JSONField(name = "total_split_fee_amt")
     private String totalSplitFeeAmt;
 
     /**
      * 分账手续费扣款标志
      */
-    @JsonProperty("split_fee_flag")
+    @JSONField(name = "split_fee_flag")
     private Integer splitFeeFlag;
 
     /**
      * 分账手续费明细
      */
-    @JsonProperty("split_fee_details")
+    @JSONField(name = "split_fee_details")
     private List<SplitFeeDetail> splitFeeDetails;
 
     public String getTotalSplitFeeAmt() {

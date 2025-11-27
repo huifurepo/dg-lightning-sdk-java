@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.models.payment;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -14,32 +14,32 @@ public class TradePaymentScanpayClosequeryRequest extends BaseRequest {
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 请求日期
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 原交易请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 原交易返回的全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
     /**
      * 原交易请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
 
     public String getReqSeqId() {

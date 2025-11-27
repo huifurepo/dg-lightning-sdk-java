@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,37 +14,37 @@ public class WxResponse implements Serializable {
     /**
      * 子商户公众账号ID
      */
-    @JsonProperty("sub_appid")
+    @JSONField(name = "sub_appid")
     private String subAppid;
     /**
      * 用户标识
      */
-    @JsonProperty("openid")
+    @JSONField(name = "openid")
     private String openid;
     /**
      * 子商户用户标识
      */
-    @JsonProperty("sub_openid")
+    @JSONField(name = "sub_openid")
     private String subOpenid;
     /**
      * 付款银行
      */
-    @JsonProperty("bank_type")
+    @JSONField(name = "bank_type")
     private String bankType;
     /**
      * 代金券金额
      */
-    @JsonProperty("coupon_fee")
+    @JSONField(name = "coupon_fee")
     private String couponFee;
     /**
      * 商家数据包
      */
-    @JsonProperty("attach")
+    @JSONField(name = "attach")
     private String attach;
     /**
      * 营销详情列表
      */
-    @JsonProperty("promotion_detail")
+    @JSONField(name = "promotion_detail")
     private List<PromotionDetail> promotionDetails;
 
     public String getSubAppid() {

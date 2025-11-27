@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,17 +13,17 @@ public class FeeFormulaInfo implements Serializable {
     /**
      * 手续费计算公式
      */
-    @JsonProperty("fee_formula")
+    @JSONField(name = "fee_formula")
     private String feeFormula;
     /**
      * 手续费类型
      */
-    @JsonProperty("fee_type")
+    @JSONField(name = "fee_type")
     private String feeType;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
 
     public String getFeeFormula() {

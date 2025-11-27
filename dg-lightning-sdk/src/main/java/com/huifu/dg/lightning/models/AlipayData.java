@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,37 +14,37 @@ public class AlipayData implements Serializable {
     /**
      * 扫码设备读出的条形码或者二维码信息
      */
-    @JsonProperty("auth_code")
+    @JSONField(name = "auth_code")
     private String authCode;
     /**
      * 买家的支付宝唯一用户号
      */
-    @JsonProperty("buyer_id")
+    @JSONField(name = "buyer_id")
     private String buyerId;
     /**
      * 买家支付宝账号
      */
-    @JsonProperty("buyer_logon_id")
+    @JSONField(name = "buyer_logon_id")
     private String buyerLogonId;
     /**
      * 业务扩展参数
      */
-    @JsonProperty("extend_params")
+    @JSONField(name = "extend_params")
     private AlipayExtendParams extendParams;
     /**
      * 订单包含的商品列表信息
      */
-    @JsonProperty("goods_detail")
+    @JSONField(name = "goods_detail")
     private List<AliGoodsDetail> goodsDetails;
     /**
      * 卖家支付宝用户号
      */
-    @JsonProperty("seller_id")
+    @JSONField(name = "seller_id")
     private String sellerId;
     /**
      * 优惠明细参数
      */
-    @JsonProperty("ali_promo_params")
+    @JSONField(name = "ali_promo_params")
     private String aliPromoParams;
 
     public String getBuyerId() {

@@ -1,16 +1,13 @@
 package com.huifu.dg.lightning.biz.payment.create;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.WxData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
-
 import com.huifu.dg.lightning.utils.SequenceTools;
-import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 
 import java.util.Map;
 
@@ -26,7 +23,7 @@ public class T_JSAPITest {
     }
 
 
-    public static void T_JSAPI_prod() throws Exception{
+    public static void T_JSAPI_prod() throws Exception {
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_PROD));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());// 请求日期
@@ -46,17 +43,15 @@ public class T_JSAPITest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为微信公众号支付需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        String wxDataString="";
+        String wxDataString = "";
 // {"sub_appid":"wxa350b4c0fd003192","sub_openid":"o4n3E6q8MOEQefCsGKVOAh40spNw"}
         WxData wxData = new WxData();
         wxData.setSubOpenid("o8jhotzittQSetZ-N0Yj4Hz91Rqc");
         wxData.setSubAppid("wxdfe9a5d141f96685");
-        wxDataString = objectMapper.writeValueAsString(wxData);
+        wxDataString = JSON.toJSONString(wxData);
         request.setTradeType("T_JSAPI"); // 交易类型
-        Map<String, Object> response = Factory.Payment.Common()
-                .optional("method_expand", wxDataString).create(request);
-        System.out.println("T_JSAPI返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        Map<String, Object> response = Factory.Payment.Common().optional("method_expand", wxDataString).create(request);
+        System.out.println("T_JSAPI返回数据:" + JSON.toJSONString(response));
     }
 
 

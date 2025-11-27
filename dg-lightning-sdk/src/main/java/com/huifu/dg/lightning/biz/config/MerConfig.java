@@ -5,7 +5,7 @@
 package com.huifu.dg.lightning.biz.config;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * 商户配置
@@ -17,63 +17,63 @@ public class MerConfig {
     /**
      * 商户私钥，用于商户给交易信息签名
      */
-    @JsonProperty("rsa_private_key")
+    @JSONField(name =  "rsa_private_key")
     private String rsaPrivateKey;
     /**
      * 公钥，商户用公钥对汇付返回的信息进行验签
      */
-    @JsonProperty("rsa_public_key")
+    @JSONField(name = "rsa_public_key")
     private String rsaPublicKey;
     /**
      * 产品号，由汇付分配
      */
-    @JsonProperty( "product_id")
+    @JSONField(name = "product_id")
     private String productId;
     /**
      * 系统号，由汇付分配
      */
-    @JsonProperty("sys_id")
+    @JSONField(name = "sys_id")
     private String sysId;
 
     /**
-     * 自定义连接超时时间(ms)
+     * 自定义连接超时时间
      */
-    @JsonProperty("custom_connect_timeout")
-    private int customConnectTimeout;
+    @JSONField(name =  "custom_connect_timeout")
+    private String customConnectTimeout;
     /**
-     * 自定义读取超时时间(ms)
+     * 自定义连接请求超时时间
      */
-    @JsonProperty( "custom_read_timeout")
-    private int customReadtTimeout;
+    @JSONField(name =  "custom_connection_request_timeout")
+    private String customConnectionRequestTimeout;
 
     /**
-     * 自定义写入超时时间(ms)
+     * 自定义请求超时时间
      */
-    @JsonProperty("custom_write_timeout")
-    private int customWriteTimeout;
+    @JSONField(name = "custom_socket_timeout")
+    private String customSocketTimeout;
 
-    public int getCustomConnectTimeout() {
+    public String getCustomConnectTimeout() {
         return customConnectTimeout;
     }
 
-    public void setCustomConnectTimeout(int customConnectTimeout) {
+    public void setCustomConnectTimeout(String customConnectTimeout) {
         this.customConnectTimeout = customConnectTimeout;
     }
 
-    public int getCustomReadtTimeout() {
-        return customReadtTimeout;
+    public String getCustomConnectionRequestTimeout() {
+        return customConnectionRequestTimeout;
     }
 
-    public void setCustomReadtTimeout(int customReadtTimeout) {
-        this.customReadtTimeout = customReadtTimeout;
+    public void setCustomConnectionRequestTimeout(String customConnectionRequestTimeout) {
+        this.customConnectionRequestTimeout = customConnectionRequestTimeout;
     }
 
-    public int getCustomWriteTimeout() {
-        return customWriteTimeout;
+    public String getCustomSocketTimeout() {
+        return customSocketTimeout;
     }
 
-    public void setCustomWriteTimeout(int customWriteTimeout) {
-        this.customWriteTimeout = customWriteTimeout;
+    public void setCustomSocketTimeout(String customSocketTimeout) {
+        this.customSocketTimeout = customSocketTimeout;
     }
 
     public String getRsaPrivateKey() {

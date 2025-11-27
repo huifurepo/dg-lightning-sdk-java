@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,112 +13,112 @@ public class CurAllowanceConfigInfo implements Serializable {
     /**
      * 门店
      */
-    @JsonProperty("acct_id")
+    @JSONField(name = "acct_id")
     private String acctId;
     /**
      * 商户号
      */
-    @JsonProperty("merchant_group")
+    @JSONField(name = "merchant_group")
     private String merchantGroup;
     /**
      * 补贴方
      */
-    @JsonProperty("allowance_sys")
+    @JSONField(name = "allowance_sys")
     private String allowanceSys;
     /**
      * 补贴方ID
      */
-    @JsonProperty("allowance_sys_id")
+    @JSONField(name = "allowance_sys_id")
     private String allowanceSysId;
     /**
      * 补贴类型
      */
-    @JsonProperty("is_delay_allowance")
+    @JSONField(name = "is_delay_allowance")
     private String isDelayAllowance;
     /**
      * 活动编号
      */
-    @JsonProperty("market_id")
+    @JSONField(name = "market_id")
     private String marketId;
     /**
      * 活动名称
      */
-    @JsonProperty("market_name")
+    @JSONField(name = "market_name")
     private String marketName;
     /**
      * 活动描述
      */
-    @JsonProperty("market_desc")
+    @JSONField(name = "market_desc")
     private String marketDesc;
     /**
      * 开始日期
      */
-    @JsonProperty("start_time")
+    @JSONField(name = "start_time")
     private String startTime;
     /**
      * 结束日期
      */
-    @JsonProperty("end_time")
+    @JSONField(name = "end_time")
     private String endTime;
     /**
      * POS借记卡额度
      */
-    @JsonProperty("pos_debit_limit_amt")
+    @JSONField(name = "pos_debit_limit_amt")
     private String posDebitLimitAmt;
     /**
      * POS贷记卡额度
      */
-    @JsonProperty("pos_credit_limit_amt")
+    @JSONField(name = "pos_credit_limit_amt")
     private String posCreditLimitAmt;
     /**
      * POS补贴额度
      */
-    @JsonProperty("pos_limit_amt")
+    @JSONField(name = "pos_limit_amt")
     private String posLimitAmt;
     /**
      * 扫码补贴额度
      */
-    @JsonProperty("qr_limit_amt")
+    @JSONField(name = "qr_limit_amt")
     private String qrLimitAmt;
     /**
      * 总补贴额度
      */
-    @JsonProperty("total_limit_amt")
+    @JSONField(name = "total_limit_amt")
     private String totalLimitAmt;
     /**
      * 活动是否有效
      */
-    @JsonProperty("status")
+    @JSONField(name = "status")
     private String status;
     /**
      * 是否人工操作
      */
-    @JsonProperty("human_flag")
+    @JSONField(name = "human_flag")
     private String humanFlag;
     /**
      * 活动号
      */
-    @JsonProperty("activity_id")
+    @JSONField(name = "activity_id")
     private String activityId;
     /**
      * 活动名称
      */
-    @JsonProperty("activity_name")
+    @JSONField(name = "activity_name")
     private String activityName;
     /**
      * 创建人
      */
-    @JsonProperty("create_by")
+    @JSONField(name = "create_by")
     private String createBy;
     /**
      * 创建时间
      */
-    @JsonProperty("create_time")
+    @JSONField(name = "create_time")
     private String createTime;
     /**
      * 更新时间
      */
-    @JsonProperty("update_time")
+    @JSONField(name = "update_time")
     private String updateTime;
 
     public String getAcctId() {

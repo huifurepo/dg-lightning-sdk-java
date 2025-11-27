@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.models;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -15,43 +15,43 @@ public class PayConfirmAcctDetail implements Serializable {
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
 
     /**
      * 账户号
      */
-    @JsonProperty("acct_id")
+    @JSONField(name = "acct_id")
     private String acctId;
 
     /**
      * 分账金额
      */
-    @JsonProperty("div_amt")
+    @JSONField(name = "div_amt")
     private String divAmt;
 
     /**
      * 手续费扣款标志 1:外扣 2:内扣
      */
-    @JsonProperty("fee_flag")
+    @JSONField(name = "fee_flag")
     private String feeFlag;
 
     /**
      * 手续费商户号
      */
-    @JsonProperty("fee_huifu_id")
+    @JSONField(name = "fee_huifu_id")
     private String feeHuifuId;
 
     /**
      * 手续费账户号
      */
-    @JsonProperty("fee_acct_id")
+    @JSONField(name = "fee_acct_id")
     private String feeAcctId;
 
     /**
      * 交易确认明细状态
      */
-    @JsonProperty("trans_stat")
+    @JSONField(name = "trans_stat")
     private String transStat;
 
     public String getHuifuId() {

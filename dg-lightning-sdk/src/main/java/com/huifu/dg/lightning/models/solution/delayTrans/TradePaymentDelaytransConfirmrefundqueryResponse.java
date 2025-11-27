@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.solution.delayTrans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.PayConfirmAcctDetail;
 
@@ -16,75 +16,75 @@ public class TradePaymentDelaytransConfirmrefundqueryResponse implements Seriali
     /**
      * 交易状态
      */
-    @JsonProperty("trans_stat")
+    @JSONField(name = "trans_stat")
     private String transStat;
 
     /**
      * 原请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
 
     /**
      * 原请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
 
     /**
      * 原交易确认退款全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
 
     /**
      * 业务响应码
      */
-    @JsonProperty("resp_code")
+    @JSONField(name = "resp_code")
     private String respCode;
     /**
      * 业务响应信息
      */
 
-    @JsonProperty("resp_desc")
+    @JSONField(name = "resp_desc")
     private String respDesc;
 
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 交易确认帐务明细
      */
-    @JsonProperty("pay_confirm_acct_details")
+    @JSONField(name = "pay_confirm_acct_details")
     private List<PayConfirmAcctDetail> payConfirmAcctDetails;
 
     /**
      * 交易确认帐务明细
      */
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private AcctSplitBunch acctSplitBunch;
 
     /**
      * 备注说明
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
 
-    @JsonProperty("loan_flag")
+    @JSONField(name = "loan_flag")
     private String loanFlag;
 
     /**
      * 垫资承担者: 为空: 各自承担, 不为空走第三方垫资
      */
-    @JsonProperty("loan_undertaker")
+    @JSONField(name = "loan_undertaker")
     private String loanUndertaker;
 
     /**
      * 垫资账户类型: 01:基本户, 05: 充值户, 默认充值户
      */
-    @JsonProperty("loan_acct_type")
+    @JSONField(name = "loan_acct_type")
     private String loanAcctType;
 
     public String getTransStat() {

@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,17 +13,17 @@ public class PidInfo implements Serializable {
     /**
      * 服务商订单编号
      */
-    @JsonProperty("pnr_order_id")
+    @JSONField(name = "pnr_order_id")
     private StoreInfo pnrOrderId;
     /**
      * 服务商密文
      */
-    @JsonProperty("pid_sct")
+    @JSONField(name = "pid_sct")
     private StoreInfo pidSct;
     /**
      * 场景标识
      */
-    @JsonProperty("trade_scene")
+    @JSONField(name = "trade_scene")
     private StoreInfo tradeScene;
 
     public StoreInfo getPnrOrderId() {

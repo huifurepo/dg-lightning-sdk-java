@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,21 +13,21 @@ public class RiskCheckData implements Serializable {
     /**
      * ip地址
      */
-    @JsonProperty("ip_addr")
+    @JSONField(name = "ip_addr")
     private String ipAddr;
     /**
      * 基站地址
      */
-    @JsonProperty("base_station")
+    @JSONField(name = "base_station")
     private String baseStation;
     /**
      * 纬度
      */
-    @JsonProperty("latitude")
+    @JSONField(name = "latitude")
     private String latitude;
     /**
      * 经度
      */
-    @JsonProperty("longitude")
+    @JSONField(name = "longitude")
     private String longitude;
 }

@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,37 +13,37 @@ public class WxGoodsDetail implements Serializable {
     /**
      * 商品编码
      */
-    @JsonProperty("goods_id")
+    @JSONField(name = "goods_id")
     private String goodsId;
     /**
      * 商品名称
      */
-    @JsonProperty("goods_name")
+    @JSONField(name = "goods_name")
     private String goodsName;
     /**
      * 商品单价(元)
      */
-    @JsonProperty("price")
+    @JSONField(name = "price")
     private String price;
     /**
      * 商品优惠金额
      */
-    @JsonProperty("discount_amount")
+    @JSONField(name = "discount_amount")
     private String discountAmount;
     /**
      * 商品数量
      */
-    @JsonProperty("quantity")
+    @JSONField(name = "quantity")
     private Integer quantity;
     /**
      * 微信侧商品编码
      */
-    @JsonProperty("wxpay_goods_id")
+    @JSONField(name = "wxpay_goods_id")
     private String wxpayGoodsId;
     /**
      * 商品备注
      */
-    @JsonProperty("goods_remark")
+    @JSONField(name = "goods_remark")
     private String goodsRemark;
 
     public String getGoodsId() {

@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.solution.delayTrans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -13,52 +13,52 @@ public class TradePaymentDelayTransConfirmRefundRequest extends BaseRequest {
     /**
      * 请求日期
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 原交易请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 原交易请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
     /**
      * 分账对象
      */
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private String acctSplitBunch;
     /**
      * 是否垫资退款
      */
-    @JsonProperty("loan_flag")
+    @JSONField(name = "loan_flag")
     private String loanFlag;
     /**
      * 垫资承担者
      */
-    @JsonProperty("loan_undertaker")
+    @JSONField(name = "loan_undertaker")
     private String loanUndertaker;
     /**
      * 垫资账户类型
      */
-    @JsonProperty("loan_acct_type")
+    @JSONField(name = "loan_acct_type")
     private String loanAcctType;
     /**
      * 备注
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
 
     public String getReqDate() {

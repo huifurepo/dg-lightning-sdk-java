@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AlipayData;
@@ -20,10 +20,10 @@ import java.util.Map;
  */
 public class A_NATIVETest {
     public static void main(String[] args) throws Exception {
-        A_JSAPI_PROD();
+        A_NATIVE_PROD();
     }
 
-    public static void A_JSAPI_PROD() throws Exception{
+    public static void A_NATIVE_PROD() throws Exception{
         BasePay.initWithMerConfig(OppsMerchantConfigDemo.getMerchantConfig(BasePay.MODE_PROD));
         TradePaymentCreateRequest request = new TradePaymentCreateRequest();
         request.setReqDate(DateTools.getCurrentDateYYYYMMDD());// 请求日期
@@ -43,17 +43,16 @@ public class A_NATIVETest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为支付宝JS支付需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String aliDataString="";
 //        AlipayData alipayData = new AlipayData();
 //        alipayData.setBuyerId("2088111111111111");
 //支付宝相关参数可参考官方文档 https://opendocs.alipay.com/mini/6039ed0c_alipay.trade.create?scene=de4d6a1e0c6e423b9eefa7c3a6dcb7a5&pathHash=779dc517
-//        aliDataString = objectMapper.writeValueAsString(alipayData);
+//        aliDataString = JSON.toJSONString(alipayData);
         request.setTradeType("A_NATIVE"); // 交易类型 - 支付宝js
         Map<String, Object> response = Factory.Payment.Common()
-                .optional("method_expand", objectMapper.writeValueAsString(aliDataString)).create(request);
-        System.out.println("A_JSAPI返回数据:" + MyJacksonUtils.convert2JsonString(response));
-        System.out.println("请用复制到浏览器显示二维码，然后用支付宝扫描： " + " https://quickchart.io/qr?text= " + MyJacksonUtils.convert2Object(response, HashMap.class).get("qr_code") + "&size=300");
+                .optional("method_expand", JSON.toJSONString(aliDataString)).create(request);
+        System.out.println("A_NATIVE返回数据:" +  JSON.toJSONString(response));
+        System.out.println("请用复制到浏览器显示二维码，然后用支付宝扫描： " + " https://quickchart.io/qr?text= " + response.get("qr_code") + "&size=300");
     }
 
 

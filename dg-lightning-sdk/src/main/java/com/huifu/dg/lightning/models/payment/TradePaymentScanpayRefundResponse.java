@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.payment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.SplitFeeInfo;
 
@@ -15,77 +15,77 @@ public class TradePaymentScanpayRefundResponse implements Serializable {
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 退款全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
     /**
      * 退款请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 退款请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
     /**
      * 退款金额
      */
-    @JsonProperty("ord_amt")
+    @JSONField(name = "ord_amt")
     private String ordAmt;
     /**
      * 实际退款金额
      */
-    @JsonProperty("actual_ref_amt")
+    @JSONField(name = "actual_ref_amt")
     private String actualRefAmt;
     /**
      * 交易发生日期
      */
-    @JsonProperty("trans_date")
+    @JSONField(name = "trans_date")
     private String transDate;
     /**
      * 交易发生时间
      */
-    @JsonProperty("trans_time")
+    @JSONField(name = "trans_time")
     private String transTime;
     /**
      * 交易类型
      */
-    @JsonProperty("trans_type")
+    @JSONField(name = "trans_type")
     private String transType;
     /**
      * 交易状态
      */
-    @JsonProperty("trans_stat")
+    @JSONField(name = "trans_stat")
     private String transStat;
     /**
      * 通道返回描述
      */
-    @JsonProperty("bank_message")
+    @JSONField(name = "bank_message")
     private String bankMessage;
     /**
      * 手续费金额
      */
-    @JsonProperty("fee_amt")
+    @JSONField(name = "fee_amt")
     private String feeAmt;
     /**
      * 分账对象
      */
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private AcctSplitBunch acctSplitBunch;
     /**
      * 分账手续费信息
      */
-    @JsonProperty("split_fee_info")
+    @JSONField(name = "split_fee_info")
     private SplitFeeInfo splitFeeInfo;
     /**
      * 备注
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
 
     public String getHuifuId() {

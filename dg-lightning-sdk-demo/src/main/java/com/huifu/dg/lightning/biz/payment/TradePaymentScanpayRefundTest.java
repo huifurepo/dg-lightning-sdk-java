@@ -1,13 +1,12 @@
 package com.huifu.dg.lightning.biz.payment;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
-import com.huifu.dg.lightning.models.payment.TradePaymentScanpayRefundRequest;
 import com.huifu.dg.lightning.models.TerminalDeviceData;
+import com.huifu.dg.lightning.models.payment.TradePaymentScanpayRefundRequest;
 import com.huifu.dg.lightning.utils.BasePay;
-
 
 import java.util.Map;
 
@@ -32,16 +31,14 @@ public class TradePaymentScanpayRefundTest {
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("terminal_device_data", getTerminalDeviceData())
                 .refund(request);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+        System.out.println("返回数据:" + JSONObject.toJSONString(response));
     }
 
     private static String getTerminalDeviceData() throws Exception{
         TerminalDeviceData terminalDeviceData = new TerminalDeviceData();
         terminalDeviceData.setDeviceIp("172.28.52.52");
         terminalDeviceData.setDevsId("660035730205200164801");
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        return objectMapper.writeValueAsString(terminalDeviceData);
+        return JSON.toJSONString(terminalDeviceData);
     }
 
 

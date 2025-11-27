@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,32 +14,32 @@ public class TransFeeAllowanceInfo implements Serializable {
     /**
      * 补贴手续费金额
      */
-    @JsonProperty("allowance_fee_amt")
+    @JSONField(name = "allowance_fee_amt")
     private String allowanceFeeAmt;
     /**
      * 商户应收手续费
      */
-    @JsonProperty("receivable_fee_amt")
+    @JSONField(name = "receivable_fee_amt")
     private String receivableFeeAmt;
     /**
      * 商户实收手续费
      */
-    @JsonProperty("actual_fee_amt")
+    @JSONField(name = "actual_fee_amt")
     private String actualFeeAmt;
     /**
      * 补贴类型
      */
-    @JsonProperty("allowance_type")
+    @JSONField(name = "allowance_type")
     private String allowanceType;
     /**
      * 不补贴原因
      */
-    @JsonProperty("no_allowance_desc")
+    @JSONField(name = "no_allowance_desc")
     private String noAllowanceDesc;
     /**
      * 活动详情
      */
-    @JsonProperty("cur_allowance_config_infos")
+    @JSONField(name = "cur_allowance_config_infos")
     private List<CurAllowanceConfigInfo> curAllowanceConfigInfos;
 
     public String getAllowanceFeeAmt() {

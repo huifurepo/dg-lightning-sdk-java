@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,32 +13,32 @@ public class VoucherDetail implements Serializable {
     /**
      * 券id
      */
-    @JsonProperty("id")
+    @JSONField(name = "id")
     private String id;
     /**
      * 券名称
      */
-    @JsonProperty("name")
+    @JSONField(name = "name")
     private String name;
     /**
      * 券类型
      */
-    @JsonProperty("type")
+    @JSONField(name = "type")
     private String type;
     /**
      * 优惠券面额
      */
-    @JsonProperty("amount")
+    @JSONField(name = "amount")
     private String amount;
     /**
      * 商家出资
      */
-    @JsonProperty("merchant_contribute")
+    @JSONField(name = "merchant_contribute")
     private String merchantContribute;
     /**
      * 其他出资方出资金额
      */
-    @JsonProperty("other_contribute")
+    @JSONField(name = "other_contribute")
     private String otherContribute;
 
     public String getId() {

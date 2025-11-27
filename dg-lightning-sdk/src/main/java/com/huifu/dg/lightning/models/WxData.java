@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,62 +13,62 @@ public class WxData implements Serializable {
     /**
      * 扫码设备读出的条形码或者二维码信息
      */
-    @JsonProperty("auth_code")
+    @JSONField(name = "auth_code")
     private String authCode;
     /**
      * 子商户应用ID
      */
-    @JsonProperty("sub_appid")
+    @JSONField(name = "sub_appid")
     private String subAppid;
     /**
      * 子商户用户标识
      */
-    @JsonProperty("sub_openid")
+    @JSONField(name = "sub_openid")
     private String subOpenid;
     /**
      * 附加数据
      */
-    @JsonProperty("attach")
+    @JSONField(name = "attach")
     private String attach;
     /**
      * 商品描述
      */
-    @JsonProperty("body")
+    @JSONField(name = "body")
     private String body;
     /**
      * 商品详情
      */
-    @JsonProperty("detail")
+    @JSONField(name = "detail")
     private Detail detail;
     /**
      * 场景信息
      */
-    @JsonProperty("scene_info")
+    @JSONField(name = "scene_info")
     private SceneInfo sceneInfo;
     /**
      * 终端ip
      */
-    @JsonProperty("spbill_create_ip")
+    @JSONField(name = "spbill_create_ip")
     private String spbillCreateIp;
     /**
      * 开发票入口开放标识
      */
-    @JsonProperty("receipt")
+    @JSONField(name = "receipt")
     private String receipt;
     /**
      * 设备信息
      */
-    @JsonProperty("device_info")
+    @JSONField(name = "device_info")
     private String deviceInfo;
     /**
      * 单品优惠标识
      */
-    @JsonProperty("promotion_flag")
+    @JSONField(name = "promotion_flag")
     private String promotionFlag;
     /**
      * 订单优惠标记
      */
-    @JsonProperty("goods_tag")
+    @JSONField(name = "goods_tag")
     private String goodsTag;
 
     public String getAuthCode() {

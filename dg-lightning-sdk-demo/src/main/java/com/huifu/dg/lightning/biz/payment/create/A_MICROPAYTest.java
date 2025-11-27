@@ -1,16 +1,16 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AlipayData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
-
 import com.huifu.dg.lightning.utils.SequenceTools;
 
 import java.util.Map;
+
 
 /**
  * @author bo.dong
@@ -42,18 +42,17 @@ public class A_MICROPAYTest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为微信小程序需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String dataString="";
         AlipayData alipayData = new AlipayData();
         alipayData.setBuyerId("2088111111111111");
         alipayData.setAuthCode("2884138408701518074");
 //付款码必传终端信息 TerminalDeviceData 对象
         request.setTerminalDeviceData("{\"deviceIp\":\"172.28.52.52\",\"merDeviceType\":\"11\",\"devsId\":\"SPINTP351420900692801\"}");
-        dataString = objectMapper.writeValueAsString(alipayData);
+        dataString = JSON.toJSONString(alipayData);
         request.setTradeType("A_MICROPAY"); // 交易类型
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", dataString).create(request);
-        System.out.println("A_MICROPAY返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("A_MICROPAY返回数据:" + JSON.toJSONString(response));
     }
 
 

@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,18 +16,18 @@ public class AcctSplitBunch implements Serializable {
 	/***
 	 * 百分比分账标志
 	 */
-    @JsonProperty("percentage_flag")
+    @JSONField(name = "percentage_flag")
 	protected String percentageFlag;
 
 	/***
 	 * 是否净值分账
 	 */
-    @JsonProperty("is_clean_split")
+    @JSONField(name = "is_clean_split")
 	protected String isCleanSplit;
 	/***
 	 * 分账明细
 	 */
-    @JsonProperty("acct_infos")
+    @JSONField(name = "acct_infos")
 	protected List<AcctInfo> acctInfos;
 
 

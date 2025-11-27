@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,27 +13,27 @@ public class FundBill implements Serializable {
     /**
      * 银行卡支付时的银行代码
      */
-    @JsonProperty("bank_code")
+    @JSONField(name = "bank_code")
     private String bankCode;
     /**
      * 该支付工具类型所使用的金额
      */
-    @JsonProperty("amount")
+    @JSONField(name = "amount")
     private String amount;
     /**
      * 交易使用的资金渠道
      */
-    @JsonProperty("fund_channel")
+    @JSONField(name = "fund_channel")
     private String fundChannel;
     /**
      * 渠道所使用的资金类型
      */
-    @JsonProperty("fund_type")
+    @JSONField(name = "fund_type")
     private String fundType;
     /**
      * 渠道实际付款金额
      */
-    @JsonProperty("real_amount")
+    @JSONField(name = "real_amount")
     private String realAmount;
 
     public String getBankCode() {

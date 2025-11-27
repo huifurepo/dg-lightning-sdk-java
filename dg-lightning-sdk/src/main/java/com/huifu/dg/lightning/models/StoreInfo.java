@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,22 +13,22 @@ public class StoreInfo implements Serializable {
     /**
      * 门店id
      */
-    @JsonProperty("id")
+    @JSONField(name = "id")
     private String id;
     /**
      * 门店名称
      */
-    @JsonProperty("name")
+    @JSONField(name = "name")
     private String name;
     /**
      * 门店行政区划码
      */
-    @JsonProperty("area_code")
+    @JSONField(name = "area_code")
     private String areaCode;
     /**
      * 门店详细地址
      */
-    @JsonProperty("address")
+    @JSONField(name = "address")
     private String address;
 
     public String getId() {

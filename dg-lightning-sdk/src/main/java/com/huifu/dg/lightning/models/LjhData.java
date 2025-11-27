@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,12 +13,12 @@ public class LjhData implements Serializable {
     /**
      * 税源地ID
      */
-    @JsonProperty("tax_area_id")
+    @JSONField(name = "tax_area_id")
     private String taxAreaId;
     /**
      * 任务模板ID
      */
-    @JsonProperty("template_id")
+    @JSONField(name = "template_id")
     private String templateId;
 
     public String getTaxAreaId() {

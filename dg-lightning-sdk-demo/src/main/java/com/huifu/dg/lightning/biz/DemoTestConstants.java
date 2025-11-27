@@ -59,13 +59,13 @@ public class DemoTestConstants {
     /**
      * 自定义的连接超时时间
      */
-    public static final int CUSTOM_CONNECT_TIMEOUT = 20000;
+    public static final String CUSTOM_CONNECT_TIMEOUT = "20000";
     /**
-     * 自定义的写超时时间
+     * 自定义的连接请求超时时间
      */
-    public static final int CUSTOM_WRITE_TIMEOUT = 10000;
+    public static final String CUSTOM_CONNECTION_REQUEST_TIMEOUT = "20000";
     /**
-     * 自定义的读超时时间
+     * 自定义的请求超时时间
      */
-    public static final int CUSTOM_READ_TIMEOUT = 30000;
+    public static final String CUSTOM_SOCKET_TIMEOUT = "20000";
 }

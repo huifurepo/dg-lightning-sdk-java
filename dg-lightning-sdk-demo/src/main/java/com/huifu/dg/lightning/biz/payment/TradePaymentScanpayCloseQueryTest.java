@@ -1,13 +1,11 @@
 package com.huifu.dg.lightning.biz.payment;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.payment.TradePaymentScanpayClosequeryRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
-
 import com.huifu.dg.lightning.utils.SequenceTools;
 
 import java.util.Map;
@@ -31,8 +29,7 @@ public class TradePaymentScanpayCloseQueryTest {
         request.setOrgReqSeqId("20210916165555E35877");
         request.setOrgHfSeqId("0036000topA210916165555P153c0a8559500000");
         Map<String, Object> response = Factory.Payment.Common().closeQuery(request);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+        System.out.println("返回数据:" + JSONObject.toJSONString(response));
     }
 
     public static void main(String[] args) throws Exception {

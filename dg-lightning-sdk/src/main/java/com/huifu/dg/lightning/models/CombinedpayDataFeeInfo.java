@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,17 +13,17 @@ public class CombinedpayDataFeeInfo implements Serializable {
     /**
      * 手续费承担方汇付号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 手续费承担方账户号
      */
-    @JsonProperty("acct_id")
+    @JSONField(name = "acct_id")
     private String acctId;
     /**
      * 手续费金额
      */
-    @JsonProperty("combinedpay_fee_amt")
+    @JSONField(name = "combinedpay_fee_amt")
     private String combinedpayFeeAmt;
 
     public String getHuifuId() {

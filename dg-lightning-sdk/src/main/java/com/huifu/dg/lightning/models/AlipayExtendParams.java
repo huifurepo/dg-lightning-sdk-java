@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,17 +13,17 @@ public class AlipayExtendParams implements Serializable {
     /**
      * 花呗分期数
      */
-    @JsonProperty("hb_fq_num")
+    @JSONField(name = "hb_fq_num")
     private String hbFqNum;
     /**
      * 花呗卖家手续费百分比
      */
-    @JsonProperty("hb_fq_seller_percent")
+    @JSONField(name = "hb_fq_seller_percent")
     private String hbFqSellerPercent;
     /**
      * 信用卡分期资产方式
      */
-    @JsonProperty("fq_channels")
+    @JSONField(name = "fq_channels")
     private String fqChannels;
 
     public String getHbFqNum() {

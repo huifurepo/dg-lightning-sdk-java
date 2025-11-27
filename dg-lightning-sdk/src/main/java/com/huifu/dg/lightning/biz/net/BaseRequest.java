@@ -5,7 +5,7 @@
 package com.huifu.dg.lightning.biz.net;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  *
@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @version v 0.1
  */
 public class BaseRequest {
-    @JsonProperty("data")
+    @JSONField(name = "data")
     private String data;
-    @JsonProperty("sign")
+    @JSONField(name = "sign")
     private String sign;
-    @JsonProperty("sys_id")
+    @JSONField(name = "sys_id")
     private String sysId;
-    @JsonProperty("sign_type")
+    @JSONField(name = "sign_type")
     private String signType;
 
     public String getData() {

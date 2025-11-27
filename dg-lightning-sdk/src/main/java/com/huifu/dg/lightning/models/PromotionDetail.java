@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,47 +14,47 @@ public class PromotionDetail implements Serializable {
     /**
      * 券id
      */
-    @JsonProperty("promotion_id")
+    @JSONField(name = "promotion_id")
     private String promotionId;
     /**
      * 优惠名称
      */
-    @JsonProperty("name")
+    @JSONField(name = "name")
     private String name;
     /**
      * 优惠范围
      */
-    @JsonProperty("scope")
+    @JSONField(name = "scope")
     private String scope;
     /**
      * 优惠类型
      */
-    @JsonProperty("type")
+    @JSONField(name = "type")
     private String type;
     /**
      * 优惠券面额
      */
-    @JsonProperty("amount")
+    @JSONField(name = "amount")
     private String amount;
     /**
      * 活动ID
      */
-    @JsonProperty("activity_id")
+    @JSONField(name = "activity_id")
     private String activity_id;
     /**
      * 商户出资
      */
-    @JsonProperty("merchant_contribute")
+    @JSONField(name = "merchant_contribute")
     private String merchantContribute;
     /**
      * 其他出资
      */
-    @JsonProperty("other_contribute")
+    @JSONField(name = "other_contribute")
     private String otherContribute;
     /**
      * 单品列表
      */
-    @JsonProperty("goods_detail")
+    @JSONField(name = "goods_detail")
     private List<WxGoodsDetail> goodsDetails;
 
     public String getPromotionId() {

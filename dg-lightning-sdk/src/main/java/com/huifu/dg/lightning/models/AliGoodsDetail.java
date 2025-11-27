@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,42 +13,42 @@ public class AliGoodsDetail implements Serializable {
     /**
      * 商品编码
      */
-    @JsonProperty("goods_id")
+    @JSONField(name = "goods_id")
     private String goodsId;
     /**
      * 商品名称
      */
-    @JsonProperty("goods_name")
+    @JSONField(name = "goods_name")
     private String goodsName;
     /**
      * 商品单价(元)
      */
-    @JsonProperty("price")
+    @JSONField(name = "price")
     private String price;
     /**
      * 商品数量
      */
-    @JsonProperty("quantity")
+    @JSONField(name = "quantity")
     private Integer quantity;
     /**
      * 商品描述信息
      */
-    @JsonProperty("body")
+    @JSONField(name = "body")
     private String body;
     /**
      * 商品类目树
      */
-    @JsonProperty("categories_tree")
+    @JSONField(name = "categories_tree")
     private String categoriesTree;
     /**
      * 商品的展示地址
      */
-    @JsonProperty("show_url")
+    @JSONField(name = "show_url")
     private String showUrl;
     /**
      * 商品类目
      */
-    @JsonProperty("goods_category")
+    @JSONField(name = "goods_category")
     private String goodsCategory;
 
     public String getGoodsId() {

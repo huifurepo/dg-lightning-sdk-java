@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz.solution.delayTrans;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AcctInfo;
@@ -9,7 +9,6 @@ import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.solution.delayTrans.TradePaymentDelayTransConfirmRefundRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
-
 import com.huifu.dg.lightning.utils.SequenceTools;
 
 import java.util.ArrayList;
@@ -40,8 +39,7 @@ public class TradePaymentDelayTransConfirmRefundTest {
         request.setAcctSplitBunch(getAcctSplitBunch());
         //是否垫资退款
         Map<String, Object> response = Factory.Solution.DelayTrans().refund(request);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+        System.out.println("返回数据:" + JSONObject.toJSONString(response));
 
     }
 
@@ -60,8 +58,7 @@ public class TradePaymentDelayTransConfirmRefundTest {
 
         AcctSplitBunch acctSplitBunch = new AcctSplitBunch();
         acctSplitBunch.setAcctInfos(acctInfos);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        return objectMapper.writeValueAsString(acctSplitBunch);
+        return JSON.toJSONString(acctSplitBunch);
     }
 
     public static void main(String[] args) throws Exception {

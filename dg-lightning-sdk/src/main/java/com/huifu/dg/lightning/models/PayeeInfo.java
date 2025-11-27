@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,22 +13,22 @@ public class PayeeInfo implements Serializable {
     /**
      * 商户类别
      */
-    @JsonProperty("mer_cat_code")
+    @JSONField(name = "mer_cat_code")
     private String merCatCode;
     /**
      * 二级商户代码
      */
-    @JsonProperty("sub_id")
+    @JSONField(name = "sub_id")
     private String subId;
     /**
      * 二级商户名称
      */
-    @JsonProperty("sub_name")
+    @JSONField(name = "sub_name")
     private String subName;
     /**
      * 终端号
      */
-    @JsonProperty("term_id")
+    @JSONField(name = "term_id")
     private String termId;
 
     public String getMerCatCode() {

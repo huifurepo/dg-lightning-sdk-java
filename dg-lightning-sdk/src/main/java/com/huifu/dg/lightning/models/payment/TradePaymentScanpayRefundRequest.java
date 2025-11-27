@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.payment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -13,47 +13,47 @@ public class TradePaymentScanpayRefundRequest extends BaseRequest {
     /**
      * 请求日期
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 申请退款金额
      */
-    @JsonProperty("ord_amt")
+    @JSONField(name = "ord_amt")
     private String ordAmt;
     /**
      * 原交易请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 原交易全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
     /**
      * 原交易微信支付宝的商户单号
      */
-    @JsonProperty("org_party_order_id")
+    @JSONField(name = "org_party_order_id")
     private String orgPartyOrderId;
     /**
      * 原交易请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
     /**
      * 交易类型扩展参数
      */
-    @JsonProperty("method_expand")
+    @JSONField(name = "method_expand")
     private String methodExpand;
 
     public String getReqDate() {

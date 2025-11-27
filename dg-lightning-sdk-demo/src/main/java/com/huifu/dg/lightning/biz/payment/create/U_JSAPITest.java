@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.UnionpayData;
@@ -44,17 +44,16 @@ public class U_JSAPITest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为支付宝JS支付需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String unionPayDataString="";
         UnionpayData unionpayData = new UnionpayData();
         unionpayData.setQrCode("union-542323asdas12351111");
         unionpayData.setUserId("union4f4f5a5f5a5f5a11");
 
-        unionPayDataString = objectMapper.writeValueAsString(unionpayData);
+        unionPayDataString = JSON.toJSONString(unionpayData);
         request.setTradeType("U_JSAPI");
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", unionPayDataString).create(request);
-        System.out.println("U_JSAPI返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("U_JSAPI返回数据:" + JSON.toJSONString(response));
     }
 
 

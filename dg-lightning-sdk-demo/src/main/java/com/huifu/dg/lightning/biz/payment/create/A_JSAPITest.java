@@ -1,17 +1,14 @@
 package com.huifu.dg.lightning.biz.payment.create;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AlipayData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
-
 import com.huifu.dg.lightning.utils.SequenceTools;
 
-import java.util.HashMap;
 import java.util.Map;
 /**
  * @author bo.dong
@@ -43,7 +40,6 @@ public class A_JSAPITest {
 // 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
 
 //以下为支付宝JS支付需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String aliDataString="";
         AlipayData alipayData = new AlipayData();
         //需要前端获取buyerId
@@ -51,11 +47,11 @@ public class A_JSAPITest {
         alipayData.setBuyerId("208870269990XXXX");
 //        alipayData.setBuyerLogonId("string");
 //支付宝相关参数可参考官方文档 https://opendocs.alipay.com/mini/6039ed0c_alipay.trade.create?scene=de4d6a1e0c6e423b9eefa7c3a6dcb7a5&pathHash=779dc517
-        aliDataString = objectMapper.writeValueAsString(alipayData);
+        aliDataString = JSON.toJSONString(alipayData);
         request.setTradeType("A_JSAPI"); // 交易类型 - 支付宝js
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", aliDataString).create(request);
-        System.out.println("A_JSAPI返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("A_JSAPI返回数据:" + JSON.toJSONString(response));
     }
 
 

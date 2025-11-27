@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.huifu.dg.lightning.sdk</groupId>
     <artifactId>dg-lightning-sdk-demo</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
     <name>${project.artifactId} - ${project.version}</name>
     <inceptionYear>2025</inceptionYear>
@@ -23,8 +23,7 @@
            <dependency>
                <groupId>com.huifu.dg.lightning.sdk</groupId>
                <artifactId>dg-lightning-sdk</artifactId>
-               <version>1.0.2</version>
-               <classifier>shaded</classifier>
+               <version>1.0.3</version>
            </dependency>
 
 

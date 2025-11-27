@@ -1,7 +1,6 @@
 package com.huifu.dg.lightning.biz.solution.delayTrans;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.solution.delayTrans.TradeTransSplitQueryRequest;
@@ -29,8 +28,7 @@ public class TradeTransSplitQueryTest {
         request.setOrdType("refund");
         //是否垫资退款
         Map<String, Object> response = Factory.Solution.DelayTrans().splitQuery(request);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+        System.out.println("返回数据:" + JSONObject.toJSONString(response));
 
     }
 

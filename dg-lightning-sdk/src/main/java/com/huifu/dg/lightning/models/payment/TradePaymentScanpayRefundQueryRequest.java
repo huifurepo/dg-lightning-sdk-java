@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.payment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -14,27 +14,27 @@ public class TradePaymentScanpayRefundQueryRequest extends BaseRequest {
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 原退款请求日期
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 原退款请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
     /**
      * 原退款全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
     /**
      * 终端订单号
      */
-    @JsonProperty("mer_ord_id")
+    @JSONField(name = "mer_ord_id")
     private String merOrdId;
 
     public String getHuifuId() {

@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,37 +13,37 @@ public class ExtUserInfo implements Serializable {
     /**
      * 姓名
      */
-    @JsonProperty("name")
+    @JSONField(name = "name")
     private String name;
     /**
      * 手机号
      */
-    @JsonProperty("mobile")
+    @JSONField(name = "mobile")
     private String mobile;
     /**
      * 证件类型
      */
-    @JsonProperty("cert_type")
+    @JSONField(name = "cert_type")
     private String certType;
     /**
      * 证件号
      */
-    @JsonProperty("cert_no")
+    @JSONField(name = "cert_no")
     private String certNo;
     /**
      * 允许的最小买家年龄
      */
-    @JsonProperty("min_age")
+    @JSONField(name = "min_age")
     private String minAge;
     /**
      * 是否强制校验付款人身份信息
      */
-    @JsonProperty("fix_buyer")
+    @JSONField(name = "fix_buyer")
     private String fixBuyer;
     /**
      * 是否强制校验身份信息
      */
-    @JsonProperty("need_check_info")
+    @JSONField(name = "need_check_info")
     private String needCheckInfo;
 
     public String getName() {

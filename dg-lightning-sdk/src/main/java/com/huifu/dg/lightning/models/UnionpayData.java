@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,52 +13,52 @@ public class UnionpayData implements Serializable {
     /**
      * 扫码设备读出的条形码或者二维码信息
      */
-    @JsonProperty("auth_code")
+    @JSONField(name = "auth_code")
     private String authCode;
     /**
      * 二维码
      */
-    @JsonProperty("qr_code")
+    @JSONField(name = "qr_code")
     private String qrCode;
     /**
      * 收款方附加数据
      */
-    @JsonProperty("addn_data")
+    @JSONField(name = "addn_data")
     private String addnData;
     /**
      * 持卡人ip
      */
-    @JsonProperty("customer_ip")
+    @JSONField(name = "customer_ip")
     private String customerIp;
     /**
      * 前台通知地址
      */
-    @JsonProperty("front_url")
+    @JSONField(name = "front_url")
     private String frontUrl;
     /**
      * 订单描述
      */
-    @JsonProperty("order_desc")
+    @JSONField(name = "order_desc")
     private String orderDesc;
     /**
      * 收款方附言
      */
-    @JsonProperty("payee_comments")
+    @JSONField(name = "payee_comments")
     private String payeeComments;
     /**
      * 收款方信息
      */
-    @JsonProperty("payee_info")
+    @JSONField(name = "payee_info")
     private PayeeInfo payeeInfo;
     /**
      * 请求方自定义域
      */
-    @JsonProperty("req_reserved")
+    @JSONField(name = "req_reserved")
     private String reqReserved;
     /**
      * 银联用户标识
      */
-    @JsonProperty("user_id")
+    @JSONField(name = "user_id")
     private String userId;
 
     public String getAuthCode() {

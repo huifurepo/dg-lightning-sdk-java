@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -15,37 +15,37 @@ public class TerminalDeviceData implements Serializable {
     /**
      * 交易设备IP。
      */
-    @JsonProperty("device_ip")
+    @JSONField(name = "device_ip")
     String deviceIp;
     /**
      * 交易设备MAC
      */
-    @JsonProperty("device_mac")
+    @JSONField(name = "device_mac")
     String deviceMac;
     /**
      * 商户设备类型
      */
-    @JsonProperty("mer_device_type")
+    @JSONField(name = "mer_device_type")
     String merDeviceType;
     /**
      * 终端序列号
      */
-    @JsonProperty("serial_num")
+    @JSONField(name = "serial_num")
     String serialNum;
     /**
      * 汇付机具号
      */
-    @JsonProperty("devs_id")
+    @JSONField(name = "devs_id")
     String devsId;
     /**
      * 交易设备IP
      */
-    @JsonProperty("terminal_ip")
+    @JSONField(name = "terminal_ip")
     String terminalIp;
     /**
      * 终端经纬度
      */
-    @JsonProperty("terminal_location")
+    @JSONField(name = "terminal_location")
     String terminalLocation;
 
     public String getDeviceIp() {

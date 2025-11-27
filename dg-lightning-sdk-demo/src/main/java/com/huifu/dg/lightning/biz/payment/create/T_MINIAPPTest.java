@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz.payment.create;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.WxData;
@@ -39,18 +39,17 @@ public class T_MINIAPPTest {
 
         request.setTradeType("T_MINIAPP"); // 交易类型 - 微信小程序
         //以下为微信小程序需要的参数
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
         String wxDataString="";
         WxData wxData = new WxData();
         wxData.setSubOpenid("o8jhotzittQSetZ-N0Yj4Hz91Rqc");
         wxData.setSubAppid("wxdfe9a5d141f96685");
         //微信相关参数可参考官方文档 https://pay.weixin.qq.com/doc/v2/merchant/4011935214
         //复杂{"body":"香土鸡餐馆：线下支付","detail":{"cost_price":"1.0","goods_detail":[{"goods_id":"1967776038541551111","goods_name":"香土鸡餐馆：线下支付","price":"1.0","quantity":1}],"receipt_id":"1970743410445500000"},"scene_info":{"store_info":{"id":"1967776038541550000","name":"香土鸡餐馆：线下支付"}},"sub_appid":"wx969f2ef2df1111","sub_openid":"oqVX87O2I2U3rT-BBBBBBBB-YsU"}
-        wxDataString = objectMapper.writeValueAsString(wxData);
+        wxDataString = JSON.toJSONString(wxData);
 
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand", wxDataString).create(request);
-        System.out.println("T_JSAPI返回数据:" + MyJacksonUtils.convert2JsonString(response));
+        System.out.println("T_MINIAPP返回数据:" +  JSON.toJSONString(response));
     }
 
 }

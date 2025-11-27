@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,40 +13,40 @@ public class BaseResponse implements Serializable {
     /**
      * 请求时间
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     String reqDate;
     /**
      * 业务响应码
      */
-    @JsonProperty("resp_code")
+    @JSONField(name = "resp_code")
     private String respCode;
     /**
      * 业务响应信息
      */
 
-    @JsonProperty("resp_desc")
+    @JSONField(name = "resp_desc")
     private String respDesc;
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
 
     /**
      * 商户号
      */
-    @JsonProperty("acct_id")
+    @JSONField(name = "acct_id")
     private String acctId;
 
     /**
      * 汇付全局流水号
      */
-    @JsonProperty("hf_seq_id")
+    @JSONField(name = "hf_seq_id")
     private String hfSeqId;
 
     public String getReqDate() {

@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.models.payment;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
@@ -16,72 +16,72 @@ public class TradePaymentCreateRequest extends BaseRequest {
     /**
      * 请求日期
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 商品描述
      */
-    @JsonProperty("goods_desc")
+    @JSONField(name = "goods_desc")
     private String goodsDesc;
     /**
      * 交易类型
      */
-    @JsonProperty("trade_type")
+    @JSONField(name = "trade_type")
     private String tradeType;
     /**
      * 交易类型扩展参数
      */
-    @JsonProperty("method_expand")
+    @JSONField(name = "method_expand")
     private String methodExpand;
     /**
      * 交易金额
      */
-    @JsonProperty("trans_amt")
+    @JSONField(name = "trans_amt")
     private String transAmt;
     /**
      * 备注
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
     /**
      * 交易有效期
      */
-    @JsonProperty("time_expire")
+    @JSONField(name = "time_expire")
     private String timeExpire;
     /**
      * 延迟标识
      */
-    @JsonProperty("delay_acct_flag")
+    @JSONField(name = "delay_acct_flag")
     private String delayAcctFlag;
     /**
      * 手续费扣款标识
      */
-    @JsonProperty("fee_flag")
+    @JSONField(name = "fee_flag")
     private String feeFlag;
     /**
      * 分账对象
      */
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private String acctSplitBunch;
     /**
      * 设备信息
      */
-    @JsonProperty("terminal_device_data")
+    @JSONField(name = "terminal_device_data")
     private String terminalDeviceData;
     /**
      * 异步通知地址
      */
-    @JsonProperty("notify_url")
+    @JSONField(name = "notify_url")
     private String notifyUrl;
 
     public String getReqDate() {

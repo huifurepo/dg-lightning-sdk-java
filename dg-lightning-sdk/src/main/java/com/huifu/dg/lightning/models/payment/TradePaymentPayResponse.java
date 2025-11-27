@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.payment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseResponse;
 
 import java.io.Serializable;
@@ -14,133 +14,133 @@ public class TradePaymentPayResponse extends BaseResponse implements Serializabl
     /**
      * 交易类型
      */
-    @JsonProperty("trade_type")
+    @JSONField(name = "trade_type")
     private String tradeType;
     /**
      * 交易金额
      */
-    @JsonProperty("trans_amt")
+    @JSONField(name = "trans_amt")
     private String transAmt;
 
     /**
      * 交易状态
      */
-    @JsonProperty("trans_stat")
+    @JSONField(name = "trans_stat")
     private String transStat;
     /**
      * 是否延迟入账
      */
-    @JsonProperty("delay_acct_flag")
+    @JSONField(name = "delay_acct_flag")
     private String delayAcctFlag;
     /**
      * 交易备注 商户私有域
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
     /**
      * 设备类型。
      */
-    @JsonProperty("device_type")
+    @JSONField(name = "device_type")
     private String deviceType;
     /**
      * 支付凭证号
      */
-    @JsonProperty("party_order_id")
+    @JSONField(name = "party_order_id")
     private String partyOrderId;
     /**
      * 待确认金额
      */
-    @JsonProperty("unconfirm_amt")
+    @JSONField(name = "unconfirm_amt")
     private String unconfirmAmt;
 
     /**
      * 结算金额
      */
-    @JsonProperty("settlement_amt")
+    @JSONField(name = "settlement_amt")
     private String settlementAmt;
 
     /**
      * 微信支付宝订单号
      */
-    @JsonProperty("out_trans_id")
+    @JSONField(name = "out_trans_id")
     private String outTransId;
     /**
      * 账务状态
      */
-    @JsonProperty("acct_stat")
+    @JSONField(name = "acct_stat")
     private String acctStat;
     /**
      * 外部通道返回码
      */
-    @JsonProperty("bank_code")
+    @JSONField(name = "bank_code")
     private String bankCode;
 
     /**
      * 通道返回描述
      */
-    @JsonProperty("bank_message")
+    @JSONField(name = "bank_message")
     private String bankMessage;
 
     /**
      * 支付完成时间
      */
-    @JsonProperty("end_time")
+    @JSONField(name = "end_time")
     private String endTime;
     /**
      * 借贷标识
      */
-    @JsonProperty("debit_type")
+    @JSONField(name = "debit_type")
     private String debitType;
 
     /**
      * 微信用户唯一标识码
      */
-    @JsonProperty("wx_user_id")
+    @JSONField(name = "wx_user_id")
     private String wxUserId;
 
     /**
      * 手续费商户号
      */
-    @JsonProperty("atu_sub_mer_id")
+    @JSONField(name = "atu_sub_mer_id")
     private String atuSubMerId;
 
     /**
      * 交易扩展参数
      */
-    @JsonProperty("method_expand")
+    @JSONField(name = "method_expand")
     private String methodExpand;
 
     /**
      * 二维码链接
      */
-    @JsonProperty("qr_code")
+    @JSONField(name = "qr_code")
     private String qrCode;
     /**
      * js支付信息
      */
-    @JsonProperty("pay_info")
+    @JSONField(name = "pay_info")
     private String payInfo;
     /**
      * 手续费对象
      */
-    @JsonProperty("payment_fee")
+    @JSONField(name = "payment_fee")
     private String paymentFee;
     /**
      * 补贴支付信息
      */
-    @JsonProperty("combinedpay_data")
+    @JSONField(name = "combinedpay_data")
     private String combinedpayData;
 
     /**
      * 补贴支付手续费承担方信息
      */
-    @JsonProperty("combinedpay_data_fee_info")
+    @JSONField(name = "combinedpay_data_fee_info")
     private String combinedpayDataFeeInfo;
 
     /**
      * 手续费补贴信息
      */
-    @JsonProperty("trans_fee_allowance_info")
+    @JSONField(name = "trans_fee_allowance_info")
     private String transFeeAllowanceInfo;
 
     public String getTradeType() {

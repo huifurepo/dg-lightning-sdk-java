@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ public class UnionpayResponse implements Serializable {
     /**
      * 二维码有效时间
      */
-    @JsonProperty("qr_valid_time")
+    @JSONField(name = "qr_valid_time")
     private String qrValidTime;
 
     public String getQrValidTime() {

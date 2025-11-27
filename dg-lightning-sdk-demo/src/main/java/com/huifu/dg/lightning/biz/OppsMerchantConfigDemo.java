@@ -43,18 +43,18 @@ public class OppsMerchantConfigDemo {
             merConfig.setRsaPrivateKey(DemoTestConstants.DEMO_RSA_PRIVATE_KEY);
             merConfig.setRsaPublicKey(DemoTestConstants.DEMO_RSA_PUBLIC_KEY);
             //自定义超时时间
+            merConfig.setCustomSocketTimeout(DemoTestConstants.CUSTOM_SOCKET_TIMEOUT);
             merConfig.setCustomConnectTimeout(DemoTestConstants.CUSTOM_CONNECT_TIMEOUT);
-            merConfig.setCustomReadtTimeout(DemoTestConstants.CUSTOM_READ_TIMEOUT);
-            merConfig.setCustomWriteTimeout(DemoTestConstants.CUSTOM_WRITE_TIMEOUT);
+            merConfig.setCustomConnectionRequestTimeout(DemoTestConstants.CUSTOM_CONNECTION_REQUEST_TIMEOUT);
         }else{
             merConfig.setProductId(DemoProdConstants.DEMO_PRODUCT_ID);
             merConfig.setSysId(DemoProdConstants.DEMO_SYS_ID);
             merConfig.setRsaPrivateKey(DemoProdConstants.DEMO_RSA_PRIVATE_KEY);
             merConfig.setRsaPublicKey(DemoProdConstants.DEMO_RSA_PUBLIC_KEY);
             //自定义超时时间
-            merConfig.setCustomConnectTimeout(DemoProdConstants.CUSTOM_CONNECT_TIMEOUT);
-            merConfig.setCustomReadtTimeout(DemoProdConstants.CUSTOM_READ_TIMEOUT);
-            merConfig.setCustomWriteTimeout(DemoProdConstants.CUSTOM_WRITE_TIMEOUT);
+            merConfig.setCustomSocketTimeout(DemoTestConstants.CUSTOM_SOCKET_TIMEOUT);
+            merConfig.setCustomConnectTimeout(DemoTestConstants.CUSTOM_CONNECT_TIMEOUT);
+            merConfig.setCustomConnectionRequestTimeout(DemoTestConstants.CUSTOM_CONNECTION_REQUEST_TIMEOUT);
         }
 
         return merConfig;

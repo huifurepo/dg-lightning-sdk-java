@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -15,27 +15,27 @@ public class AcctInfo implements Serializable {
     /**
      * 分账金额 (单位元，需保留小数点后两位，例如：1.00,最低传入0.01)
      */
-    @JsonProperty("div_amt")
+    @JSONField(name = "div_amt")
     protected String divAmt;
     /**
      * 客户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     protected String huifuId;
     /**
      * 账户号
      */
-    @JsonProperty("acct_id")
+    @JSONField(name = "acct_id")
     protected String acctId;
     /**
      * 分账百分比%
      */
-    @JsonProperty("percentage_div")
+    @JSONField(name = "percentage_div")
     protected String percentageDiv;
     /**
      * 账务日期
      */
-    @JsonProperty("acct_date")
+    @JSONField(name = "acct_date")
     protected String acctDate;
 
 	public String getDivAmt() {

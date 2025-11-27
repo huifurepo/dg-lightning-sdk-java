@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.huifu.dg.lightning.sdk</groupId>
     <artifactId>dg-lightning-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
     <name>${project.artifactId} - ${project.version}</name>
     <inceptionYear>2025</inceptionYear>
@@ -38,7 +38,7 @@
         <url>github.com/huifurepo/dg-lightning-sdk-java.git</url>
     </scm>
     <distributionManagement>
-        <!--         <repository>
+                <!-- <repository>
                      <id>oss</id>
                      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                  </repository>
@@ -46,7 +46,7 @@
                      <id>oss</id>
                      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
                  </snapshotRepository>-->
-        <repository>
+    <!--    <repository>
             <id>nexus</id>
             <name>Releases</name>
             <url>http://nexus.huifutest.com/repository/releases/</url>
@@ -55,7 +55,7 @@
             <id>nexus</id>
             <name>Snapshots</name>
             <url>http://nexus.huifutest.com/repository/snapshots/</url>
-        </snapshotRepository>
+        </snapshotRepository>-->
 
     </distributionManagement>
 
@@ -129,107 +129,6 @@
                  </executions>
              </plugin>
 
-            <!-- Maven Shade Plugin: 用于重命名 jackson 包以避免依赖冲突 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <createSourcesJar>false</createSourcesJar>
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>shaded</shadedClassifierName>
-                            <!-- 包重命名配置 -->
-                            <relocations>
-                                <!-- 重命名 jackson-core -->
-                                <relocation>
-                                    <pattern>com.fasterxml.jackson.core</pattern>
-                                    <shadedPattern>com.huifu.dg.lightning.sdk.shaded.jackson.core</shadedPattern>
-                                </relocation>
-                                <!-- 重命名 jackson-databind -->
-                                <relocation>
-                                    <pattern>com.fasterxml.jackson.databind</pattern>
-                                    <shadedPattern>com.huifu.dg.lightning.sdk.shaded.jackson.databind</shadedPattern>
-                                </relocation>
-                                <!-- 重命名 jackson-annotations -->
-                                <relocation>
-                                    <pattern>com.fasterxml.jackson.annotation</pattern>
-                                    <shadedPattern>com.huifu.dg.lightning.sdk.shaded.jackson.annotation</shadedPattern>
-                                </relocation>
-                            </relocations>
-                            <!-- 过滤器配置：只包含需要的依赖 -->
-                            <filters>
-                                <filter>
-                                    <artifact>com.fasterxml.jackson.core:jackson-core</artifact>
-                                    <includes>
-                                        <include>**</include>
-                                    </includes>
-                                    <excludes>
-                                        <!-- 排除高版本 Java 字节码文件 -->
-                                        <exclude>META-INF/versions/21/**</exclude>
-                                        <exclude>META-INF/versions/22/**</exclude>
-                                        <exclude>META-INF/versions/23/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>com.fasterxml.jackson.core:jackson-databind</artifact>
-                                    <includes>
-                                        <include>**</include>
-                                    </includes>
-                                    <excludes>
-                                        <!-- 排除高版本 Java 字节码文件 -->
-                                        <exclude>META-INF/versions/21/**</exclude>
-                                        <exclude>META-INF/versions/22/**</exclude>
-                                        <exclude>META-INF/versions/23/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>com.fasterxml.jackson.core:jackson-annotations</artifact>
-                                    <includes>
-                                        <include>**</include>
-                                    </includes>
-                                    <excludes>
-                                        <!-- 排除高版本 Java 字节码文件 -->
-                                        <exclude>META-INF/versions/21/**</exclude>
-                                        <exclude>META-INF/versions/22/**</exclude>
-                                        <exclude>META-INF/versions/23/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <!-- 排除其他不需要 shade 的依赖 -->
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
-                                        <!-- 排除所有多版本 jar 文件 -->
-                                        <exclude>META-INF/versions/**</exclude>
-                                        <exclude>module-info.class</exclude>
-                                        <exclude>**/module-info.class</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                            <!-- 转换器配置：处理服务文件 -->
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <manifestEntries>
-                                        <Implementation-Title>${project.artifactId}</Implementation-Title>
-                                        <Implementation-Version>${project.version}</Implementation-Version>
-                                    </manifestEntries>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
 
         <resources>
@@ -246,24 +145,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.9.1</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
         </dependency>
+
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.18.2</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.2</version>
         </dependency>
+
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.18.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.18.2</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.70</version>
         </dependency>
 
         <!-- util -->

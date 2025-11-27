@@ -1,26 +1,20 @@
 package com.huifu.dg.lightning.biz.net;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.config.MerConfig;
 import com.huifu.dg.lightning.biz.exception.BasePayException;
 import com.huifu.dg.lightning.biz.exception.FailureCode;
 import com.huifu.dg.lightning.utils.BasePay;
-import com.huifu.dg.lightning.utils.JacksonUtils;
+import com.huifu.dg.lightning.utils.HttpClientUtils;
 import com.huifu.dg.lightning.utils.JsonUtils;
-import com.huifu.dg.lightning.utils.OkHttpClientTools;
 import com.huifu.dg.lightning.utils.RsaUtils;
+import com.huifu.dg.lightning.utils.StringUtil;
 import com.huifu.dg.lightning.utils.enums.ServerTypeEnum;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +23,7 @@ import java.util.Map;
  */
 public abstract class AbstractRequest {
 
-    public static final String SDK_VERSION = "1.0.2";
+    public static final String SDK_VERSION = "1.0.3";
 
     protected static enum RequestMethod {
         GET, POST, DELETE, PUT;
@@ -87,14 +81,7 @@ public abstract class AbstractRequest {
         headers.put("jpt-sdk_version", "javaSDK_lightning_" + SDK_VERSION);
         headers.put("sys_id", config.getSysId());
         headers.put("jpt-sys_id", config.getSysId());
-        ObjectMapper mapper = JacksonUtils.getInstance();
-        String reqData = null;
-        try {
-            reqData = mapper.writeValueAsString(params);
-        } catch (JsonProcessingException e) {
-            throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR.getFailureCode(), "param convert error.");
-        }
-
+        String reqData = JSONObject.toJSONString(params);
 
         String privateKey = config.getRsaPrivateKey();
         if (BasePay.debug) {
@@ -116,31 +103,27 @@ public abstract class AbstractRequest {
         if (BasePay.debug) {
             System.out.println("request sign=" + requestSign);
         }
-        ObjectMapper objectMapper = JacksonUtils.getInstance();
-        Map<String, Object> request = null;
-        String requestBody = null;
-        try {
-            request = new HashMap<>();
-            request.put("sys_id", config.getSysId());
-            // request.put("data", JSONObject.parseObject(reqData));
-            request.put("data", objectMapper.readValue(reqData, new TypeReference<Object>() {
-            }));
-            request.put("sign", requestSign);
-            request.put("product_id", config.getProductId());
 
-            //   String requestBody = JSON.toJSONString(request);
-            requestBody = objectMapper.writeValueAsString(request);
-        } catch (JsonProcessingException e) {
-            throw new BasePayException(FailureCode.REQUEST_PARAMETER_ERROR.getFailureCode(), "param request convert error.");
+        Map<String, Object> request = new HashMap<>();
+        request.put("sys_id", config.getSysId());
+        request.put("data", JSONObject.parseObject(reqData));
+        request.put("sign", requestSign);
+        request.put("product_id", config.getProductId());
+
+        String requestBody = JSON.toJSONString(request);
+        if (BasePay.debug) {
+            System.out.println("request data = " + JSONObject.parseObject(reqData));
+            System.out.println("requestBody param = " + requestBody);
         }
+
         if ((RequestMethod.POST == method) && (file == null) && "v2/supplementary/picture".equals(uri)) {
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId(),headers);
+            back = HttpClientUtils.httpPostNoFile(requestUrl.toString(), headers, request, null, fileParam);
         } else if ((RequestMethod.POST == method) && (file == null)) {
-            back = OkHttpClientTools.httpPost(requestUrl.toString(), requestBody, config.getProductId(),headers);
+            back = HttpClientUtils.httpPostJson(requestUrl.toString(), headers, requestBody);
         } else if ((RequestMethod.POST == method) && (file != null)) {
-            back = OkHttpClientTools.httpPostFile(requestUrl.toString(), requestBody, config.getProductId(), file,headers);
+            back = HttpClientUtils.httpPostFile(requestUrl.toString(), headers, request, file, fileParam);
         } else if (RequestMethod.GET == method) {
-            back = OkHttpClientTools.httpGet(requestUrl.toString(), requestBody, config.getProductId(),headers);
+            back = HttpClientUtils.httpGet(requestUrl.toString(), headers, params);
         }
         if (BasePay.debug) {
             System.out.println("response string=" + back);
@@ -158,35 +141,12 @@ public abstract class AbstractRequest {
             return data;
         }
 
-        /*JSONObject jo = JSON.parseObject(back);
+        JSONObject jo = JSON.parseObject(back);
 
         JSONObject data = jo.getJSONObject("data");
-        String sign = jo.getString("sign");*/
-        JsonNode node = null;
-        try {
-            node = objectMapper.readTree(back);
-        } catch (JsonProcessingException e) {
-            throw new BasePayException(FailureCode.SYSTEM_EXCEPTION.getFailureCode(), "response convert error.");
-        }
-        JsonNode data = checkSign(config, mapper, node);
-        Map<String, Object> respData =mapper.convertValue(data, new TypeReference<Map<String, Object>>() {
-        });
-        return respData;
-    }
-
-    private static JsonNode checkSign(MerConfig config, ObjectMapper mapper, JsonNode node) throws BasePayException {
-
-        JsonNode data = node.get("data");
-        JsonNode signNode = node.get("sign");
-        if(signNode==null){
-            if (BasePay.debug) {
-                System.out.println("签名为空");
-            }
-            return data;
-        }
-        String sign = node.get("sign").asText();
+        String sign = jo.getString("sign");
         String publicKey = config.getRsaPublicKey();
-        if (StringUtils.isEmpty(publicKey)) {
+        if (StringUtil.isEmpty(publicKey)) {
             publicKey = BasePay.HUIFU_DEFAULT_PUBLIC_KEY;
         }
         if (BasePay.debug) {
@@ -196,7 +156,7 @@ public abstract class AbstractRequest {
         }
         boolean checkSign;
         try {
-            String sortedData = JsonUtils.sort4JsonString(mapper.writeValueAsString(data), 5);
+            String sortedData = JsonUtils.sort4JsonString(JSONObject.toJSONString(data), 5);
             checkSign = RsaUtils.verify(sortedData, publicKey, sign);
         } catch (Exception e) {
             if (BasePay.debug) {
@@ -214,15 +174,4 @@ public abstract class AbstractRequest {
     }
 
 
-    public static String getOriginalStr(Map<String, Object> map) {
-        List<String> listKeys = new ArrayList<>(map.keySet());
-        Collections.sort(listKeys);
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < listKeys.size(); i++) {
-            if ((map.get(listKeys.get(i)) != null) && (map.get(listKeys.get(i)).toString().length() != 0)) {
-                stringBuilder.append((String) listKeys.get(i)).append("=").append(map.get(listKeys.get(i))).append("&");
-            }
-        }
-        return stringBuilder.length() == 0 ? "" : stringBuilder.toString().substring(0, stringBuilder.length() - 1);
-    }
 }

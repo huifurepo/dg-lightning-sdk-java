@@ -1,7 +1,7 @@
 package com.huifu.dg.lightning.biz.solution.delayTrans;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huifu.dg.lightning.biz.MyJacksonUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
 import com.huifu.dg.lightning.models.AcctInfo;
@@ -40,8 +40,7 @@ public class TradePaymentDelaytransConfirmTest {
         request.setAcctSplitBunch(getAcctSplitBunch());
         //是否垫资退款
         Map<String, Object> response = Factory.Solution.DelayTrans().confirm(request);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        System.out.println("返回数据:" + objectMapper.writeValueAsString(response));
+        System.out.println("返回数据:" + JSONObject.toJSONString(response));
 
     }
 
@@ -60,8 +59,7 @@ public class TradePaymentDelaytransConfirmTest {
 
         AcctSplitBunch acctSplitBunch = new AcctSplitBunch();
         acctSplitBunch.setAcctInfos(acctInfos);
-        ObjectMapper objectMapper = MyJacksonUtils.getInstance();
-        return objectMapper.writeValueAsString(acctSplitBunch);
+        return JSON.toJSONString(acctSplitBunch);
     }
 
     public static void main(String[] args) throws Exception {

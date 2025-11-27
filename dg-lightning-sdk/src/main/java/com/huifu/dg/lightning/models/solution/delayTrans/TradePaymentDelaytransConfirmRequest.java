@@ -1,42 +1,42 @@
 package com.huifu.dg.lightning.models.solution.delayTrans;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.BaseRequest;
 import com.huifu.dg.lightning.utils.enums.FunctionCodeEnum;
 
 public class TradePaymentDelaytransConfirmRequest extends BaseRequest {
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
 
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
 
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
 
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
 
-    @JsonProperty("org_mer_ord_id")
+    @JSONField(name = "org_mer_ord_id")
     private String orgMerOrdId;
 
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
 
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
 
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private String acctSplitBunch;
 
-    @JsonProperty("risk_check_data")
+    @JSONField(name = "risk_check_data")
     private String riskCheckData;
 
-    @JsonProperty("pay_type")
+    @JSONField(name = "pay_type")
     private String payType;
 
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
 
     @Override

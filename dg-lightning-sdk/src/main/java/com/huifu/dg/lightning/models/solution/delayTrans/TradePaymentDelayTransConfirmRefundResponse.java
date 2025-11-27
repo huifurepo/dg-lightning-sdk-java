@@ -1,6 +1,6 @@
 package com.huifu.dg.lightning.models.solution.delayTrans;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.huifu.dg.lightning.models.AcctSplitBunch;
 
 import java.io.Serializable;
@@ -14,87 +14,87 @@ public class TradePaymentDelayTransConfirmRefundResponse implements Serializable
     /**
      * 业务响应码
      */
-    @JsonProperty("resp_code")
+    @JSONField(name = "resp_code")
     private String respCode;
     /**
      * 业务响应信息
      */
-    @JsonProperty("resp_desc")
+    @JSONField(name = "resp_desc")
     private String respDesc;
     /**
      * 交易状态
      */
-    @JsonProperty("trans_stat")
+    @JSONField(name = "trans_stat")
     private String transStat;
     /**
      * 全局流水号
      */
-    @JsonProperty("hf_seq_id")
+    @JSONField(name = "hf_seq_id")
     private String hfSeqId;
     /**
      * 请求日期
      */
-    @JsonProperty("req_date")
+    @JSONField(name = "req_date")
     private String reqDate;
     /**
      * 请求流水号
      */
-    @JsonProperty("req_seq_id")
+    @JSONField(name = "req_seq_id")
     private String reqSeqId;
     /**
      * 商户号
      */
-    @JsonProperty("huifu_id")
+    @JSONField(name = "huifu_id")
     private String huifuId;
     /**
      * 原交易请求流水号
      */
-    @JsonProperty("org_req_seq_id")
+    @JSONField(name = "org_req_seq_id")
     private String orgReqSeqId;
     /**
      * 待确认总金额
      */
-    @JsonProperty("unconfirm_amt")
+    @JSONField(name = "unconfirm_amt")
     private String unconfirmAmt;
     /**
      * 已确认总金额
      */
-    @JsonProperty("confirmed_amt")
+    @JSONField(name = "confirmed_amt")
     private String confirmedAmt;
     /**
      * 支付交易业务请求时间
      */
-    @JsonProperty("org_req_date")
+    @JSONField(name = "org_req_date")
     private String orgReqDate;
     /**
      * 支付交易汇付全局流水号
      */
-    @JsonProperty("org_hf_seq_id")
+    @JSONField(name = "org_hf_seq_id")
     private String orgHfSeqId;
     /**
      * 分账对象
      */
-    @JsonProperty("acct_split_bunch")
+    @JSONField(name = "acct_split_bunch")
     private AcctSplitBunch acctSplitBunch;
     /**
      * 备注
      */
-    @JsonProperty("remark")
+    @JSONField(name = "remark")
     private String remark;
     /**
      * 是否垫资退款
      */
-    @JsonProperty("loan_flag")
+    @JSONField(name = "loan_flag")
     private String loanFlag;
     /**
      * 垫资承担者
      */
-    @JsonProperty("loan_undertaker")
+    @JSONField(name = "loan_undertaker")
     private String loanUndertaker;
     /**
      * 垫资账户类型
      */
-    @JsonProperty("loan_acct_type")
+    @JSONField(name = "loan_acct_type")
     private String loanAcctType;
 
     public String getRespCode() {
