@@ -12,21 +12,17 @@
     <description>Dougong Lightning SDK for Java allows you to enjoy a minimalist programming experience and quickly
         access the various high-frequency capabilities of the Dougong Platform.
     </description>
-       <dependencies>
+    <dependencies>
         <dependency>
             <groupId>com.huifu.bspay.sdk</groupId>
             <artifactId>dg-java-sdk</artifactId>
-            <version>3.0.30</version>
+            <version>3.0.32</version>
         </dependency>
-
-
-           <dependency>
-               <groupId>com.huifu.dg.lightning.sdk</groupId>
-               <artifactId>dg-lightning-sdk</artifactId>
-               <version>1.0.3</version>
-           </dependency>
-
-
+        <dependency>
+            <groupId>com.huifu.dg.lightning.sdk</groupId>
+            <artifactId>dg-lightning-sdk</artifactId>
+            <version>1.0.3</version>
+        </dependency>
         <!-- test dependency -->
         <dependency>
             <groupId>junit</groupId>
@@ -40,7 +36,7 @@
             <version>5.0.7.RELEASE</version>
         </dependency>
     </dependencies>
-       <build>
+    <build>
         <finalName>lightning-sdk-demo-${project.version}</finalName>
         <plugins>
             <plugin>
@@ -66,7 +62,7 @@
                 </executions>
             </plugin>
         </plugins>
-          <resources>
+        <resources>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>

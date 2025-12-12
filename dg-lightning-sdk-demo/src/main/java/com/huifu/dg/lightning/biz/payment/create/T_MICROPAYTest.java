@@ -3,12 +3,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
+import com.huifu.dg.lightning.models.AcctInfo;
+import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.WxData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
 
 import com.huifu.dg.lightning.utils.SequenceTools;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 /**
@@ -35,9 +38,15 @@ public class T_MICROPAYTest {
         request.setNotifyUrl("https://www.demoSite.com/api/public/hf/smstorecallback");
 // 延迟交易能力 延迟入账标识
         request.setDelayAcctFlag("N");
-// 实时分账能力 设置分账信息，需要分账权限
-// request.setAcctSplitBunch("{\"acct_infos\":[{\"div_amt\":\"4.00\",\"huifu_id\":\"666600016871111\"}," +
-// 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
+
+// 实时分账能力start 设置分账信息，需要分账权限
+        // 通过对象方式拼装分账串
+        AcctSplitBunch bunch = buildAcctSplitBunch();
+        String acctSplitJson = JSON.toJSONString(bunch);
+        //"{\"acct_infos\":[{\"div_amt\":\"4.00\",\"huifu_id\":\"666600016871111\"}," +
+        //                "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}"
+        //request.setAcctSplitBunch(acctSplitJson);
+// 实时分账能力end
 
 //以下为微信小程序需要的参数
         String wxDataString="";
@@ -49,12 +58,26 @@ public class T_MICROPAYTest {
 //微信相关参数可参考官方文档 https://pay.weixin.qq.com/doc/v2/merchant/4011937125
 //复杂示例{"authCode":"112345678765432","subAppid":"wx4f4f5a5f5a5f5a53332","subOpenid":"o8jhotzittQSetZ-11111","detail":{"wxGoodsDetail":[{"goodsId":"6948682505111","goodsName":"白公主抽纸8包装","price":"1300","quantity":1},{"goodsId":"6926265321111","goodsName":"上好佳八宝糖","price":"480","quantity":1}]}}
 //微信付款码必传终端信息 TerminalDeviceData 对象
-        request.setTerminalDeviceData("{\"deviceIp\":\"172.28.52.52\",\"merDeviceType\":\"11\",\"devsId\":\"SPINTP351420900692801\"}");
+        request.setTerminalDeviceData("{\"device_ip\":\"172.28.52.52\",\"mer_device_type\":\"11\",\"devs_id\":\"SPINTP351420900692801\"}");
         wxDataString = JSON.toJSONString(wxData);
         request.setTradeType("T_MICROPAY"); // 交易类型
         Map<String, Object> response = Factory.Payment.Common()
                 .optional("method_expand",wxDataString).create(request);
         System.out.println("T_MICROPAY返回数据:" + JSON.toJSONString(response));
     }
-
+    @NotNull
+    private static AcctSplitBunch buildAcctSplitBunch() {
+        java.util.List<AcctInfo> infos = new java.util.ArrayList<>();
+        AcctInfo a = new AcctInfo();
+        a.setHuifuId("666600016871111");
+        a.setDivAmt("4.00");
+        infos.add(a);
+        AcctInfo b = new AcctInfo();
+        b.setHuifuId("6666000169391112");
+        b.setDivAmt("16.00");
+        infos.add(b);
+        AcctSplitBunch bunch = new AcctSplitBunch();
+        bunch.setAcctInfos(infos);
+        return bunch;
+    }
 }

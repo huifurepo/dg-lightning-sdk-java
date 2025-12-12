@@ -3,12 +3,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.huifu.dg.lightning.biz.OppsMerchantConfigDemo;
 import com.huifu.dg.lightning.factory.Factory;
+import com.huifu.dg.lightning.models.AcctInfo;
+import com.huifu.dg.lightning.models.AcctSplitBunch;
 import com.huifu.dg.lightning.models.UnionpayData;
 import com.huifu.dg.lightning.models.payment.TradePaymentCreateRequest;
 import com.huifu.dg.lightning.utils.BasePay;
 import com.huifu.dg.lightning.utils.DateTools;
 
 import com.huifu.dg.lightning.utils.SequenceTools;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -38,9 +41,16 @@ public class U_NATIVETest {
         request.setNotifyUrl("https://www.demoSite.com/api/public/hf/smstorecallback");
 // 延迟交易能力 延迟入账标识
         request.setDelayAcctFlag("N");
-// 实时分账能力 设置分账信息，需要分账权限
-// request.setAcctSplitBunch("{\"acct_infos\":[{\"div_amt\":\"4.00\",\"huifu_id\":\"666600016871111\"}," +
-// 						  "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}");
+
+// 实时分账能力start 设置分账信息，需要分账权限
+        // 通过对象方式拼装分账串
+        AcctSplitBunch bunch = buildAcctSplitBunch();
+        String acctSplitJson = JSON.toJSONString(bunch);
+        //"{\"acct_infos\":[{\"div_amt\":\"4.00\",\"huifu_id\":\"666600016871111\"}," +
+        //                "{\"div_amt\":\"16.00\",\"huifu_id\":\"6666000169391112\"}]}"
+        //request.setAcctSplitBunch(acctSplitJson);
+// 实时分账能力end
+
 
 //以下为支付宝JS支付需要的参数
         String unionPayDataString="";
@@ -55,7 +65,21 @@ public class U_NATIVETest {
         System.out.println("U_NATIVE返回数据:" + JSON.toJSONString(response));
     }
 
-
+    @NotNull
+    private static AcctSplitBunch buildAcctSplitBunch() {
+        java.util.List<AcctInfo> infos = new java.util.ArrayList<>();
+        AcctInfo a = new AcctInfo();
+        a.setHuifuId("666600016871111");
+        a.setDivAmt("4.00");
+        infos.add(a);
+        AcctInfo b = new AcctInfo();
+        b.setHuifuId("6666000169391112");
+        b.setDivAmt("16.00");
+        infos.add(b);
+        AcctSplitBunch bunch = new AcctSplitBunch();
+        bunch.setAcctInfos(infos);
+        return bunch;
+    }
 
 
 
